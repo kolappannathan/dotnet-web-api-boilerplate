@@ -16,5 +16,12 @@
         public const string AccountDeleted = "The user account has been deleted. Contact administrator.";
 
         #endregion [Authorization]
+
+        #region [Mandatory Fields]
+
+        public const string UserIdMandatory = "User Id is mandatory";
+        public const string AuthTokenMandatory = "Authentication token is mandatory";
+
+        #endregion [Mandatory Fields]
     }
 }
