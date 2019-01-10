@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Lib", "Core.Lib\Core.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{45F145EE-EB8D-401E-A1EA-1743F5A06C49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Constants", "Core.Constants\Core.Constants.csproj", "{B97C8E88-5711-44D9-A362-43F91A6F2C0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Constants", "Core.Constants\Core.Constants.csproj", "{B97C8E88-5711-44D9-A362-43F91A6F2C0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Lib", "Business.Lib\Business.Lib.csproj", "{05511D8B-4929-4233-A379-9851ABB98A35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{B97C8E88-5711-44D9-A362-43F91A6F2C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B97C8E88-5711-44D9-A362-43F91A6F2C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B97C8E88-5711-44D9-A362-43F91A6F2C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05511D8B-4929-4233-A379-9851ABB98A35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05511D8B-4929-4233-A379-9851ABB98A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05511D8B-4929-4233-A379-9851ABB98A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05511D8B-4929-4233-A379-9851ABB98A35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

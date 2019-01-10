@@ -17,7 +17,7 @@ namespace API.Helpers
 
         public JWTHelper()
         {
-            securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWT.Key));
+            securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config.JWT.Key));
         }
 
         #region [Token Generation]
@@ -40,8 +40,8 @@ namespace API.Helpers
 
             var token = new JwtTokenBuilder()
                 .AddSecurityKey(securityKey)
-                .AddIssuer(JWT.Issuer)
-                .AddAudience(JWT.Audience)
+                .AddIssuer(Config.JWT.Issuer)
+                .AddAudience(Config.JWT.Audience)
                 .AddExpiry(30)
                 .AddRole(userRole)
                 .AddName(userName)
@@ -52,69 +52,5 @@ namespace API.Helpers
         }
 
         #endregion [Token Generation]
-
-        #region [Extract Claims]
-
-        /// <summary>
-        /// Generates <see cref="JwtSecurityToken"/> from signed JWT token string
-        /// </summary>
-        /// <param name="authToken">Signed JWT Token</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public JwtSecurityToken GenerateUserClaimFromJWT(string authToken)
-        {
-            if (string.IsNullOrEmpty(authToken))
-            {
-                throw new ArgumentNullException("authToken", Errors.AuthTokenMandatory);
-            }
-
-            var tokenValidationParameters = new TokenValidationParameters()
-            {
-                ValidAudiences = new string[] { JWT.Audience },
-                ValidIssuers = new string[] { JWT.Issuer },
-                IssuerSigningKey = securityKey
-            };
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            SecurityToken validatedToken;
-            try
-            {
-                tokenHandler.ValidateToken(authToken, tokenValidationParameters, out validatedToken);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return validatedToken as JwtSecurityToken;
-        }
-
-
-        /// <summary>
-        /// Extracts login Id from the authentication token
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        public string GetLoginId(string token)
-        {
-            var decodedToken = GenerateUserClaimFromJWT(token);
-            var claim = decodedToken.Claims.FirstOrDefault(c => c.Type == CustomClaims.UserIdentifier);
-            var loginId = claim.Value;
-            return loginId;
-        }
-
-        /// <summary>
-        /// Extracts CompanyId from authentication token
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        public string GetCompanyId(string token)
-        {
-            var decodedToken = GenerateUserClaimFromJWT(token);
-            var claim = decodedToken.Claims.FirstOrDefault(c => c.Type == CustomClaims.CompanyIdentifier);
-            var companyId = claim.Value;
-            return companyId;
-        }
-
-        #endregion [Extract Claims]
     }
 }

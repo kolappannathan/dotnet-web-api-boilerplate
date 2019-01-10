@@ -5,7 +5,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : CustomBaseController
     {
         // GET api/values
         [HttpGet]

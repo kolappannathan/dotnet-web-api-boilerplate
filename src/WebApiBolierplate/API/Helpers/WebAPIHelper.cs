@@ -31,11 +31,11 @@ namespace API.Helpers
             }
             else if (data is int && Convert.ToInt32(data) < 0)
             {
-                Tuple<string, HttpStatusCode> resData = Notification.GetNotification(Convert.ToInt32(data));
-                apiResponse = new APIResponse(string.Empty, resData.Item1, true);
+                (string resText, HttpStatusCode resCode) = Notification.GetNotification(Convert.ToInt32(data));
+                apiResponse = new APIResponse(string.Empty, resText, true);
                 return new JsonResult(apiResponse)
                 {
-                    StatusCode = (int)resData.Item2
+                    StatusCode = (int)resCode
                 };
             }
             else if (data is APIResponse)

@@ -16,6 +16,18 @@ namespace API
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+
+            #region [Assign Config]
+
+            Config.DataBase.ConnectionString = "This is a database connection string";
+            Config.Logger.DateFormat = "yyyy-MM-dd HH:mm:ss.fff";
+            Config.Logger.FileName = "ErrorLog";
+            Config.JWT.Audience = "https://www.example.com";
+            Config.JWT.Issuer = "WebApiBoilerplate";
+            Config.JWT.Key = "This is a JWT secret key";
+
+            #endregion [Assign Config]
         }
 
         public IConfiguration Configuration { get; }
@@ -50,9 +62,9 @@ namespace API
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = JWT.Issuer,
-                        ValidAudience = JWT.Audience,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWT.Key))
+                        ValidIssuer = Config.JWT.Issuer,
+                        ValidAudience = Config.JWT.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config.JWT.Key))
                     };
                 });
 

@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "3ea26b93-dd5a-4b15-ac5c-401d17b047a7",
+		"name": "Web API Boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login Controller",
+			"item": [
+				{
+					"name": "Login as User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"My direwolf is Summer\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Eddard Stark\",\n\t\"Password\": \"I'm the lord of WinterFell\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Credential",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"My direwolf is Lady\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"Eddard's elder brother\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 404",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Harry Potter\",\n\t\"Password\": \"I'm not in GOT\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Throw me an Exception",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"No one\",\n\t\"Password\": \"A man wants an exception\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9c9e00fd-0855-44c5-9b9d-5954c4430906",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "21507228-0011-4fee-ba46-973d19b1b348",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7fedce06-5f5f-4ca8-a3fb-31a9b0850fbe",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "652b3793-813c-446f-837a-0493395a551d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9b0727e7-62cf-40bf-8689-dca5b89565aa",
+			"key": "api-url",
+			"value": "https://localhost:44332/api/",
+			"type": "string"
+		}
+	]
+}

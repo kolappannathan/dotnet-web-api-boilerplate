@@ -12,7 +12,7 @@
 
         public const string InvalidCredentials = "The credentials are invalid.";
         public const string UnauthorizedRequest = "The request is unauthorised.";
-        public const string AccountNotFound = "No acount exists for the specified email. Are you trying to Signup?";
+        public const string AccountNotFound = "No acount exists for the specified username. Are you trying to Signup?";
         public const string AccountDeleted = "The user account has been deleted. Contact administrator.";
 
         #endregion [Authorization]

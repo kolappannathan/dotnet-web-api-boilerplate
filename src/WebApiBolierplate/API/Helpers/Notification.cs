@@ -1,5 +1,4 @@
 ﻿using Core.Constants;
-using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -10,12 +9,12 @@ namespace API.Helpers
         /// <summary>
         /// Contains mapping for error codes to the Error messages and status
         /// </summary>
-        private static readonly Dictionary<int, Tuple<string, HttpStatusCode>> notifications = new Dictionary<int, Tuple<string, HttpStatusCode>>()
+        private static readonly Dictionary<int, (string, HttpStatusCode)> notifications = new Dictionary<int, (string, HttpStatusCode)>()
         {
-            { -1,  Tuple.Create(Errors.InternalServerError, HttpStatusCode.InternalServerError) },
-            { -102,  Tuple.Create(Errors.AccountNotFound, HttpStatusCode.Unauthorized) },
-            { -103,  Tuple.Create(Errors.InvalidCredentials, HttpStatusCode.Unauthorized) },
-            { -104,  Tuple.Create(Errors.AccountDeleted, HttpStatusCode.Unauthorized) }
+            { -1, (Errors.InternalServerError, HttpStatusCode.InternalServerError) },
+            { -102, (Errors.AccountNotFound, HttpStatusCode.Unauthorized) },
+            { -103, (Errors.InvalidCredentials, HttpStatusCode.Unauthorized) },
+            { -104, (Errors.AccountDeleted, HttpStatusCode.Unauthorized) }
         };
 
         /// <summary>
@@ -23,13 +22,13 @@ namespace API.Helpers
         /// </summary>
         /// <param name="code">The error code obtained from business layer or other functions</param>
         /// <returns></returns>
-        public static Tuple<string, HttpStatusCode> GetNotification(int code)
+        public static (string, HttpStatusCode) GetNotification(int code)
         {
-            Tuple<string, HttpStatusCode> value;
+            (string, HttpStatusCode) value;
             bool hasValue = notifications.TryGetValue(code, out value);
             if (!hasValue)
             {
-                value = Tuple.Create(Errors.InternalServerError, HttpStatusCode.InternalServerError);
+                value = (Errors.InternalServerError, HttpStatusCode.InternalServerError);
             }
             return value;
         }
