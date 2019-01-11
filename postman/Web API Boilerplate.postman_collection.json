@@ -163,6 +163,32 @@
 						"description": "A perfectly self thrown exeption."
 					},
 					"response": []
+				},
+				{
+					"name": "I want validation error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": null,\n\t\"Password\": \"A man wants an exception\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "A perfectly self thrown exeption."
+					},
+					"response": []
 				}
 			],
 			"auth": {
@@ -371,7 +397,7 @@
 	],
 	"variable": [
 		{
-			"id": "32724497-0e2e-4ae4-873d-f782222541c5",
+			"id": "083f2568-ab9f-4d1c-ba04-1b375e74b6e8",
 			"key": "api-url",
 			"value": "https://localhost:44332/api/",
 			"type": "string"
