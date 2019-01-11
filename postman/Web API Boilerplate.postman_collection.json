@@ -29,7 +29,8 @@
 							"host": [
 								"{{api-url}}login"
 							]
-						}
+						},
+						"description": "Sucessfully login as user"
 					},
 					"response": []
 				},
@@ -54,7 +55,8 @@
 							"host": [
 								"{{api-url}}login"
 							]
-						}
+						},
+						"description": "Sucessfully login as Admin"
 					},
 					"response": []
 				},
@@ -79,7 +81,8 @@
 							"host": [
 								"{{api-url}}login"
 							]
-						}
+						},
+						"description": "Failed login as credentials are invalid"
 					},
 					"response": []
 				},
@@ -104,7 +107,8 @@
 							"host": [
 								"{{api-url}}login"
 							]
-						}
+						},
+						"description": "Oops! This API has credentials for a deleted account"
 					},
 					"response": []
 				},
@@ -129,7 +133,8 @@
 							"host": [
 								"{{api-url}}login"
 							]
-						}
+						},
+						"description": "There is no such user!"
 					},
 					"response": []
 				},
@@ -154,7 +159,8 @@
 							"host": [
 								"{{api-url}}login"
 							]
-						}
+						},
+						"description": "A perfectly self thrown exeption."
 					},
 					"response": []
 				}
@@ -184,8 +190,163 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Values Controller",
+			"item": [
+				{
+					"name": "Values List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values",
+							"host": [
+								"{{api-url}}values"
+							]
+						},
+						"description": "A list of all values. Requires Authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Value Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values/0",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"0"
+							]
+						},
+						"description": "A single value.  Requires Authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Value Detail NotFound",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values/10",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"10"
+							]
+						},
+						"description": "Get detail for a value that is not there. Requires Authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Tyrion Lanister\""
+						},
+						"url": {
+							"raw": "{{api-url}}values",
+							"host": [
+								"{{api-url}}values"
+							]
+						},
+						"description": "API request for creating new value. Requires Admin auth."
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Save",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Tyrion Lanister\""
+						},
+						"url": {
+							"raw": "{{api-url}}values/1",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "API request for updating existing value. Requires Admin auth."
+					},
+					"response": []
+				},
+				{
+					"name": "Value Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values/1",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "A delete request to the value controller. Requires Admin auth."
+					},
+					"response": []
+				}
+			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJFZGRhcmQgU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiI0ODZkMTdkMS0xOWNjLTQwNWMtOTUzYS1kNGFkYWFmZWQzMmUiLCJleHAiOjE1NDk4MDE0NzEsImlzcyI6IldlYkFwaUJvaWxlcnBsYXRlIiwiYXVkIjoiaHR0cHM6Ly93d3cuZXhhbXBsZS5jb20ifQ.G_I9CBLQnLFjO2LzmnMN74_sUIXYCQBhNt2Ll-VBCts",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -210,7 +371,7 @@
 	],
 	"variable": [
 		{
-			"id": "9b0727e7-62cf-40bf-8689-dca5b89565aa",
+			"id": "32724497-0e2e-4ae4-873d-f782222541c5",
 			"key": "api-url",
 			"value": "https://localhost:44332/api/",
 			"type": "string"

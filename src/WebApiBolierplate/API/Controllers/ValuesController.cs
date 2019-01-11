@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Business.Lib;
+using Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,36 +9,55 @@ namespace API.Controllers
     [ApiController]
     public class ValuesController : CustomBaseController
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private ValueLib valueLib;
+
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            valueLib = new ValueLib();
         }
 
-        // GET api/values/5
+        [HttpGet("")]
+        [Authorize(Roles = AuthRoles.All)]
+        public IActionResult Get()
+        {
+            var result = valueLib.GetValueList();
+            return webAPIHelper.CreateResponse(result);
+        }
+
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [Authorize(Roles = AuthRoles.All)]
+        public IActionResult Get([FromRoute]int id)
         {
-            return "value";
+            var result = valueLib.GetValueById(id);
+            if (result == string.Empty)
+            {
+                return new NotFoundResult();
+            }
+            return webAPIHelper.CreateResponse(result);
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("")]
+        [Authorize(Roles = AuthRoles.Admin)]
+        public IActionResult Post([FromBody] string value)
         {
+            var result = valueLib.AddValue(value);
+            return webAPIHelper.CreateResponse(result);
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Authorize(Roles = AuthRoles.Admin)]
+        public IActionResult Put([FromRoute]int id, [FromBody] string value)
         {
+            var result = valueLib.UpdateValue(value, id);
+            return webAPIHelper.CreateResponse(result);
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Authorize(Roles = AuthRoles.Admin)]
+        public IActionResult Delete([FromRoute]int id)
         {
+            var result = valueLib.DeleteValue(id);
+            return webAPIHelper.CreateResponse(result);
         }
     }
 }
