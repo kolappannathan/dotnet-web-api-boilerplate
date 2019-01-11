@@ -17,15 +17,14 @@ namespace API
         {
             Configuration = configuration;
 
-
             #region [Assign Config]
 
-            Config.DataBase.ConnectionString = "This is a database connection string";
-            Config.Logger.DateFormat = "yyyy-MM-dd HH:mm:ss.fff";
-            Config.Logger.FileName = "ErrorLog";
-            Config.JWT.Audience = "https://www.example.com";
-            Config.JWT.Issuer = "WebApiBoilerplate";
-            Config.JWT.Key = "This is a JWT secret key";
+            Config.DataBase.ConnectionString = Configuration["AppConfig:DataBase:ConnectionString"];
+            Config.Logger.DateFormat = Configuration["AppConfig:Logger:DateFormat"];
+            Config.Logger.FileName = Configuration["AppConfig:Logger:FileName"];
+            Config.JWT.Audience = Configuration["AppConfig:JWT:Audience"];
+            Config.JWT.Issuer = Configuration["AppConfig:JWT:Issuer"];
+            Config.JWT.Key = Configuration["AppConfig:JWT:Key"];
 
             #endregion [Assign Config]
         }
