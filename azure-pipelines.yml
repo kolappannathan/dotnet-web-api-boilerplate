@@ -12,6 +12,11 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
+- task: Build project
+  inputs:
+    #command: 'build' 
+    #projects: 'myrepo/src/WebApiBolierplate/API/API.csproj'
+
 steps:
-- script: dotnet build myrepo/src/WebApiBolierplate/API/API.csproj --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
