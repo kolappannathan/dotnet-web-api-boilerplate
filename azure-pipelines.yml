@@ -13,5 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: cd ../src/WebApiBolierplate/
+  displayName: 'Naviagte to source folder'
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
