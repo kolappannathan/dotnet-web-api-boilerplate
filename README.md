@@ -1,5 +1,7 @@
 # web-api-boilerplate
 
+[![Build Status](https://dev.azure.com/kolappannathan/Web%20API%20Boilerplate/_apis/build/status/kolappannathan.dotnet-core-web-api-boilerplate?branchName=master)](https://dev.azure.com/kolappannathan/Web%20API%20Boilerplate/_build/latest?definitionId=4?branchName=master)
+
 A boilerplate / template for a WebAPI server based on ASP.Net core.
 
 ### Scope
