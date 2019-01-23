@@ -1,0 +1,44 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+# Ref: https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - src/*
+    exclude:
+    - postman/*
+    - README.md
+    - LICENSE
+    - CHANGELOG.md
+
+# Ref: https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/pools-queues
+pool:
+  vmImage: 'vs2017-win2016'
+
+# Ref: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+
+# Ref: https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/?view=vsts
+
+# Ref: https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core?view=vsts
+- task: DotNetCoreCLI@2
+  displayName: 'Restore Packages'
+  inputs:
+    command: 'restore' 
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build All Projects'
+  inputs:
+    command: 'build' 
+    projects: '**/*.csproj'
