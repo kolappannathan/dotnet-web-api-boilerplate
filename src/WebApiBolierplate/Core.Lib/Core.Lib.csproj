@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="3.1.2" />
+    <PackageReference Include="BCrypt.Net-Next" Version="3.1.3" />
     <PackageReference Include="nk.logger.csv" Version="1.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
   </ItemGroup>
