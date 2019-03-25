@@ -7,9 +7,15 @@ namespace Core.Lib.Compression
 {
     public class Gzip
     {
-        public string CompressToString(string s)
+        /// <summary>
+        /// Compress the given string into a gzip string
+        /// </summary>
+        /// <param name="s">Uncompressed string</param>
+        /// <param name="encoding">Encoding of the string</param>
+        /// <returns></returns>
+        public string CompressToString(string s, Encoding encoding)
         {
-            var bytes = Encoding.Unicode.GetBytes(s);
+            var bytes = encoding.GetBytes(s);
             using (var msi = new MemoryStream(bytes))
             using (var mso = new MemoryStream())
             {
@@ -21,6 +27,12 @@ namespace Core.Lib.Compression
             }
         }
 
+        /// <summary>
+        /// Decompress a gzip response.
+        /// </summary>
+        /// <param name="s">Compressed string</param>
+        /// <param name="encoding">Encoding of the string</param>
+        /// <returns></returns>
         public string DecompressString(string s, Encoding encoding)
         {
             var bytes = Convert.FromBase64String(s);

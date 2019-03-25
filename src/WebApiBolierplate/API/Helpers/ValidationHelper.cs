@@ -12,6 +12,11 @@ namespace API.Helpers
             webAPIHelper = new WebAPIHelper();
         }
 
+        /// <summary>
+        /// Obtains all model validation errors and combaines them into a single CSV error text
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public BadRequestObjectResult GetDataValidationError(ModelStateDictionary model)
         {
             var errorText = string.Empty;

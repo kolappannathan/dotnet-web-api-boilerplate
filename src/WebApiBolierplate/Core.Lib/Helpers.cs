@@ -91,10 +91,10 @@ namespace Core.Lib
         /// </summary>
         /// <param name="plaintText">string to be compressed</param>
         /// <returns></returns>
-        public string CompressToGzipString(string plaintText)
+        public string CompressToGzipString(string plaintText, Encoding encoding)
         {
             gzipLib = new Gzip();
-            return gzipLib.CompressToString(plaintText);
+            return gzipLib.CompressToString(plaintText, encoding);
         }
 
         /// <summary>

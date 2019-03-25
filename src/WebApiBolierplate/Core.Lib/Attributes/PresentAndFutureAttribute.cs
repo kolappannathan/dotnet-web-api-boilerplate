@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Core.Lib.Attributes
 {
+    /// <summary>
+    /// Similar to <see cref="OnlyFutureAttribute"/> but allows today's date value
+    /// </summary>
     public class PresentAndFutureAttribute : ValidationAttribute
     {
         public PresentAndFutureAttribute()

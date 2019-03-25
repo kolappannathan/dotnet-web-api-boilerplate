@@ -368,7 +368,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJFZGRhcmQgU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiI0ODZkMTdkMS0xOWNjLTQwNWMtOTUzYS1kNGFkYWFmZWQzMmUiLCJleHAiOjE1NDk4MDE0NzEsImlzcyI6IldlYkFwaUJvaWxlcnBsYXRlIiwiYXVkIjoiaHR0cHM6Ly93d3cuZXhhbXBsZS5jb20ifQ.G_I9CBLQnLFjO2LzmnMN74_sUIXYCQBhNt2Ll-VBCts",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJFZGRhcmQgU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiJjNGM3NzYwNy04ZTkzLTRlOWQtOTEyOC1hMmE3MThhMmY2N2QiLCJleHAiOjE1NTYwOTM1OTUsImlzcyI6IldlYkFwaUJvaWxlcnBsYXRlIiwiYXVkIjoiaHR0cHM6Ly93d3cuZXhhbXBsZS5jb20ifQ.tUfpZfEnpHslE1Sb4Xo6QcouRtWbd3MoIlFm9lhLYhY",
 				"type": "string"
 			}
 		]
@@ -397,7 +397,7 @@
 	],
 	"variable": [
 		{
-			"id": "083f2568-ab9f-4d1c-ba04-1b375e74b6e8",
+			"id": "0ec76a63-f9ff-4fd3-879b-04f9c35bf8b4",
 			"key": "api-url",
 			"value": "https://localhost:44332/api/",
 			"type": "string"

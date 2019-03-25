@@ -9,12 +9,16 @@ namespace API.Helpers
 {
     public class JwtTokenBuilder
     {
+        #region [Declarations]
+
         private SecurityKey securityKey = null;
         private string subject = "";
         private string issuer = "";
         private string audience = "";
         private int expiryInDays = 30;
         private List<Claim> claims = new List<Claim>();
+
+        #endregion [Declarations]
 
         public JwtSecurityToken Build()
         {
@@ -98,6 +102,11 @@ namespace API.Helpers
 
         #region [Adding Claims]
 
+        /// <summary>
+        /// Adds user role as claim to the token
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public JwtTokenBuilder AddRole(string value)
         {
             if (value != null)
@@ -107,32 +116,16 @@ namespace API.Helpers
             return this;
         }
 
+        /// <summary>
+        /// Adds user name as claim to the token
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public JwtTokenBuilder AddName(string value)
         {
             if (value != null)
             {
                 claims.Add(new Claim(ClaimTypes.Name, value));
-            }
-            return this;
-        }
-
-        public JwtTokenBuilder AddClaim(string type, string value)
-        {
-            if (value != null)
-            {
-                claims.Add(new Claim(type, value));
-            }
-            return this;
-        }
-
-        public JwtTokenBuilder AddClaims(Dictionary<string, string> claimList)
-        {
-            foreach (var claim in claimList)
-            {
-                if (claim.Value != null && claim.Key != null)
-                {
-                    claims.Add(new Claim(claim.Key, claim.Value));
-                }
             }
             return this;
         }
@@ -157,7 +150,43 @@ namespace API.Helpers
             return this;
         }
 
-        #endregion  [Custom Claims]
+        #endregion [Custom Claims]
+
+        #region [Generic Claims]
+
+        /// <summary>
+        /// Adds a given value to the given claim
+        /// </summary>
+        /// <param name="type">claim type</param>
+        /// <param name="value">value for the claim</param>
+        /// <returns></returns>
+        public JwtTokenBuilder AddClaim(string type, string value)
+        {
+            if (value != null)
+            {
+                claims.Add(new Claim(type, value));
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Bulk add claims to the JWT tokens
+        /// </summary>
+        /// <param name="claimList">list of claim types and its corresponding values</param>
+        /// <returns></returns>
+        public JwtTokenBuilder AddClaims(Dictionary<string, string> claimList)
+        {
+            foreach (var claim in claimList)
+            {
+                if (claim.Value != null && claim.Key != null)
+                {
+                    claims.Add(new Claim(claim.Key, claim.Value));
+                }
+            }
+            return this;
+        }
+
+        #endregion [Generic Claims]
 
         #endregion [Adding Claims]
 
