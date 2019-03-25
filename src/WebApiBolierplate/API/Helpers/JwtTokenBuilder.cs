@@ -24,7 +24,8 @@ namespace API.Helpers
         {
             EnsureArguments();
 
-            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString());
+            AddClaim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString());
 
             var token = new JwtSecurityToken(
                               issuer: issuer,
@@ -69,7 +70,7 @@ namespace API.Helpers
         public JwtTokenBuilder AddSubject(string subject)
         {
             this.subject = subject;
-            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, this.subject));
+            AddClaim(JwtRegisteredClaimNames.Sub, this.subject);
             return this;
         }
 
@@ -79,6 +80,7 @@ namespace API.Helpers
         public JwtTokenBuilder AddIssuer(string issuer)
         {
             this.issuer = issuer;
+            AddClaim(JwtRegisteredClaimNames.Iss, issuer);
             return this;
         }
 
@@ -88,6 +90,7 @@ namespace API.Helpers
         public JwtTokenBuilder AddAudience(string audience)
         {
             this.audience = audience;
+            AddClaim(JwtRegisteredClaimNames.Aud, audience);
             return this;
         }
 
@@ -109,11 +112,7 @@ namespace API.Helpers
         /// <returns></returns>
         public JwtTokenBuilder AddRole(string value)
         {
-            if (value != null)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, value));
-            }
-            return this;
+            return AddClaim(ClaimTypes.Role, value);
         }
 
         /// <summary>
@@ -123,31 +122,19 @@ namespace API.Helpers
         /// <returns></returns>
         public JwtTokenBuilder AddName(string value)
         {
-            if (value != null)
-            {
-                claims.Add(new Claim(ClaimTypes.Name, value));
-            }
-            return this;
+            return AddClaim(ClaimTypes.Name, value);
         }
 
         #region [Custom Claims]
 
         public JwtTokenBuilder AddUserId(string value)
         {
-            if (value != null)
-            {
-                claims.Add(new Claim(CustomClaims.UserIdentifier, value));
-            }
-            return this;
+            return AddClaim(CustomClaims.UserIdentifier, value);
         }
 
         public JwtTokenBuilder AddCompanyId(string value)
         {
-            if (value != null)
-            {
-                claims.Add(new Claim(CustomClaims.CompanyIdentifier, value));
-            }
-            return this;
+            return AddClaim(CustomClaims.CompanyIdentifier, value);
         }
 
         #endregion [Custom Claims]
@@ -162,7 +149,7 @@ namespace API.Helpers
         /// <returns></returns>
         public JwtTokenBuilder AddClaim(string type, string value)
         {
-            if (value != null)
+            if (value != null && type != null)
             {
                 claims.Add(new Claim(type, value));
             }
