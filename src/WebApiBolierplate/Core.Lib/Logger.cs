@@ -30,28 +30,19 @@ namespace Core.Lib
         /// Log an <see cref="Exception"/> as DEBUG
         /// </summary>
         /// <param name="ex"></param>
-        public void Debug(Exception ex)
-        {
-            csvLogger.Debug(ex);
-        }
+        public void Debug(Exception ex) => csvLogger.Debug(ex);
 
         /// <summary>
         /// Log an <see cref="Exception"/> as ERROR
         /// </summary>
         /// <param name="ex"></param>
-        public void Error(Exception ex)
-        {
-            csvLogger.Error(ex);
-        }
+        public void Error(Exception ex) => csvLogger.Error(ex);
 
         /// <summary>
         /// Log an <see cref="Exception"/> as Fatal
         /// </summary>
         /// <param name="ex"></param>
-        public void Fatal(Exception ex)
-        {
-            csvLogger.Fatal(ex);
-        }
+        public void Fatal(Exception ex) => csvLogger.Fatal(ex);
 
         #endregion [Exception Logs]
 
@@ -61,55 +52,37 @@ namespace Core.Lib
         /// Log a DEBUG message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Debug(string text)
-        {
-            csvLogger.Debug(text);
-        }
+        public void Debug(string text) => csvLogger.Debug(text);
 
         /// <summary>
         /// Log an ERROR message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Error(string text)
-        {
-            csvLogger.Error(text);
-        }
+        public void Error(string text) => csvLogger.Error(text);
 
         /// <summary>
         /// Log a FATAL ERROR message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Fatal(string text)
-        {
-            csvLogger.Fatal(text);
-        }
+        public void Fatal(string text) => csvLogger.Fatal(text);
 
         /// <summary>
         /// Log an INFO message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Info(string text)
-        {
-            csvLogger.Info(text);
-        }
+        public void Info(string text) => csvLogger.Info(text);
 
         /// <summary>
         /// Log a TRACE message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Trace(string text)
-        {
-            csvLogger.Trace(text);
-        }
+        public void Trace(string text) => csvLogger.Trace(text);
 
         /// <summary>
         /// Log a WARNING message
         /// </summary>
         /// <param name="text">Message</param>
-        public void Warning(string text)
-        {
-            csvLogger.Warning(text);
-        }
+        public void Warning(string text) => csvLogger.Warning(text);
 
         #endregion [Error message logs]
 

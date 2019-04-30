@@ -2,7 +2,6 @@
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
 
 namespace API.Helpers
@@ -42,7 +41,7 @@ namespace API.Helpers
                 .AddSecurityKey(securityKey)
                 .AddIssuer(Config.JWT.Issuer)
                 .AddAudience(Config.JWT.Audience)
-                .AddExpiry(30)
+                .AddExpiry(Config.JWT.DaysValid)
                 .AddRole(userRole)
                 .AddName(userName)
                 .AddUserId(userId)

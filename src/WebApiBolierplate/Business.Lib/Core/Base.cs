@@ -2,7 +2,7 @@
 using Core.Lib;
 using Core.Lib.Adapters;
 
-namespace Business.Lib
+namespace Business.Lib.Core
 {
     public class Base
     {

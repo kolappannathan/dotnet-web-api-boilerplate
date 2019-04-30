@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2019-04-30
+### Added
+ - New startup lib for operations performed during startup
+ - New API that reassigns config on the fly
+ - New class for info texts
+
+### Changed
+ - JWT token validity is now taken from config
+ - Moved Base class in business lib into Core namespace
+ - Converted Logger functions into expressions
+
 ## [1.0.1] - 2019-03-25
 ### Added
 - Added documentaion for many functions and classes

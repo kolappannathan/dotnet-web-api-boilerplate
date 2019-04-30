@@ -361,6 +361,33 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Tasks Controller",
+			"item": [
+				{
+					"name": "Reload config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}tasks/reload/config",
+							"host": [
+								"{{api-url}}tasks"
+							],
+							"path": [
+								"reload",
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -368,7 +395,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6WyJodHRwczovL3d3dy5leGFtcGxlLmNvbSIsImh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIl0sImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkVkZGFyZCBTdGFyayIsInVzZXJfaWRlbnRpZmllciI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImNvbXBhbnlfaWRlbnRpZmllciI6IkdPVCIsImp0aSI6ImJhMjkyNGE1LTBkMWQtNGZlNi05ZTYzLTMwNTJjNzMwZTQzZiIsImlhdCI6IjI1LTAzLTIwMTkgMTAuNDAuMDQgQU0iLCJleHAiOjE1NTYxMDI0MDR9.LVJ9XqqR7FqLC2l5wcAzJuZgkdusrd7U08YrJ0UW37Q",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6WyJodHRwczovL3d3dy5leGFtcGxlLmNvbSIsImh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIl0sImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkVkZGFyZCBTdGFyayIsInVzZXJfaWRlbnRpZmllciI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImNvbXBhbnlfaWRlbnRpZmllciI6IkdPVCIsImp0aSI6IjkxZWYyYWNkLWE5MDQtNDQ4Mi1hMWRlLTNiNzg2ZDMxZjBmMSIsImlhdCI6IjMwLTA0LTIwMTkgMTEuNDguMDcgQU0iLCJleHAiOjE1NTkyMTY4ODd9.VFVV_aFFqvMCChhRc2tUSWn95QbLzyfANmbaFa6UYqo",
 				"type": "string"
 			}
 		]
@@ -397,7 +424,7 @@
 	],
 	"variable": [
 		{
-			"id": "27307e0d-ed1c-4c21-abd9-3f812016da7c",
+			"id": "30be9bb2-2ea9-4877-ab42-3bfb6c7a2df4",
 			"key": "api-url",
 			"value": "https://localhost:44332/api/",
 			"type": "string"

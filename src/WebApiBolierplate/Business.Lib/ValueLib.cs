@@ -1,4 +1,6 @@
-﻿namespace Business.Lib
+﻿using Business.Lib.Core;
+
+namespace Business.Lib
 {
     public class ValueLib : Base
     {

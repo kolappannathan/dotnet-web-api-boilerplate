@@ -1,4 +1,5 @@
 ﻿using API.Helpers;
+using Business.Lib.Core;
 using Core.Constants;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -13,23 +14,17 @@ namespace API
 {
     public class Startup
     {
+
+        public IConfiguration Configuration { get; }
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
-            #region [Assign Config]
-
-            Config.DataBase.ConnectionString = Configuration["AppConfig:DataBase:ConnectionString"];
-            Config.Logger.DateFormat = Configuration["AppConfig:Logger:DateFormat"];
-            Config.Logger.FileName = Configuration["AppConfig:Logger:FileName"];
-            Config.JWT.Audience = Configuration["AppConfig:JWT:Audience"];
-            Config.JWT.Issuer = Configuration["AppConfig:JWT:Issuer"];
-            Config.JWT.Key = Configuration["AppConfig:JWT:Key"];
-
-            #endregion [Assign Config]
+            var startupLib = new StarupLib();
+            startupLib.LoadConfig(configuration);
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
