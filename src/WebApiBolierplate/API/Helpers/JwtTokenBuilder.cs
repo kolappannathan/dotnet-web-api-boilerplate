@@ -12,9 +12,8 @@ namespace API.Helpers
         #region [Declarations]
 
         private SecurityKey securityKey = null;
-        private string subject = "";
-        private string issuer = "";
-        private string audience = "";
+        private string issuer;
+        private string audience;
         private int expiryInDays = 30;
         private List<Claim> claims = new List<Claim>();
 
@@ -25,11 +24,12 @@ namespace API.Helpers
             EnsureArguments();
 
             AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString());
+            AddClaim(JwtRegisteredClaimNames.Nbf, DateTime.UtcNow.ToString());
             AddClaim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString());
 
             var token = new JwtSecurityToken(
                               issuer: issuer,
-                              audience: audience,
+                              audience: audience ?? string.Empty,
                               claims: claims,
                               expires: DateTime.UtcNow.AddDays(expiryInDays),
                               signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
@@ -65,14 +65,17 @@ namespace API.Helpers
         }
 
         /// <summary>
-        /// Adds subject for JWT token and adds it to subject claim
+        /// Adds expiry time in days to JWT token
         /// </summary>
-        public JwtTokenBuilder AddSubject(string subject)
+        public JwtTokenBuilder AddExpiry(int expiryInDays)
         {
-            this.subject = subject;
-            AddClaim(JwtRegisteredClaimNames.Sub, this.subject);
+            this.expiryInDays = expiryInDays;
             return this;
         }
+
+        #endregion [Adding values]
+
+        #region [Adding Claims]
 
         /// <summary>
         /// Adds issuer to JWT token
@@ -95,34 +98,22 @@ namespace API.Helpers
         }
 
         /// <summary>
-        /// Adds expiry time in days to JWT token
+        /// Adds subject as a claim to the token
         /// </summary>
-        public JwtTokenBuilder AddExpiry(int expiryInDays)
+        public JwtTokenBuilder AddSubject(string subject)
         {
-            this.expiryInDays = expiryInDays;
+            AddClaim(JwtRegisteredClaimNames.Sub, subject);
             return this;
-        }
-
-        #region [Adding Claims]
-
-        /// <summary>
-        /// Adds user role as claim to the token
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public JwtTokenBuilder AddRole(string value)
-        {
-            return AddClaim(ClaimTypes.Role, value);
         }
 
         /// <summary>
         /// Adds user name as claim to the token
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="username"></param>
         /// <returns></returns>
-        public JwtTokenBuilder AddName(string value)
+        public JwtTokenBuilder AddName(string username)
         {
-            return AddClaim(ClaimTypes.Name, value);
+            return AddClaim(JwtRegisteredClaimNames.NameId, username);
         }
 
         #region [Custom Claims]
@@ -135,6 +126,11 @@ namespace API.Helpers
         public JwtTokenBuilder AddCompanyId(string value)
         {
             return AddClaim(CustomClaims.CompanyIdentifier, value);
+        }
+
+        public JwtTokenBuilder AddRole(string value)
+        {
+            return AddClaim(CustomClaims.Role, value);
         }
 
         #endregion [Custom Claims]
@@ -176,7 +172,5 @@ namespace API.Helpers
         #endregion [Generic Claims]
 
         #endregion [Adding Claims]
-
-        #endregion [Adding values]
     }
 }
