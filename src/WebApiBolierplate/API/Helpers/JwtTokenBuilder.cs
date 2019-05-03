@@ -12,7 +12,7 @@ namespace API.Helpers
         #region [Declarations]
 
         private SecurityKey securityKey = null;
-        private int expiryInDays = 30;
+        private int expiryInDays = 0;
         private List<Claim> claims = new List<Claim>();
 
         #endregion [Declarations]
@@ -22,8 +22,10 @@ namespace API.Helpers
             EnsureArguments();
 
             AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("D"));
-            AddClaim(JwtRegisteredClaimNames.Nbf, DateTime.UtcNow.ToString());
-            AddClaim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString());
+
+            var currentUnixTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, currentUnixTime, ClaimValueTypes.Integer64));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, currentUnixTime, ClaimValueTypes.Integer64));
 
             var token = new JwtSecurityToken(
                               claims: claims,
@@ -42,6 +44,11 @@ namespace API.Helpers
         {
             if (securityKey == null)
                 throw new ArgumentNullException("Security Key");
+
+            if (expiryInDays == 0)
+            {
+                throw new ArgumentNullException("Expiry Time");
+            }
         }
 
         #endregion [Private Functions]
@@ -100,11 +107,18 @@ namespace API.Helpers
         /// <summary>
         /// Adds user name as claim to the token
         /// </summary>
-        /// <param name="username"></param>
-        /// <returns></returns>
         public JwtTokenBuilder AddName(string username)
         {
             return AddClaim(JwtRegisteredClaimNames.NameId, username);
+        }
+
+        /// <summary>
+        /// Adds email as claim to JWT token
+        /// </summary>
+        public JwtTokenBuilder AddEmail(string email)
+        {
+            AddClaim(JwtRegisteredClaimNames.Email, email);
+            return this;
         }
 
         #region [Custom Claims]
