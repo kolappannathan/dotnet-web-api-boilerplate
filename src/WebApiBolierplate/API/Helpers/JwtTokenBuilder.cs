@@ -12,8 +12,6 @@ namespace API.Helpers
         #region [Declarations]
 
         private SecurityKey securityKey = null;
-        private string issuer;
-        private string audience;
         private int expiryInDays = 30;
         private List<Claim> claims = new List<Claim>();
 
@@ -23,13 +21,11 @@ namespace API.Helpers
         {
             EnsureArguments();
 
-            AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString());
+            AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("D"));
             AddClaim(JwtRegisteredClaimNames.Nbf, DateTime.UtcNow.ToString());
             AddClaim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString());
 
             var token = new JwtSecurityToken(
-                              issuer: issuer,
-                              audience: audience ?? string.Empty,
                               claims: claims,
                               expires: DateTime.UtcNow.AddDays(expiryInDays),
                               signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
@@ -46,9 +42,6 @@ namespace API.Helpers
         {
             if (securityKey == null)
                 throw new ArgumentNullException("Security Key");
-
-            if (string.IsNullOrEmpty(this.issuer))
-                throw new ArgumentNullException("Issuer");
         }
 
         #endregion [Private Functions]
@@ -82,7 +75,6 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddIssuer(string issuer)
         {
-            this.issuer = issuer;
             AddClaim(JwtRegisteredClaimNames.Iss, issuer);
             return this;
         }
@@ -92,7 +84,6 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddAudience(string audience)
         {
-            this.audience = audience;
             AddClaim(JwtRegisteredClaimNames.Aud, audience);
             return this;
         }
@@ -130,7 +121,7 @@ namespace API.Helpers
 
         public JwtTokenBuilder AddRole(string value)
         {
-            return AddClaim(CustomClaims.Role, value);
+            return AddClaim(CustomClaims.UserRole, value);
         }
 
         #endregion [Custom Claims]

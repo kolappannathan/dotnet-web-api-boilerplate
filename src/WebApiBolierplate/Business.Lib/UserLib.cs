@@ -58,7 +58,7 @@ namespace Business.Lib
                     Email = $"{userName}@gameofthrones.com",
                     CompanyId = "GOT",
                     Roles = userName == EddardStark ? Roles.Admin : Roles.User,
-                    Id = new Guid().ToString()
+                    Id = Guid.NewGuid().ToString("D")
                 };
                 return user;
             }
