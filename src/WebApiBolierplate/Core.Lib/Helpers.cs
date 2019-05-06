@@ -17,6 +17,7 @@ namespace Core.Lib
         private Hash hashLib;
         private Rando randoLib;
         private Gzip gzipLib;
+        private Encryption encryption;
 
         #endregion [Declarations]
 
@@ -50,6 +51,8 @@ namespace Core.Lib
             hashLib = new Hash();
             return hashLib.VerifyBCrypt(plainText, hash);
         }
+
+
 
         #endregion [Security]
 
