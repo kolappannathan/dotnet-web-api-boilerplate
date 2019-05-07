@@ -5,8 +5,13 @@ using System.Text;
 
 namespace Core.Lib.Compression
 {
-    public class Gzip
+    public class GzipHelper
     {
+        public GzipHelper()
+        {
+
+        }
+
         /// <summary>
         /// Compress the given string into a gzip string
         /// </summary>

@@ -2,11 +2,11 @@
 
 namespace Core.Lib.Security
 {
-    public class Hash
+    public class HashHelper
     {
         private const string AllPrametersMandatory = "All the parameters are mandatory";
 
-        public Hash()
+        public HashHelper()
         {
 
         }

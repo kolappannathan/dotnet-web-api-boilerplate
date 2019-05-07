@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Constants;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,25 +11,27 @@ namespace Core.Lib.Security
     /// This function is taken from the following stack overflow answer with some modifications
     /// Ref: https://stackoverflow.com/a/27484425/5407188
     /// </summary>
-    public class Encryption
+    public class EncryptionHelper
     {
         private Aes aesEncryptor;
+        private string encryptionKey;
 
-        public Encryption()
+        public EncryptionHelper()
         {
+            encryptionKey = Config.Security.EncryptionKey;
         }
 
-        private void BuildAesEncryptor(string key)
+        private void BuildAesEncryptor()
         {
             aesEncryptor = Aes.Create();
-            var pdb = new Rfc2898DeriveBytes(key, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            var pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
             aesEncryptor.Key = pdb.GetBytes(32);
             aesEncryptor.IV = pdb.GetBytes(16);
         }
 
-        public string EncryptString(string clearText, string key)
+        public string EncryptString(string clearText)
         {
-            BuildAesEncryptor(key);
+            BuildAesEncryptor();
             var clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (var ms = new MemoryStream())
             {
@@ -41,9 +44,9 @@ namespace Core.Lib.Security
             }
         }
 
-        public string DecryptString(string cipherText, string key)
+        public string DecryptString(string cipherText)
         {
-            BuildAesEncryptor(key);
+            BuildAesEncryptor();
             cipherText = cipherText.Replace(" ", "+");
             var cipherBytes = Convert.FromBase64String(cipherText);
             using (var ms = new MemoryStream())

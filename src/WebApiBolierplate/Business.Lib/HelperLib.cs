@@ -1,4 +1,5 @@
 ﻿using Business.Lib.Core;
+using Core.Constants;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,22 +13,22 @@ namespace Business.Lib
 
         public string HashBCrypt(string plainText)
         {
-            return helper.HashBCrypt(plainText);
+            return helper.Hash.HashBCrypt(plainText);
         }
 
         public bool VerifyBCrypt(string plainText, string hash)
         {
-            return helper.VerifyBCrypt(plainText, hash);
+            return helper.Hash.VerifyBCrypt(plainText, hash);
         }
 
         public string EncryptString(string clearText)
         {
-            return helper.EncryptString(clearText);
+            return helper.Encryption.EncryptString(clearText);
         }
 
         public string DecryptString(string cipherText)
         {
-            return helper.DecryptString(cipherText);
+            return helper.Encryption.DecryptString(cipherText);
         }
 
         #endregion [Security]
@@ -36,12 +37,12 @@ namespace Business.Lib
 
         public int GenRandomNumber(int min, int max)
         {
-            return helper.GenRandomNumber(min, max);
+            return helper.Rando.GenRandomNumber(min, max);
         }
 
         public string GenRandomChar(int length)
         {
-            return helper.GenRandomChar(length, CharSet.AlphaNumeric);
+            return helper.Rando.GenRandomChar(length, CharSet.AlphaNumeric);
         }
 
         #endregion [Utilities]
@@ -50,12 +51,12 @@ namespace Business.Lib
 
         public string CompressToGzipString(string plaintText)
         {
-            return helper.CompressToGzipString(plaintText, Encoding.UTF8);
+            return helper.GZip.CompressToString(plaintText, Encoding.UTF8);
         }
 
         public string DecompressGzipString(string compressedString)
         {
-            return helper.DecompressGzipString(compressedString, Encoding.UTF8);
+            return helper.GZip.DecompressString(compressedString, Encoding.UTF8);
         }
 
         #endregion [Compression]
