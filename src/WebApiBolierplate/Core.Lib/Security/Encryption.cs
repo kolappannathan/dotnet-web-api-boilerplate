@@ -12,21 +12,23 @@ namespace Core.Lib.Security
     /// </summary>
     public class Encryption
     {
-        private readonly string SecretKey;
         private Aes aesEncryptor;
 
-        public Encryption(string key)
+        public Encryption()
         {
-            SecretKey = key;
+        }
 
+        private void BuildAesEncryptor(string key)
+        {
             aesEncryptor = Aes.Create();
-            var pdb = new Rfc2898DeriveBytes(SecretKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            var pdb = new Rfc2898DeriveBytes(key, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
             aesEncryptor.Key = pdb.GetBytes(32);
             aesEncryptor.IV = pdb.GetBytes(16);
         }
 
-        public string Encrypt(string clearText)
+        public string EncryptString(string clearText, string key)
         {
+            BuildAesEncryptor(key);
             var clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (var ms = new MemoryStream())
             {
@@ -39,8 +41,9 @@ namespace Core.Lib.Security
             }
         }
 
-        public string Decrypt(string cipherText)
+        public string DecryptString(string cipherText, string key)
         {
+            BuildAesEncryptor(key);
             cipherText = cipherText.Replace(" ", "+");
             var cipherBytes = Convert.FromBase64String(cipherText);
             using (var ms = new MemoryStream())
