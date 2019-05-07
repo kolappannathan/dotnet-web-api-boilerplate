@@ -121,6 +121,14 @@ namespace API.Helpers
             return this;
         }
 
+        /// <summary>
+        /// Adds user role as claim to the token
+        /// </summary>
+        public JwtTokenBuilder AddRole(string value)
+        {
+            return AddClaim(ClaimTypes.Role, value);
+        }
+
         #region [Custom Claims]
 
         public JwtTokenBuilder AddUserId(string value)
@@ -131,11 +139,6 @@ namespace API.Helpers
         public JwtTokenBuilder AddCompanyId(string value)
         {
             return AddClaim(CustomClaims.CompanyIdentifier, value);
-        }
-
-        public JwtTokenBuilder AddRole(string value)
-        {
-            return AddClaim(CustomClaims.UserRole, value);
         }
 
         #endregion [Custom Claims]

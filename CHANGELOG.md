@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - New function for encrypting and decrypting strings
  - New APIs to test Helper library functions
 
+### Changed
+ - Role claim in JWT chnaged to fix a bug
+
 ## [2.0.1] - 2019-05-03
 ### Added
  - New custom claims
