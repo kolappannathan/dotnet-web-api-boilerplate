@@ -43,7 +43,9 @@ namespace API.Helpers
         private void EnsureArguments()
         {
             if (securityKey == null)
+            {
                 throw new ArgumentNullException("Security Key");
+            }
 
             if (expiryInDays == 0)
             {
@@ -82,8 +84,7 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddIssuer(string issuer)
         {
-            AddClaim(JwtRegisteredClaimNames.Iss, issuer);
-            return this;
+            return AddClaim(JwtRegisteredClaimNames.Iss, issuer);
         }
 
         /// <summary>
@@ -91,8 +92,7 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddAudience(string audience)
         {
-            AddClaim(JwtRegisteredClaimNames.Aud, audience);
-            return this;
+            return AddClaim(JwtRegisteredClaimNames.Aud, audience);
         }
 
         /// <summary>
@@ -100,8 +100,7 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddSubject(string subject)
         {
-            AddClaim(JwtRegisteredClaimNames.Sub, subject);
-            return this;
+            return AddClaim(JwtRegisteredClaimNames.Sub, subject);
         }
 
         /// <summary>
@@ -117,8 +116,7 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddEmail(string email)
         {
-            AddClaim(JwtRegisteredClaimNames.Email, email);
-            return this;
+            return AddClaim(JwtRegisteredClaimNames.Email, email);
         }
 
         /// <summary>
@@ -126,6 +124,7 @@ namespace API.Helpers
         /// </summary>
         public JwtTokenBuilder AddRole(string value)
         {
+            // Changing this to JwtRegisteredClaimNames will break role based authentication
             return AddClaim(ClaimTypes.Role, value);
         }
 

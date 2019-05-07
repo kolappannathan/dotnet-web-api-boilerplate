@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
  - Role claim in JWT chnaged to fix a bug
+ - Optimized code in JWT token builder
 
 ## [2.0.1] - 2019-05-03
 ### Added

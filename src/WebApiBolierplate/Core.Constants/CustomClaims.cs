@@ -9,6 +9,5 @@
 
         public const string UserIdentifier = "user_identifier";
         public const string CompanyIdentifier = "company_identifier";
-        public const string UserRole = "user_role";
     }
 }
