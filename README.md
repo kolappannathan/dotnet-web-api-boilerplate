@@ -24,7 +24,7 @@ This API boilerplate includes the folllowing:
 ###### Change the following values
 
  - In appsettings.json
-    1. Database connection string
+    1. Database connection string (This string should be in ecrypted format).
     2. JWT secret, issuer and audience
  - In Config.cs in Core.Lib
     1. Security.EncryptionKey

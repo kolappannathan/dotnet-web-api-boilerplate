@@ -13,7 +13,10 @@ namespace Business.Lib.Core
 
         public void LoadConfig(IConfiguration configuration)
         {
-            Config.DataBase.ConnectionString = configuration["AppConfig:DataBase:ConnectionString"];
+            var encryptedString = configuration["AppConfig:DataBase:ConnectionString"];
+            var helpers = new HelperLib();
+            Config.DataBase.ConnectionString = helpers.DecryptString(encryptedString);
+
             Config.Logger.DateFormat = configuration["AppConfig:Logger:DateFormat"];
             Config.Logger.FileName = configuration["AppConfig:Logger:FileName"];
             Config.JWT.Audience = configuration["AppConfig:JWT:Audience"];
