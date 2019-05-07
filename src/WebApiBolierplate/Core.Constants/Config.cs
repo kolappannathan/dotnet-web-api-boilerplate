@@ -32,5 +32,10 @@
             public static string Audience;
             public static int DaysValid;
         }
+
+        public static class Security
+        {
+            public const string EncryptionKey = "THk5emRHRmphMjkyWlhKbWJHOTNMbU52YlM5eGRXVnpkR2x2Ym5Ndk16azJORGs1TnpZdmFYTXRh";
+        }
     }
 }

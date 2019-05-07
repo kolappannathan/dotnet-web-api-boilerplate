@@ -1,4 +1,5 @@
-﻿using Core.Lib.Compression;
+﻿using Core.Constants;
+using Core.Lib.Compression;
 using Core.Lib.Security;
 using Core.Lib.Utilities;
 using System;
@@ -52,16 +53,16 @@ namespace Core.Lib
             return hashLib.VerifyBCrypt(plainText, hash);
         }
 
-        public string EncryptString(string clearText, string key)
+        public string EncryptString(string clearText)
         {
             encryptionLib = new Encryption();
-            return encryptionLib.EncryptString(clearText, key);
+            return encryptionLib.EncryptString(clearText, Config.Security.EncryptionKey);
         }
 
-        public string DecryptString(string clearText, string key)
+        public string DecryptString(string cipherText)
         {
             encryptionLib = new Encryption();
-            return encryptionLib.DecryptString(clearText, key);
+            return encryptionLib.DecryptString(cipherText, Config.Security.EncryptionKey);
         }
 
         #endregion [Security]
