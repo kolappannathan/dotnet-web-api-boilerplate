@@ -1,4 +1,4 @@
-﻿namespace Core.Lib
+﻿namespace Core.Constants
 {
     public static class Enums
     {

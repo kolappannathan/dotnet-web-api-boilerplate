@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
-using static Core.Lib.Enums;
+using static Core.Constants.Enums;
 
 namespace Core.Lib.Utilities
 {

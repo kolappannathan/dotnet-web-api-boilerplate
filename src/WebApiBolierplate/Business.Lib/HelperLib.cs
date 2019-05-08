@@ -1,9 +1,6 @@
 ﻿using Business.Lib.Core;
-using Core.Constants;
-using System;
-using System.Collections.Generic;
 using System.Text;
-using static Core.Lib.Enums;
+using static Core.Constants.Enums;
 
 namespace Business.Lib
 {
