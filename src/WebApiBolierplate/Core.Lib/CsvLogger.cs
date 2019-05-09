@@ -2,7 +2,7 @@
 
 namespace Core.Lib
 {
-    public class Logger
+    public class CsvLogger
     {
         #region [Declarations]
 
@@ -17,7 +17,7 @@ namespace Core.Lib
         /// <param name="fileName">Name of the log file. Without extension</param>
         /// <param name="relativePath">Relative path from Base directory.</param>
         /// <param name="replacementValue">Value to replace comma (,) with. Uses semicolon by default.</param>
-        public Logger(string dateFormat, string fileName, string relativePath = "", char replacementValue = ';')
+        public CsvLogger(string dateFormat, string fileName, string relativePath = "", char replacementValue = ';')
         {
             csvLogger = new nk.logger.csv.Logger(dateFormat, fileName, relativePath, replacementValue);
         }

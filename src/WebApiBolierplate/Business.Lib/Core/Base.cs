@@ -10,13 +10,13 @@ namespace Business.Lib.Core
 
         public DBAdapter dBAdapter;
         public Helpers helper;
-        public Logger logger;
+        public CsvLogger csvLogger;
 
         #endregion [Declarations]
 
         public Base()
         {
-            logger = new Logger(Config.Logger.DateFormat, Config.Logger.FileName);
+            csvLogger = new CsvLogger(Config.Logger.DateFormat, Config.Logger.FileName);
             helper = new Helpers();
 
             // uncomment this line when there is a valid connection string

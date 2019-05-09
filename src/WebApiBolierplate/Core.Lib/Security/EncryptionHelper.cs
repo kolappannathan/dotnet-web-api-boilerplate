@@ -29,6 +29,9 @@ namespace Core.Lib.Security
             aesEncryptor.IV = pdb.GetBytes(16);
         }
 
+        /// <summary>
+        /// Encrypts the given string and return ciphertext
+        /// </summary>
         public string EncryptString(string clearText)
         {
             BuildAesEncryptor();
@@ -44,6 +47,9 @@ namespace Core.Lib.Security
             }
         }
 
+        /// <summary>
+        /// Decrypts the given string and returns plain text
+        /// </summary>
         public string DecryptString(string cipherText)
         {
             BuildAesEncryptor();

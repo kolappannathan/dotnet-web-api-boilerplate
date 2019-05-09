@@ -43,7 +43,7 @@ namespace Business.Lib
             }
             catch (Exception ex)
             {
-                logger.Error(ex);
+                csvLogger.Error(ex);
                 return -1;
             }
         }
@@ -64,7 +64,7 @@ namespace Business.Lib
             }
             catch (Exception ex)
             {
-                logger.Error(ex);
+                csvLogger.Error(ex);
                 return null;
             }
         }
