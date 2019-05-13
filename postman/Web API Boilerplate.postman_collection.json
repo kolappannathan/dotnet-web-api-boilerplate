@@ -6,390 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Login Controller",
-			"item": [
-				{
-					"name": "Login as User",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"My direwolf is Summer\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "Sucessfully login as user"
-					},
-					"response": []
-				},
-				{
-					"name": "Login as Admin",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": \"Eddard Stark\",\n\t\"Password\": \"I'm the lord of WinterFell\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "Sucessfully login as Admin"
-					},
-					"response": []
-				},
-				{
-					"name": "Invalid Credential",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"My direwolf is Lady\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "Failed login as credentials are invalid"
-					},
-					"response": []
-				},
-				{
-					"name": "Deleted account",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"Eddard's elder brother\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "Oops! This API has credentials for a deleted account"
-					},
-					"response": []
-				},
-				{
-					"name": "User 404",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": \"Harry Potter\",\n\t\"Password\": \"I'm not in GOT\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "There is no such user!"
-					},
-					"response": []
-				},
-				{
-					"name": "Throw me an Exception",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": \"No one\",\n\t\"Password\": \"A man wants an exception\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "A perfectly self thrown exeption."
-					},
-					"response": []
-				},
-				{
-					"name": "I want validation error",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"UserName\": null,\n\t\"Password\": \"A man wants an exception\"\n}"
-						},
-						"url": {
-							"raw": "{{api-url}}login",
-							"host": [
-								"{{api-url}}login"
-							]
-						},
-						"description": "A perfectly self thrown exeption."
-					},
-					"response": []
-				}
-			],
-			"auth": {
-				"type": "noauth"
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "9c9e00fd-0855-44c5-9b9d-5954c4430906",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "21507228-0011-4fee-ba46-973d19b1b348",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Values Controller",
-			"item": [
-				{
-					"name": "Values List",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{api-url}}values",
-							"host": [
-								"{{api-url}}values"
-							]
-						},
-						"description": "A list of all values. Requires Authentication."
-					},
-					"response": []
-				},
-				{
-					"name": "Value Detail",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{api-url}}values/0",
-							"host": [
-								"{{api-url}}values"
-							],
-							"path": [
-								"0"
-							]
-						},
-						"description": "A single value.  Requires Authentication."
-					},
-					"response": []
-				},
-				{
-					"name": "Value Detail NotFound",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{api-url}}values/10",
-							"host": [
-								"{{api-url}}values"
-							],
-							"path": [
-								"10"
-							]
-						},
-						"description": "Get detail for a value that is not there. Requires Authentication."
-					},
-					"response": []
-				},
-				{
-					"name": "Validate Create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\"Tyrion Lanister\""
-						},
-						"url": {
-							"raw": "{{api-url}}values",
-							"host": [
-								"{{api-url}}values"
-							]
-						},
-						"description": "API request for creating new value. Requires Admin auth."
-					},
-					"response": []
-				},
-				{
-					"name": "Validate Save",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\"Tyrion Lanister\""
-						},
-						"url": {
-							"raw": "{{api-url}}values/1",
-							"host": [
-								"{{api-url}}values"
-							],
-							"path": [
-								"1"
-							]
-						},
-						"description": "API request for updating existing value. Requires Admin auth."
-					},
-					"response": []
-				},
-				{
-					"name": "Value Delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{api-url}}values/1",
-							"host": [
-								"{{api-url}}values"
-							],
-							"path": [
-								"1"
-							]
-						},
-						"description": "A delete request to the value controller. Requires Admin auth."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Tasks Controller",
-			"item": [
-				{
-					"name": "Reload config",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{api-url}}tasks/reload/config",
-							"host": [
-								"{{api-url}}tasks"
-							],
-							"path": [
-								"reload",
-								"config"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Helpers controller",
 			"item": [
 				{
@@ -617,6 +233,390 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Login Controller",
+			"item": [
+				{
+					"name": "Login as User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"My direwolf is Summer\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "Sucessfully login as user"
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Eddard Stark\",\n\t\"Password\": \"I'm the lord of WinterFell\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "Sucessfully login as Admin"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Credential",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"My direwolf is Lady\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "Failed login as credentials are invalid"
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Brandon Stark\",\n\t\"Password\": \"Eddard's elder brother\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "Oops! This API has credentials for a deleted account"
+					},
+					"response": []
+				},
+				{
+					"name": "User 404",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"Harry Potter\",\n\t\"Password\": \"I'm not in GOT\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "There is no such user!"
+					},
+					"response": []
+				},
+				{
+					"name": "Throw me an Exception",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": \"No one\",\n\t\"Password\": \"A man wants an exception\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "A perfectly self thrown exeption."
+					},
+					"response": []
+				},
+				{
+					"name": "I want validation error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserName\": null,\n\t\"Password\": \"A man wants an exception\"\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}login",
+							"host": [
+								"{{api-url}}login"
+							]
+						},
+						"description": "A perfectly self thrown exeption."
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9c9e00fd-0855-44c5-9b9d-5954c4430906",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "21507228-0011-4fee-ba46-973d19b1b348",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tasks Controller",
+			"item": [
+				{
+					"name": "Reload config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}tasks/reload/config",
+							"host": [
+								"{{api-url}}tasks"
+							],
+							"path": [
+								"reload",
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Values Controller",
+			"item": [
+				{
+					"name": "Values List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values",
+							"host": [
+								"{{api-url}}values"
+							]
+						},
+						"description": "A list of all values. Requires Authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Value Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values/0",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"0"
+							]
+						},
+						"description": "A single value.  Requires Authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Value Detail NotFound",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values/10",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"10"
+							]
+						},
+						"description": "Get detail for a value that is not there. Requires Authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Tyrion Lanister\""
+						},
+						"url": {
+							"raw": "{{api-url}}values",
+							"host": [
+								"{{api-url}}values"
+							]
+						},
+						"description": "API request for creating new value. Requires Admin auth."
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Save",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Tyrion Lanister\""
+						},
+						"url": {
+							"raw": "{{api-url}}values/1",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "API request for updating existing value. Requires Admin auth."
+					},
+					"response": []
+				},
+				{
+					"name": "Value Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}values/1",
+							"host": [
+								"{{api-url}}values"
+							],
+							"path": [
+								"1"
+							]
+						},
+						"description": "A delete request to the value controller. Requires Admin auth."
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -624,7 +624,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6WyJodHRwczovL3d3dy5leGFtcGxlLmNvbSIsImh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIl0sImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkVkZGFyZCBTdGFyayIsInVzZXJfaWRlbnRpZmllciI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImNvbXBhbnlfaWRlbnRpZmllciI6IkdPVCIsImp0aSI6IjkxZWYyYWNkLWE5MDQtNDQ4Mi1hMWRlLTNiNzg2ZDMxZjBmMSIsImlhdCI6IjMwLTA0LTIwMTkgMTEuNDguMDcgQU0iLCJleHAiOjE1NTkyMTY4ODd9.VFVV_aFFqvMCChhRc2tUSWn95QbLzyfANmbaFa6UYqo",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidXNlciIsIm5hbWVpZCI6IkJyYW5kb24gU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiI2YTgxMTRlMi03NDdlLTRiYTctOTk1MS0xYzIxYzI4MjFkNDIiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiIxMzkzZmNhMC1iNDQ0LTRjOWUtOTQxYi0xZjc0YWU0YmZkZmQiLCJuYmYiOjE1NTcyMzM4NjcsImlhdCI6MTU1NzIzMzg2NywiZXhwIjoxNTU5ODI1ODY3fQ.bpGa4iYE4y5KTMvS5pS_xPtY5ITIHjhNXAOQYSDn168",
 				"type": "string"
 			}
 		]
@@ -653,7 +653,7 @@
 	],
 	"variable": [
 		{
-			"id": "cb9e0867-d4ba-494a-8261-f4e87f93c086",
+			"id": "8b9e2616-3d4c-4348-9b86-7387a6d1dcd1",
 			"key": "api-url",
 			"value": "https://localhost:44332/api/",
 			"type": "string"
