@@ -26,6 +26,9 @@ This API boilerplate includes the folllowing:
  - In appsettings.json
     1. Database connection string (This string should be in ecrypted format).
     2. JWT secret, issuer and audience
+ - In launchsettings.json,
+    1. Change SSL port
+    2. Change applicationURL
  - In Config.cs in Core.Lib
     1. Security.EncryptionKey
  - In Base class in BusinessLib, uncomment the line that establishes db connection
