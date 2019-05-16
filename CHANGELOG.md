@@ -5,11 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.2.0] - 2019-05-16
 ### Added
  - New appconfig for developement and production
 
 ### Changed
  - Reorganised postman request in the order they appear in code.
+ - Updated nuget packages
 
 
 ## [3.2.0] - 2019-05-09
