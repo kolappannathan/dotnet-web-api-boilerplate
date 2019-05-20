@@ -1,4 +1,4 @@
-# web-api-boilerplate
+# .Net core web-api boilerplate
 
 [![GitHub](https://img.shields.io/github/license/kolappannathan/dotnet-core-web-api-boilerplate.svg)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-core-web-api-boilerplate.svg)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/releases)
