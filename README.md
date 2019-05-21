@@ -23,14 +23,15 @@ This API boilerplate includes the folllowing:
 
 ###### Change the following values
 
+ - In Config.cs in Core.Lib
+    1. Security.EncryptionKey
  - In appsettings.json
-    1. Database connection string (This string should be in ecrypted format).
+    1. Database connection string.
+       - This string should be in ecrypted format. **Encrypted with the new encryption key**.
     2. JWT secret, issuer and audience
  - In launchsettings.json,
     1. Change SSL port
     2. Change applicationURL
- - In Config.cs in Core.Lib
-    1. Security.EncryptionKey
  - In Base class in BusinessLib, uncomment the line that establishes db connection
 
 ###### Remove the following code
