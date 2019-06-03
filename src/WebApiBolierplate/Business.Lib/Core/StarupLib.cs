@@ -1,4 +1,5 @@
 ﻿using Core.Constants;
+using Core.Lib;
 using Microsoft.Extensions.Configuration;
 using System;
 
@@ -14,8 +15,8 @@ namespace Business.Lib.Core
         public void LoadConfig(IConfiguration configuration)
         {
             var encryptedString = configuration["AppConfig:DataBase:ConnectionString"];
-            var helpers = new HelperLib();
-            Config.DataBase.ConnectionString = helpers.DecryptString(encryptedString);
+            var helpers = new Helpers();
+            Config.DataBase.ConnectionString = helpers.Encryption.DecryptString(encryptedString);
 
             Config.Logger.DateFormat = configuration["AppConfig:Logger:DateFormat"];
             Config.Logger.FileName = configuration["AppConfig:Logger:FileName"];
