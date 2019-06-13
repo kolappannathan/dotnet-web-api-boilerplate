@@ -1,8 +1,8 @@
 # .Net core web-api boilerplate
 
-![GitHub License](https://img.shields.io/github/license/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)
-![GitHub contributors](https://img.shields.io/github/contributors/kolappannathan/dotnet-core-web-api-boilerplate.svg?color=orange&style=flat-square)
+[![GitHub License](https://img.shields.io/github/license/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)](#)
+[![GitHub issues](https://img.shields.io/github/issues/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)](#)
+[![GitHub contributors](https://img.shields.io/github/contributors/kolappannathan/dotnet-core-web-api-boilerplate.svg?color=orange&style=flat-square)](#)
 
 A boilerplate / template for a WebAPI server based on ASP.Net core.
 
