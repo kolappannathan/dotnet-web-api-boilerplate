@@ -1,10 +1,18 @@
 # .Net core web-api boilerplate
 
-[![Build Status](https://img.shields.io/azure-devops/build/kolappannathan/DotNetCore_Web_API_Boilerplate/4/master.svg?style=flat-square&logo=azure%20pipelines&label=Build%3A%20Azure%20pipelines)](https://dev.azure.com/kolappannathan/DotNetCore_Web_API_Boilerplate/_build/latest?definitionId=4&branchName=master)
-[![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-core-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/releases)
-[![GitHub License](https://img.shields.io/github/license/kolappannathan/dotnet-core-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/blob/master/LICENSE)
+![GitHub License](https://img.shields.io/github/license/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)
+![GitHub contributors](https://img.shields.io/github/contributors/kolappannathan/dotnet-core-web-api-boilerplate.svg?color=orange&style=flat-square)
 
 A boilerplate / template for a WebAPI server based on ASP.Net core.
+
+**Status**:
+
+[![Build Status](https://img.shields.io/azure-devops/build/kolappannathan/DotNetCore_Web_API_Boilerplate/4/master.svg?style=flat-square&logo=azure%20pipelines&label=Build%3A%20Azure%20pipelines)](https://dev.azure.com/kolappannathan/DotNetCore_Web_API_Boilerplate/_build/latest?definitionId=4&branchName=master)
+
+**Downloads**:
+
+[![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-core-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/releases)
 
 ### Scope
 
