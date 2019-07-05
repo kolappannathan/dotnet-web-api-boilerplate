@@ -12,6 +12,8 @@
         {
             public static string DateFormat { get; set; }
             public static string FileName { get; set; }
+            public static string RelativePath { get; set; }
+            public static char ReplacementValue { get; set; }
         }
 
         /// <summary>

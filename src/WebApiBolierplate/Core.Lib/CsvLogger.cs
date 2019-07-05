@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Constants;
+using System;
 
 namespace Core.Lib
 {
@@ -13,13 +14,16 @@ namespace Core.Lib
         /// <summary>
         /// Initiate an instance of Logger class.
         /// </summary>
-        /// <param name="dateFormat">Date Time format.</param>
-        /// <param name="fileName">Name of the log file. Without extension</param>
-        /// <param name="relativePath">Relative path from Base directory.</param>
-        /// <param name="replacementValue">Value to replace comma (,) with. Uses semicolon by default.</param>
-        public CsvLogger(string dateFormat, string fileName, string relativePath = "", char replacementValue = ';')
+        public CsvLogger()
         {
-            csvLogger = new nk.logger.csv.Logger(dateFormat, fileName, relativePath, replacementValue);
+            var config = new nk.logger.csv.LoggerConfig();
+
+            config.SetDateTimeFormat(Config.Logger.DateFormat)
+                .SetFileName(Config.Logger.FileName)
+                .SetRelativePath(Config.Logger.RelativePath)
+                .SetReplacementValue(Config.Logger.ReplacementValue);
+
+            csvLogger = new nk.logger.csv.Logger(config);
         }
 
         #region [Public Logger functions]

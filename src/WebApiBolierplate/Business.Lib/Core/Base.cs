@@ -1,5 +1,4 @@
-﻿using Core.Constants;
-using Core.Lib;
+﻿using Core.Lib;
 using Core.Lib.Adapters;
 
 namespace Business.Lib.Core
@@ -16,7 +15,7 @@ namespace Business.Lib.Core
 
         public Base()
         {
-            csvLogger = new CsvLogger(Config.Logger.DateFormat, Config.Logger.FileName);
+            csvLogger = new CsvLogger();
             helper = new Helpers();
 
             // uncomment this line when there is a valid connection string
