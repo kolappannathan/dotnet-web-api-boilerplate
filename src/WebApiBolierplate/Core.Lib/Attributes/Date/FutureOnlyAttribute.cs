@@ -6,9 +6,9 @@ namespace Core.Lib.Attributes.Date
     /// <summary>
     /// Sets validation to ensure that date value is greater than today
     /// </summary>
-    public class OnlyFutureAttribute : ValidationAttribute
+    public class FutureOnlyAttribute : ValidationAttribute
     {
-        public OnlyFutureAttribute()
+        public FutureOnlyAttribute()
         {
         }
 
