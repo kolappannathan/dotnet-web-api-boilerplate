@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - StartupLib now refers to helpers functions in core lib instead of business lib.
  - Updating dependencies
  - Moved logger config assignment directly to logger
+ - Renaming and relocating new Date attributes
 
 ## [3.4.0] - 2019-05-20
 ### Changed
