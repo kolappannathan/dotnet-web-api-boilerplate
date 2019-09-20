@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 namespace Core.Lib.Attributes.Date
 {
     /// <summary>
-    /// Sets validation to ensure that date value is in future
+    /// Sets validation to ensure that date value is in past
     /// </summary>
-    public class FutureOnlyAttribute : ValidationAttribute
+    public class PastOnlyAttribute : ValidationAttribute
     {
-        public FutureOnlyAttribute()
+        public PastOnlyAttribute()
         {
+
         }
 
         public override bool IsValid(object value)
@@ -18,11 +19,11 @@ namespace Core.Lib.Attributes.Date
             {
                 return true;
             }
-            var val = Convert.ToDateTime(value);
 
+            var val = Convert.ToDateTime(value);
             var dateValue = new DateTime(val.Year, val.Month, val.Day, 0, 0, 0);
             var now = DateTime.UtcNow;
-            return dateValue > new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+            return dateValue < new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
         }
     }
 }
