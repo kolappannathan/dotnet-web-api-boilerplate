@@ -16,6 +16,7 @@ namespace Core.Lib
         public GzipHelper GZip;
         public EncryptionHelper Encryption;
         public TextUtils TextUtilities;
+        public DateLib DateLib;
 
         #endregion [Declarations]
 
@@ -26,6 +27,7 @@ namespace Core.Lib
             Rando = new RandoLib();
             GZip = new GzipHelper();
             TextUtilities = new TextUtils();
+            DateLib = new DateLib();
         }
 
     }
