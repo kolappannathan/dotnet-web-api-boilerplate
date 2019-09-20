@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
  - Additional logger config in app settings
+ - New helper function to remove line endings
+ - New helper function that combaines date and time from two different Date objects
 
 ### Changed
  - StartupLib now refers to helpers functions in core lib instead of business lib.
