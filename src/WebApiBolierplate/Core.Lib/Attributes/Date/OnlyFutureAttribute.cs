@@ -1,14 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Core.Lib.Attributes
+namespace Core.Lib.Attributes.Date
 {
     /// <summary>
-    /// Similar to <see cref="OnlyFutureAttribute"/> but allows today's date value
+    /// Sets validation to ensure that date value is greater than today
     /// </summary>
-    public class PresentAndFutureAttribute : ValidationAttribute
+    public class OnlyFutureAttribute : ValidationAttribute
     {
-        public PresentAndFutureAttribute()
+        public OnlyFutureAttribute()
         {
         }
 
@@ -19,8 +19,7 @@ namespace Core.Lib.Attributes
                 return true;
             }
             var dateValue = Convert.ToDateTime(value);
-            var now = DateTime.Now;
-            return dateValue >= new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+            return dateValue >= DateTime.Now;
         }
     }
 }
