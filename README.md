@@ -21,7 +21,10 @@ This API boilerplate includes the folllowing:
  2. Web API Helpers which standadizes responses, maps errors, etc...
  3. An implmentation of CSV Error logger.
  4. A business library and model projects for code separation.
- 5. A core library with helper functions.
+ 5. A core library with the following
+   - Custom data model attributes
+   - Database adapter
+   - Helper functions for hashing, encrypting, compression, etc...
  6. A constants library for commonly used constants.
 
 ## Notice
