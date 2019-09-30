@@ -9,11 +9,9 @@ A boilerplate / template for a WebAPI server based on ASP.Net core.
 
 **Status**: [![Build Status](https://img.shields.io/azure-devops/build/kolappannathan/DotNetCore_Web_API_Boilerplate/4/master.svg?style=flat-square&label=build)](https://dev.azure.com/kolappannathan/DotNetCore_Web_API_Boilerplate/_build/latest?definitionId=4&branchName=master)
 
-**Downloads**:
+**Downloads**: [![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-core-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/releases)
 
-[![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-core-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/releases)
-
-### Scope
+## Scope
 
 This API boilerplate includes the folllowing:
 
