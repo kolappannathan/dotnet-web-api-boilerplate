@@ -1,4 +1,4 @@
-on: issues
+on: push
 name: Create Default Labels
 jobs:
   labels:
