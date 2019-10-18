@@ -1,3 +1,19 @@
 [
-
+  { "color": "", "name": "type:bug", "description": "Something isn't working" },
+  { "color": "", "name": "type:new-feature", "description": "For new features" },
+  { "color": "", "name": "type:enhancement", "description": "Enhancement to existing features" },
+  
+  { "color": "", "name": "area:CI/CD", "description": "Continuous integration / deployment" },
+  { "color": "", "name": "area:dependencies", "description": "Regarding dependencies" },
+  { "color": "", "name": "area:documentation", "description": "Improvements or additions to documentation" },
+  { "color": "", "name": "area:external-services", "description": "This is related to external services used" },
+  { "color": "", "name": "area:testing", "description": "About unit testing, etc..." },
+  
+  { "color": "", "name": "info:duplicate", "description": "This issue or pull request already exists" },
+  { "color": "", "name": "info:wont-fix", "description": "This will not be fixed" },
+  { "color": "", "name": "info:invalid", "description": "This doesn't seem right" },
+  
+  { "color": "", "name": "status:awaiting-action", "description": "Awaiting some input, new release, etc..." },
+  { "color": "", "name": "status:help-wanted", "description": "Need more help" },
+  { "color": "", "name": "status:work-in-progress", "description": "This is a WIP" }
 ]
