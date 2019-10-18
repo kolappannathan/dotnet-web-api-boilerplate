@@ -1,4 +1,5 @@
 [
+  
   { "color": "#e53935", "name": "type:bug", "description": "Something isn't working" },
   { "color": "#66bb6a", "name": "type:new-feature", "description": "For new features" },
   { "color": "#4db6ac", "name": "type:enhancement", "description": "Enhancement to existing features" },
