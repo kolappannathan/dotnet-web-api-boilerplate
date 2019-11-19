@@ -1,13 +1,13 @@
 on: push
-name: Create Default Labels
+name: labels-management
 jobs:
   labels:
-    name: DefaultLabelsActions
+    name: labels-management
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@1.0.0
-      - name: GitHub Labeler
+      - name: gitHub-labeler
         if: success()
         uses: crazy-max/ghaction-github-labeler@v1.1.1
         env:
