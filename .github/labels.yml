@@ -1,24 +1,53 @@
+# Type Classification
+
 - name: type:bug
   color: e53935
   description: "Something isn't working"
-- name: 
-  color: 
-  description: ""
-- name: 
-  color: 
-  description: ""
-- name: 
-  color: 
-  description: ""
-- name: 
-  color: 
-  description: ""
-- name: 
-  color: 
-  description: ""
-- name: 
-  color: 
-  description: ""
-- name: 
-  color: 
-  description: ""
+- name: type:new-feature
+  color: 66bb6a
+  description: "For new features"
+- name: type:enhancement
+  color: 4db6ac
+  description: "Enhancement to existing features"
+
+# Areas
+
+- name: area:CI/CD
+  color: 7986cb
+  description: "Continuous integration / deployment"
+- name: area:dependencies
+  color: 7986cb
+  description: "Regarding dependencies"  
+- name: area:documentation
+  color: bdbdbd
+  description: "Improvements or additions to documentation"
+- name: area:external-services
+  color: 9575cd
+  description: "This is related to external services used"
+- name: area:testing
+  color: ff9800
+  description: "About unit testing, etc..."
+  
+# Info
+  
+- name: info:duplicate
+  color: eeeeee
+  description: "This issue or pull request already exists"
+- name: info:wont-fix
+  color: eeeeee
+  description: "This will not be fixed"
+- name: info:invalid
+  color: ffb300
+  description: "This doesn't seem right"
+  
+# Status
+
+- name: status:awaiting-action
+  color: aed581
+  description: "Awaiting some input, new release, etc..."
+- name: status:help-wanted
+  color: 4caf50
+  description: "Need more help"
+- name: status:work-in-progress
+  color: ffee58
+  description: "This is a WIP"
