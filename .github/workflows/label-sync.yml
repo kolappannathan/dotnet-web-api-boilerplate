@@ -5,7 +5,13 @@ jobs:
     name: DefaultLabelsActions
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1.0.0
-      - uses: lannonbr/issue-label-manager-action@2.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@1.0.0
+      - name: GitHub Labeler
+        uses: crazy-max/ghaction-github-labeler@v1.1.1
+        with:
+          # If enabled, changes will not be applied
+          dry_run: true# optional, default is false
+#      - uses: lannonbr/issue-label-manager-action@2.0.0
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
