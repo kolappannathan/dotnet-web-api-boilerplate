@@ -8,12 +8,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@1.0.0
       - name: GitHub Labeler
+        if: success()
         uses: crazy-max/ghaction-github-labeler@v1.1.1
         with:
-          # If enabled, changes will not be applied
-          dry_run: true# optional, default is false
+          dry_run: true # optional, default is false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      - uses: lannonbr/issue-label-manager-action@2.0.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
