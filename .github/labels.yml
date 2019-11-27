@@ -1,53 +1,53 @@
-# Type Classification
-
-- name: type:bug
-  color: e53935
-  description: "Something isn't working"
-- name: type:new-feature
-  color: 66bb6a
-  description: "For new features"
-- name: type:enhancement
-  color: 4db6ac
-  description: "Enhancement to existing features"
-
 # Areas
 
-- name: area:CI/CD
-  color: 7986cb
+- name: "area: CI/CD"
+  color: d5bdff
   description: "Continuous integration / deployment"
-- name: area:dependencies
-  color: 7986cb
+- name: "area: dependencies"
+  color: d5bdff
   description: "Regarding dependencies"  
-- name: area:documentation
-  color: bdbdbd
+- name: "area: documentation"
+  color: d5bdff
   description: "Improvements or additions to documentation"
-- name: area:external-services
-  color: 9575cd
+- name: "area: external-services"
+  color: d5bdff
   description: "This is related to external services used"
-- name: area:testing
-  color: ff9800
+- name: "area: testing"
+  color: d5bdff
   description: "About unit testing, etc..."
   
 # Info
   
-- name: info:duplicate
-  color: eeeeee
-  description: "This issue or pull request already exists"
-- name: info:wont-fix
-  color: eeeeee
-  description: "This will not be fixed"
-- name: info:invalid
-  color: ffb300
+- name: "info: duplicate"
+  color: f1f1f1
+  description: "Thanks, but someone thought about it before"
+- name: "info: invalid"
+  color: f1f1f1
   description: "This doesn't seem right"
+- name: "info: wont-fix"
+  color: f1f1f1
+  description: "This will not be fixed"
   
 # Status
 
-- name: status:awaiting-action
-  color: aed581
+- name: "status: awaiting-action"
+  color: ffee58
   description: "Awaiting some input, new release, etc..."
-- name: status:help-wanted
-  color: 4caf50
+- name: "status: help-wanted"
+  color: 98d94c
   description: "Need more help"
-- name: status:work-in-progress
+- name: "status: work-in-progress"
   color: ffee58
   description: "This is a WIP"
+
+# Type Classification
+
+- name: "type: bug"
+  color: ff5050
+  description: "Something isn't working"
+- name: "type: enhancement"
+  color: 6fded3
+  description: "Enhancement to existing features"
+- name: "type: new-feature"
+  color: 7af0b5
+  description: "For new features"
