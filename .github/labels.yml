@@ -46,7 +46,7 @@
   color: ff5050
   description: "Something isn't working"
 - name: "type: enhancement"
-  color: 6fded3
+  color: a2eeef
   description: "Enhancement to existing features"
 - name: "type: new-feature"
   color: 7af0b5
