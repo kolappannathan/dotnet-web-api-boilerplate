@@ -31,7 +31,7 @@ This API boilerplate includes the folllowing:
 
 ###### Change the following values
 
- - In Config.cs in Core.Lib
+ - In Config.cs in Core.Constants
     1. Security.EncryptionKey
  - In appsettings.json
     1. Database connection string.
