@@ -1,5 +1,11 @@
 # Areas
 
+- name: "area: API"
+  color: d5bdff
+  description: "About the API layer"
+- name: "area: Core"
+  color: d5bdff
+  description: "Core library and constants"
 - name: "area: CI/CD"
   color: d5bdff
   description: "Continuous integration / deployment"
