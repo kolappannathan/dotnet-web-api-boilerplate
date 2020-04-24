@@ -5,15 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core.Constants\Core.Constants.csproj" />
-    <ProjectReference Include="..\Core.Lib\Core.Lib.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.configuration.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Core.Constants\Core.Constants.csproj" />
+    <ProjectReference Include="..\Core.Lib\Core.Lib.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>
