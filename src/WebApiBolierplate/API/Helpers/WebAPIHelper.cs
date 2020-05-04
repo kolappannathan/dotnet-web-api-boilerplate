@@ -8,12 +8,6 @@ namespace API.Helpers
 {
     public class WebAPIHelper
     {
-        #region [Declarations]
-
-        private APIResponse apiResponse;
-
-        #endregion [Declarations]
-
         /// <summary>
         /// Creates a error or successful response based on the data to be sent
         /// </summary>
@@ -23,7 +17,7 @@ namespace API.Helpers
         {
             if (data == null || (data is bool && Convert.ToBoolean(data) == false))
             {
-                apiResponse = new APIResponse(string.Empty, Errors.InternalServerError, true);
+                var apiResponse = new { Data = string.Empty, Message = Errors.InternalServerError, IsError = true };
                 return new JsonResult(apiResponse)
                 {
                     StatusCode = (int)HttpStatusCode.InternalServerError
@@ -32,15 +26,16 @@ namespace API.Helpers
             else if (data is int && Convert.ToInt32(data) < 0)
             {
                 (string resText, HttpStatusCode resCode) = Notification.GetNotification(Convert.ToInt32(data));
-                apiResponse = new APIResponse(string.Empty, resText, true);
+                var apiResponse = new { Data = resText, Message = Errors.InternalServerError, IsError = true };
                 return new JsonResult(apiResponse)
                 {
                     StatusCode = (int)resCode
                 };
             }
             else if (data is APIResponse)
-            {
-                apiResponse = (APIResponse)data;
+            { 
+                var resData = (APIResponse)data;
+                var apiResponse = new { Data = resData.Data, Message = resData.Message, IsError = resData.IsError };
                 return new JsonResult(apiResponse)
                 {
                     StatusCode = apiResponse.IsError ? (int)HttpStatusCode.InternalServerError : (int)HttpStatusCode.OK
@@ -48,7 +43,7 @@ namespace API.Helpers
             }
             else
             {
-                apiResponse = new APIResponse(data, string.Empty, false);
+                var apiResponse = new { Data = data, Message = string.Empty, IsError = false };
                 return new JsonResult(apiResponse);
             }
         }
@@ -60,7 +55,7 @@ namespace API.Helpers
         /// <returns>The http response</returns>
         public BadRequestObjectResult CreateBadRequest(string errorText)
         {
-            apiResponse = new APIResponse(string.Empty, errorText, true);
+            var apiResponse = new { Data = string.Empty, Message = errorText, IsError = false };
             return new BadRequestObjectResult(apiResponse);
         }
 
@@ -72,7 +67,7 @@ namespace API.Helpers
         /// <returns></returns>
         public JsonResult CreateErrorResponse(string errorText, dynamic data = null)
         {
-            apiResponse = new APIResponse(data, errorText, true);
+            var apiResponse = new { Data = data, Message = errorText, IsError = false };
             return new JsonResult(apiResponse)
             {
                 StatusCode = (int)HttpStatusCode.InternalServerError
