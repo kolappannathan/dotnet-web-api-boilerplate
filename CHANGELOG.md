@@ -8,9 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
  - Updating API to .Net core 3.1
  - Updating Libraries to .Net standard 2.1
- - JWT key is now stored as variable in postman collection
  - Upating dependencies
- - Fixing some local references
+ - Fixing some local and package references
+ - JWT key is now stored as variable in postman collection
+ - Minor code optimizations such as making some variables readonly, using range operator, etc...
 
 ## [4.0.0] - 2019-09-20
 ### Added

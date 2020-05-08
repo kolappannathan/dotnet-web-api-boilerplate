@@ -5,7 +5,7 @@ namespace API.Helpers
 {
     public class ValidationHelper
     {
-        private WebAPIHelper webAPIHelper;
+        private readonly WebAPIHelper webAPIHelper;
 
         public ValidationHelper()
         {
@@ -27,7 +27,7 @@ namespace API.Helpers
                     errorText = errorText + ", " + value.Errors[i].ErrorMessage;
                 }
             }
-            errorText = errorText.Substring(1, errorText.Length - 1);
+            errorText = errorText[1..].Trim();
             return webAPIHelper.CreateBadRequest(errorText);
         }
     }

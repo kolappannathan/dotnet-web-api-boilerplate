@@ -10,7 +10,7 @@ namespace API.Controllers
     [ApiController]
     public class TasksController : CustomBaseController
     {
-        private StarupLib startupLib;
+        private readonly StarupLib startupLib;
         public IConfiguration Configuration { get; }
 
         public TasksController(IConfiguration configuration)

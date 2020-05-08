@@ -9,7 +9,7 @@ namespace API.Controllers
     [ApiController]
     public class ValuesController : CustomBaseController
     {
-        private ValueLib valueLib;
+        private readonly ValueLib valueLib;
 
         public ValuesController()
         {

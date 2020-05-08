@@ -10,7 +10,7 @@ namespace API.Controllers
     [ApiController]
     public class LoginController : CustomBaseController
     {
-        private UserLib userLib;
+        private readonly UserLib userLib;
 
         public LoginController()
         {

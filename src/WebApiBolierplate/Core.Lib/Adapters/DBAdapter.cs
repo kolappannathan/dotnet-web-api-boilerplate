@@ -69,8 +69,10 @@ namespace Core.Lib.Adapters
                 connection.Open();
             }
 
-            var dbCommand = new SqlCommand(name, connection);
-            dbCommand.CommandType = CommandType.StoredProcedure;
+            var dbCommand = new SqlCommand(name, connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             return dbCommand;
         }
 

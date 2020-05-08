@@ -7,7 +7,7 @@ namespace API.Controllers
     [ApiController]
     public class HelpersController : CustomBaseController
     {
-        private HelperLib helperLib;
+        private readonly HelperLib helperLib;
 
         public HelpersController()
         {
