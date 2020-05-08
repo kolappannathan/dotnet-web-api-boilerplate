@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3ea26b93-dd5a-4b15-ac5c-401d17b047a7",
+		"_postman_id": "e9a4c362-4912-4385-b212-60bfcd922d54",
 		"name": "Web API Boilerplate",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,10 +13,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/HashBCrypt?plainText=123",
 							"host": [
@@ -40,10 +36,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/VerifyBCrypt?plainText=123&hash=$2a$10$h9xQss0BRnRlluMoMxtQqeQY7PEMxjELFTkAk6e1MosfD0KvWcjcC",
 							"host": [
@@ -71,10 +63,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/EncryptString?clearText=123",
 							"host": [
@@ -98,10 +86,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/DecryptString?cipherText=VO4VO6ufnQjOWu7IkoI25Q==",
 							"host": [
@@ -125,10 +109,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/GenRandomNumber?min=1111&max=5555",
 							"host": [
@@ -156,10 +136,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/GenRandomChar?length=10",
 							"host": [
@@ -183,10 +159,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/CompressToGzipString?plaintText=123",
 							"host": [
@@ -210,10 +182,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}helpers/DecompressGzipString?compressedString=H4sIAAAAAAAACzM0MgYA0mNIiAMAAAA=",
 							"host": [
@@ -232,7 +200,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Login Controller",
@@ -427,7 +396,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9c9e00fd-0855-44c5-9b9d-5954c4430906",
+						"id": "742c8128-e96c-452b-9238-82bae87c4b08",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -437,14 +406,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "21507228-0011-4fee-ba46-973d19b1b348",
+						"id": "54a9c6e3-9862-46b9-b3d0-856cd2d1a663",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Tasks Controller",
@@ -471,7 +441,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Values Controller",
@@ -481,10 +452,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}values",
 							"host": [
@@ -500,10 +467,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}values/0",
 							"host": [
@@ -522,10 +485,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{api-url}}values/10",
 							"host": [
@@ -616,7 +575,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -624,7 +584,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidXNlciIsIm5hbWVpZCI6IkJyYW5kb24gU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiI2YTgxMTRlMi03NDdlLTRiYTctOTk1MS0xYzIxYzI4MjFkNDIiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiIxMzkzZmNhMC1iNDQ0LTRjOWUtOTQxYi0xZjc0YWU0YmZkZmQiLCJuYmYiOjE1NTcyMzM4NjcsImlhdCI6MTU1NzIzMzg2NywiZXhwIjoxNTU5ODI1ODY3fQ.bpGa4iYE4y5KTMvS5pS_xPtY5ITIHjhNXAOQYSDn168",
+				"value": "{{auth-token}}",
 				"type": "string"
 			}
 		]
@@ -633,7 +593,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "7fedce06-5f5f-4ca8-a3fb-31a9b0850fbe",
+				"id": "4720eae7-9f80-4843-8b85-10890b0959d2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -643,7 +603,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "652b3793-813c-446f-837a-0493395a551d",
+				"id": "2b0d1ae2-9067-4098-8406-276fa66340fa",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -653,10 +613,17 @@
 	],
 	"variable": [
 		{
-			"id": "8b9e2616-3d4c-4348-9b86-7387a6d1dcd1",
+			"id": "632824ac-2056-483c-ac73-ffe669ce6c78",
 			"key": "api-url",
 			"value": "https://localhost:44332/api/",
 			"type": "string"
+		},
+		{
+			"id": "bd6e8c78-90fa-4a37-821e-a397f640b29b",
+			"key": "auth-token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiYWRtaW4iLCJuYW1laWQiOiJFZGRhcmQgU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIyZTBhN2M0ZC0zNTY3LTRlMDctYWIwMS0xZWYzMTgzODYxNWIiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiJmMDYxOGQxNC1kNjJiLTQ3MjItYTQ5YS03OGFlNWFiMWI4YzUiLCJuYmYiOjE1ODg5NTEwOTcsImlhdCI6MTU4ODk1MTA5NywiZXhwIjoxNTkxNTQzMDk3fQ.Amsb_FUnOH0nPVfiEjiy7RyOQ7UeuLGOnL4wbvBaKHg",
+			"type": "string"
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

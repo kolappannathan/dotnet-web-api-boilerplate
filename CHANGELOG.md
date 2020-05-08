@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
- - Updating to .Net core 3.1
+ - Updating API to .Net core 3.1
+ - Updating Libraries to .Net standard 2.1
+ - JWT key is now stored as variable in postman collection
  - Upating dependencies
  - Fixing some local references
 
