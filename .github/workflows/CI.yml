@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [ master ]
+    paths: 
+      - 'src/**'
   pull_request:
     branches: [ master ]
 
@@ -19,7 +21,6 @@ jobs:
     - name: Install dependencies
       run: |
         cd ./src/WebApiBolierplate
-        ls
         dotnet restore
     - name: Build
       run: |
