@@ -3,11 +3,10 @@
 [![GitHub License](https://img.shields.io/github/license/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)](#)
 [![GitHub issues](https://img.shields.io/github/issues/kolappannathan/dotnet-core-web-api-boilerplate.svg?style=flat-square)](#)
 [![GitHub contributors](https://img.shields.io/github/contributors/kolappannathan/dotnet-core-web-api-boilerplate.svg?color=orange&style=flat-square)](#)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=kolappannathan/dotnet-core-web-api-boilerplate)](https://dependabot.com)
 
 A boilerplate / template for a WebAPI server based on ASP.Net core.
 
-**Status**: [![Build Status](https://img.shields.io/azure-devops/build/kolappannathan/DotNetCore_Web_API_Boilerplate/4/master.svg?style=flat-square&label=build)](https://dev.azure.com/kolappannathan/DotNetCore_Web_API_Boilerplate/_build/latest?definitionId=4&branchName=master)
+**Status**: [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kolappannathan/dotnet-core-web-api-boilerplate/CI?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/actions?query=workflow%3ACI)
 
 **Downloads**: [![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-core-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-core-web-api-boilerplate/releases)
 
