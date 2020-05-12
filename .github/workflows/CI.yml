@@ -18,9 +18,10 @@ jobs:
         dotnet-version: 3.1.101
     - name: Install dependencies
       run: |
-        cd /src/WebApiBolierplate
+        cd ./src/WebApiBolierplate
+        ls
         dotnet restore
     - name: Build
       run: |
-        cd /src/WebApiBolierplate
+        cd ./src/WebApiBolierplate
         dotnet build --configuration Release --no-restore
