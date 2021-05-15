@@ -1,11 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Changed
+ - Updated .Net to version 5
+ - Updated packages
  - Moved CI from Azure DevOps to GitHub Actions
  - Moved postman collection into the src folder
 
@@ -13,16 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
  - Updating API to .Net core 3.1
  - Updating Libraries to .Net standard 2.1
- - Upating dependencies
+ - Updating dependencies
  - Fixing some local and package references
  - JWT key is now stored as variable in postman collection
- - Minor code optimizations such as making some variables readonly, using range operator, etc...
+ - Minor code optimizations such as making some variables read only, using range operator, etc...
 
 ## [4.0.0] - 2019-09-20
 ### Added
  - Additional logger config in app settings
  - New helper function to remove line endings
- - New helper function that combaines date and time from two different Date objects
+ - New helper function that combines date and time from two different Date objects
  - New Date attributes for PastOnly and PastAndPresent
 
 ### Changed
@@ -37,11 +37,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.3.0] - 2019-05-16
 ### Added
- - New appconfig for developement and production
+ - New appconfig for development and production
 
 ### Changed
  - Reorganised postman request in the order they appear in code.
- - Updated nuget packages
+ - Updated Nuget packages
 
 
 ## [3.2.0] - 2019-05-09
@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.1.0] - 2019-05-08
 ### Changed
  - Added sub classes to helper
- - Moved Enums to constatnts
+ - Moved Enums to constants
  - Minor code optimizations
 
 ## [3.0.0] - 2019-05-07
@@ -64,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - New APIs to test Helper library functions
 
 ### Changed
- - Role claim in JWT chnaged to fix a bug
+ - Role claim in JWT changed to fix a bug
  - Optimized code in JWT token builder
  - Database connection string in appconfig is now encrypted
 
@@ -90,12 +90,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2019-03-25
 ### Added
-- Added documentaion for many functions and classes
+- Added documentation for many functions and classes
 - New claims for JWT token
 
 ### Changed
 - Updated NuGet package
-- Replace induvidual claim adding code using a common function
+- Replace individual claim adding code using a common function
 
 ## [1.0.0] - 2019-01-11
 ### Added
@@ -116,7 +116,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Removed Tuple declarations.
-- Constants are now added in statup.cs.
+- Constants are now added in startup.cs.
 - Other minor code optimizations.
 
 ## [0.0.1] - 2019-01-02

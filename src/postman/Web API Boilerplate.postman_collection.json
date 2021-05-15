@@ -200,8 +200,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Login Controller",
@@ -396,7 +395,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "742c8128-e96c-452b-9238-82bae87c4b08",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -406,15 +404,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "54a9c6e3-9862-46b9-b3d0-856cd2d1a663",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Tasks Controller",
@@ -441,8 +437,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Values Controller",
@@ -575,8 +570,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"auth": {
@@ -593,7 +587,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "4720eae7-9f80-4843-8b85-10890b0959d2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -603,7 +596,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2b0d1ae2-9067-4098-8406-276fa66340fa",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -613,17 +605,12 @@
 	],
 	"variable": [
 		{
-			"id": "632824ac-2056-483c-ac73-ffe669ce6c78",
 			"key": "api-url",
-			"value": "https://localhost:44332/api/",
-			"type": "string"
+			"value": "https://localhost:44332/api/"
 		},
 		{
-			"id": "bd6e8c78-90fa-4a37-821e-a397f640b29b",
 			"key": "auth-token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiYWRtaW4iLCJuYW1laWQiOiJFZGRhcmQgU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIyZTBhN2M0ZC0zNTY3LTRlMDctYWIwMS0xZWYzMTgzODYxNWIiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiJmMDYxOGQxNC1kNjJiLTQ3MjItYTQ5YS03OGFlNWFiMWI4YzUiLCJuYmYiOjE1ODg5NTEwOTcsImlhdCI6MTU4ODk1MTA5NywiZXhwIjoxNTkxNTQzMDk3fQ.Amsb_FUnOH0nPVfiEjiy7RyOQ7UeuLGOnL4wbvBaKHg",
-			"type": "string"
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidXNlciIsIm5hbWVpZCI6IkJyYW5kb24gU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIzOTFiOWVmYy1iYmQ5LTQ0MDAtOTg3Yi0yODA1MzRkZDFiMDIiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiJhOTg2ZWZmNi03ZDkwLTQ3NTEtODA0Mi03MDVjYzhmMjQwNjIiLCJuYmYiOjE1OTgyNDYyMDQsImlhdCI6MTU5ODI0NjIwNCwiZXhwIjoxNjAwODM4MjA0fQ.OjWqXLvXJPo_W-76Kh48WV0XfHjfiO2ZyDTQSKwPHkY"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
