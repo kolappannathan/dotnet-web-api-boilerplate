@@ -1,4 +1,4 @@
-# .Net web-api boilerplate
+# .Net Web API boilerplate
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kolappannathan/dotnet-web-api-boilerplate/CI?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-web-api-boilerplate/actions?query=workflow%3ACI)
 [![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-web-api-boilerplate/releases)
