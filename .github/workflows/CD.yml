@@ -33,4 +33,4 @@ jobs:
     - name: IntelliCode Team Completions
       uses: microsoft/vs-intellicode@v1.0
       with:
-        directory: /src/WebApiBolierplate
+        directory: ./src/WebApiBolierplate
