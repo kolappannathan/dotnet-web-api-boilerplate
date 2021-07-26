@@ -1,0 +1,36 @@
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.8.1
+      with:
+        dotnet-version: 5.0.x
+    - name: Install dependencies
+      run: |
+        cd ./src/WebApiBolierplate
+        dotnet restore
+    - name: Build
+      run: |
+        cd ./src/WebApiBolierplate
+        dotnet build --configuration Release --no-restore
+  intellicode:
+    needs: build
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+      with: 
+        fetch-depth: 0
+    - name: IntelliCode Team Completions
+      uses: microsoft/vs-intellicode@v1.0
+      with:
+        directory: /src/WebApiBolierplate
