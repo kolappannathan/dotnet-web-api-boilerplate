@@ -32,5 +32,3 @@ jobs:
         fetch-depth: 0
     - name: IntelliCode Team Completions
       uses: microsoft/vs-intellicode@v1.0
-      with:
-        directory: ./src/WebApiBolierplate
