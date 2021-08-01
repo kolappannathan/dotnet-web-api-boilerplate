@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{63F1C3A8-3F0D-47F1-8BC9-2E2645C6ABF3}"
 EndProject
@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Constants", "Core.Constants\Core.Constants.csproj", "{B97C8E88-5711-44D9-A362-43F91A6F2C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Lib", "Business.Lib\Business.Lib.csproj", "{05511D8B-4929-4233-A379-9851ABB98A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Lib", "Business.Lib\Business.Lib.csproj", "{05511D8B-4929-4233-A379-9851ABB98A35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{010FAFE4-6656-42DE-8A0F-3A1E5EAB314A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
