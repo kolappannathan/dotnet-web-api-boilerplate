@@ -24,5 +24,9 @@ jobs:
       run: |
         cd ./src/WebApiBolierplate
         dotnet build --configuration Release --no-restore
+    - name: Test
+      run: |
+        cd ./src/WebApiBolierplate
+        dotnet test .\Core.Test\Core.Test.csproj
     - name: IntelliCode Team Completions
       uses: microsoft/vs-intellicode@v1.0
