@@ -3,12 +3,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [5.1.0] - 2021-09-19
 ### Added
  - Added unit testing for Helper functions. Removed the APIs used for manually testing them.
  - Added editor config
 
 ### Changes
- - Removed server headers
+ - Removed server headers for security
  - Connection string in appSettings.json is no longer encrypted. Ref [#74](https://github.com/kolappannathan/dotnet-web-api-boilerplate/issues/74) for details
 
 ## [5.0.0] - 2021-05-23
