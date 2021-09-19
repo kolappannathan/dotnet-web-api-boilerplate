@@ -4,10 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Added
+ - Added unit testing for Helper functions. Removed the APIs used for manually testing them.
  - Added editor config
 
 ### Changes
  - Removed server headers
+ - Connection string in appSettings.json is no longer encrypted. Ref [#74](https://github.com/kolappannathan/dotnet-web-api-boilerplate/issues/74) for details
 
 ## [5.0.0] - 2021-05-23
 ### Changed

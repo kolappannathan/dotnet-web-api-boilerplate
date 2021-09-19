@@ -16,7 +16,7 @@ This API boilerplate includes the following:
  - A core library with the following
    - Custom data model attributes
    - Database adapter
-   - Helper functions for hashing, encrypting, compression, etc...
+   - Helper functions for hashing, encrypting, compression, random number & character generation, etc...
  - A constants library for commonly used constants.
 
 ## Notice
