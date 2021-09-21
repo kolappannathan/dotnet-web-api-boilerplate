@@ -39,8 +39,7 @@ namespace API
 
             var validationHelper = new ValidationHelper();
 
-            services.Configure<ApiBehaviorOptions>(o =>
-            {
+            services.Configure<ApiBehaviorOptions>(o => {
                 o.InvalidModelStateResponseFactory = actionContext => validationHelper.GetDataValidationError(actionContext.ModelState);
             });
 

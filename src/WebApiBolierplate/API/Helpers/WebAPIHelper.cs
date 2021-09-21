@@ -55,7 +55,7 @@ namespace API.Helpers
         /// <returns>The http response</returns>
         public BadRequestObjectResult CreateBadRequest(string errorText)
         {
-            var apiResponse = new { Data = string.Empty, Message = errorText, IsError = false };
+            var apiResponse = new { Data = string.Empty, Message = errorText, IsError = true };
             return new BadRequestObjectResult(apiResponse);
         }
 
