@@ -34,4 +34,8 @@ This API boilerplate includes the following:
     1. Change SSL port
     2. Change applicationURL
  - In Base class in BusinessLib, uncomment the line that establishes db connection
+ - Update the login controller & user lib.
  - This project has a default editorconfig file. If needed customize it.
+
+###### Remove the following
+ - Values controller & values lib
