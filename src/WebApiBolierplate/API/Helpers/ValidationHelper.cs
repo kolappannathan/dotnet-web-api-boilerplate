@@ -1,34 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace API.Helpers
+namespace API.Helpers;
+
+public class ValidationHelper
 {
-    public class ValidationHelper
+    private readonly WebAPIHelper webAPIHelper;
+
+    public ValidationHelper()
     {
-        private readonly WebAPIHelper webAPIHelper;
+        webAPIHelper = new WebAPIHelper();
+    }
 
-        public ValidationHelper()
+    /// <summary>
+    /// Obtains all model validation errors and combaines them into a single CSV error text
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    public BadRequestObjectResult GetDataValidationError(ModelStateDictionary model)
+    {
+        var errorText = string.Empty;
+        foreach (var value in model.Values)
         {
-            webAPIHelper = new WebAPIHelper();
-        }
-
-        /// <summary>
-        /// Obtains all model validation errors and combaines them into a single CSV error text
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public BadRequestObjectResult GetDataValidationError(ModelStateDictionary model)
-        {
-            var errorText = string.Empty;
-            foreach (var value in model.Values)
+            for (var i = 0; i < value.Errors.Count; i++)
             {
-                for (var i = 0; i < value.Errors.Count; i++)
-                {
-                    errorText = errorText + ", " + value.Errors[i].ErrorMessage;
-                }
+                errorText = errorText + ", " + value.Errors[i].ErrorMessage;
             }
-            errorText = errorText[1..].Trim();
-            return webAPIHelper.CreateBadRequest(errorText);
         }
+        errorText = errorText[1..].Trim();
+        return webAPIHelper.CreateBadRequest(errorText);
     }
 }

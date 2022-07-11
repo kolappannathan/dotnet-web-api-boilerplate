@@ -4,27 +4,26 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+[Route("api/tasks")]
+[ApiController]
+public class TasksController : CustomBaseController
 {
-    [Route("api/tasks")]
-    [ApiController]
-    public class TasksController : CustomBaseController
+    private readonly StarupLib startupLib;
+    public IConfiguration Configuration { get; }
+
+    public TasksController(IConfiguration configuration)
     {
-        private readonly StarupLib startupLib;
-        public IConfiguration Configuration { get; }
+        startupLib = new StarupLib();
+        Configuration = configuration;
+    }
 
-        public TasksController(IConfiguration configuration)
-        {
-            startupLib = new StarupLib();
-            Configuration = configuration;
-        }
-
-        [HttpPut("reload/config")]
-        [Authorize(Roles = AuthRoles.Admin)]
-        public IActionResult LoadConfig()
-        {
-            startupLib.LoadConfig(Configuration);
-            return webAPIHelper.CreateResponse(InfoTexts.Success);
-        }
+    [HttpPut("reload/config")]
+    [Authorize(Roles = AuthRoles.Admin)]
+    public IActionResult LoadConfig()
+    {
+        startupLib.LoadConfig(Configuration);
+        return webAPIHelper.CreateResponse(InfoTexts.Success);
     }
 }

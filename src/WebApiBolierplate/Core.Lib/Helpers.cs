@@ -2,33 +2,32 @@
 using Core.Lib.Security;
 using Core.Lib.Utilities;
 
-namespace Core.Lib
+namespace Core.Lib;
+
+/// <summary>
+/// Helpers wraps up the function in the Core.Library project into a single class
+/// </summary>
+public class Helpers
 {
-    /// <summary>
-    /// Helpers wraps up the function in the Core.Library project into a single class
-    /// </summary>
-    public class Helpers
+    #region [Declarations]
+
+    public HashHelper Hash;
+    public RandoLib Rando;
+    public GzipHelper GZip;
+    public EncryptionHelper Encryption;
+    public TextUtils TextUtilities;
+    public DateLib DateLib;
+
+    #endregion [Declarations]
+
+    public Helpers()
     {
-        #region [Declarations]
-
-        public HashHelper Hash;
-        public RandoLib Rando;
-        public GzipHelper GZip;
-        public EncryptionHelper Encryption;
-        public TextUtils TextUtilities;
-        public DateLib DateLib;
-
-        #endregion [Declarations]
-
-        public Helpers()
-        {
-            Hash = new HashHelper();
-            Encryption = new EncryptionHelper();
-            Rando = new RandoLib();
-            GZip = new GzipHelper();
-            TextUtilities = new TextUtils();
-            DateLib = new DateLib();
-        }
-
+        Hash = new HashHelper();
+        Encryption = new EncryptionHelper();
+        Rando = new RandoLib();
+        GZip = new GzipHelper();
+        TextUtilities = new TextUtils();
+        DateLib = new DateLib();
     }
+
 }

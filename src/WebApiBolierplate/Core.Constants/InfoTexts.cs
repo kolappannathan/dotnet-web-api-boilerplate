@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Core.Constants;
 
-namespace Core.Constants
+public static class InfoTexts
 {
-    public static class InfoTexts
-    {
-        public const string Success = "Success";
-    }
+    public const string Success = "Success";
 }

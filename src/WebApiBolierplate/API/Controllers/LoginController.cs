@@ -4,32 +4,31 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class LoginController : CustomBaseController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LoginController : CustomBaseController
+    private readonly UserLib userLib;
+
+    public LoginController()
     {
-        private readonly UserLib userLib;
+        userLib = new UserLib();
+    }
 
-        public LoginController()
+    [AllowAnonymous]
+    [HttpPost]
+    public IActionResult Login([FromBody]LoginDTO loginDTO)
+    {
+        var result = userLib.ValidateLogin(loginDTO);
+        if (result == 1)
         {
-            userLib = new UserLib();
+            var user = userLib.GetUser(loginDTO.UserName);
+            var jwtHelper = new JWTHelper();
+            var token = jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
+            return webAPIHelper.CreateResponse(token);
         }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Login([FromBody]LoginDTO loginDTO)
-        {
-            var result = userLib.ValidateLogin(loginDTO);
-            if (result == 1)
-            {
-                var user = userLib.GetUser(loginDTO.UserName);
-                var jwtHelper = new JWTHelper();
-                var token = jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
-                return webAPIHelper.CreateResponse(token);
-            }
-            return webAPIHelper.CreateResponse(result);
-        }
+        return webAPIHelper.CreateResponse(result);
     }
 }
