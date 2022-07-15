@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ### Changed
  - Updated .NET to version 6
+ - Removed Startup.cs and using unified Program.cs
+ - Removing code intent for namespaces
  - Bad Request now return isError as true in addition to the HTTP status code.
 
 ## [5.1.0] - 2021-09-19
