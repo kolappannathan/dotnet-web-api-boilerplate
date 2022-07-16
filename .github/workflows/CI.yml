@@ -25,7 +25,7 @@ jobs:
     - name: Test
       run: |
         cd ./src/WebApiBolierplate
-        dotnet test .\Core.Test\Core.Test.csproj
+        dotnet test ./Core.Test/Core.Test.csproj
   build-linux:
     runs-on: ubuntu-latest
     steps:
@@ -42,4 +42,4 @@ jobs:
     - name: Test
       run: |
         cd ./src/WebApiBolierplate
-        dotnet test .\Core.Test\Core.Test.csproj
+        dotnet test ./Core.Test/Core.Test.csproj
