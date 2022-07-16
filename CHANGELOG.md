@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Added
+ - Added Swagger UI
+
 ### Changed
  - Updated .NET to version 6
- - Removed Startup.cs and using unified Program.cs
+ - Unified Program.cs & startup.cs
  - Removing code intent for namespaces
  - Bad Request now return isError as true in addition to the HTTP status code.
 
@@ -16,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changes
  - Removed server headers for security
- - Connection string in appSettings.json is no longer encrypted. Ref [#74](https://github.com/kolappannathan/dotnet-web-api-boilerplate/issues/74) for details
+ - Connection string in appsettings.json is no longer encrypted. Ref [#74](https://github.com/kolappannathan/dotnet-web-api-boilerplate/issues/74) for details
 
 ## [5.0.0] - 2021-05-23
 ### Changed
@@ -57,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
  - Reorganised postman request in the order they appear in code.
- - Updated Nuget packages
+ - Updated NuGet packages
 
 
 ## [3.2.0] - 2019-05-09
