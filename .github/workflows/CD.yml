@@ -25,7 +25,7 @@ jobs:
     - name: Test
       run: |
         cd ./src/WebApiBolierplate
-        dotnet test .\Core.Test\Core.Test.csproj
+        dotnet test ./Core.Test/Core.Test.csproj
     - name: IntelliCode Team Completions
       uses: microsoft/vs-intellicode@v1.0
   build-linux:
@@ -44,4 +44,4 @@ jobs:
     - name: Test
       run: |
         cd ./src/WebApiBolierplate
-        dotnet test .\Core.Test\Core.Test.csproj
+        dotnet test ./Core.Test/Core.Test.csproj
