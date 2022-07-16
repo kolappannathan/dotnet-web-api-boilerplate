@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "e9a4c362-4912-4385-b212-60bfcd922d54",
 		"name": "Web API Boilerplate",
+		"description": "Postman collection for [https://github.com/kolappannathan/dotnet-web-api-boilerplate](https://github.com/kolappannathan/dotnet-web-api-boilerplate)\n\n*   Set the api-url collection variable to point to the correct URL\n*   Calling the login APIs will automatically update the bearer tokens",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -10,6 +11,24 @@
 			"item": [
 				{
 					"name": "Login as User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"auth-token\", jsonData.data);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -36,6 +55,25 @@
 				},
 				{
 					"name": "Login as Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"auth-token\", jsonData.data);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -413,7 +451,7 @@
 		},
 		{
 			"key": "auth-token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJXZWJBcGlCb2lsZXJwbGF0ZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidXNlciIsIm5hbWVpZCI6IkJyYW5kb24gU3RhcmsiLCJ1c2VyX2lkZW50aWZpZXIiOiIzOTFiOWVmYy1iYmQ5LTQ0MDAtOTg3Yi0yODA1MzRkZDFiMDIiLCJjb21wYW55X2lkZW50aWZpZXIiOiJHT1QiLCJqdGkiOiJhOTg2ZWZmNi03ZDkwLTQ3NTEtODA0Mi03MDVjYzhmMjQwNjIiLCJuYmYiOjE1OTgyNDYyMDQsImlhdCI6MTU5ODI0NjIwNCwiZXhwIjoxNjAwODM4MjA0fQ.OjWqXLvXJPo_W-76Kh48WV0XfHjfiO2ZyDTQSKwPHkY"
+			"value": ""
 		}
 	]
 }
