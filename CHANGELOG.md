@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [6.0.0] - 2022-07-16
 ### Added
  - Added Swagger UI
 
@@ -10,7 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
  - Updated .NET to version 6
  - Unified Program.cs & startup.cs
  - Removing code intent for namespaces
- - Bad Request now return isError as true in addition to the HTTP status code.
+ - Bad Request now return isError as true in addition to the HTTP status code
+ - Postman now updated bearer token automatically after a successful login API call
+ - Updated dependencies to latest versions
 
 ## [5.1.0] - 2021-09-19
 ### Added
