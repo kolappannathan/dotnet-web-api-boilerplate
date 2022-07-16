@@ -16,9 +16,8 @@ public class CsvLogger
     /// </summary>
     public CsvLogger()
     {
-        var config = new nk.logger.csv.LoggerConfig();
-
-        config.SetDateTimeFormat(Config.Logger.DateFormat)
+        var config = new nk.logger.csv.LoggerConfig()
+            .SetDateTimeFormat(Config.Logger.DateFormat)
             .SetFileName(Config.Logger.FileName)
             .SetRelativePath(Config.Logger.RelativePath)
             .SetReplacementValue(Config.Logger.ReplacementValue);
