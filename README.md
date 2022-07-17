@@ -1,5 +1,6 @@
 # .Net Web API boilerplate
 
+[![Generate Repo](https://img.shields.io/badge/Generate%20Repo-Using%20this%20boilerplate-orange?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-web-api-boilerplate/generate)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kolappannathan/dotnet-web-api-boilerplate/CD?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-web-api-boilerplate/actions?query=workflow%3ACD)
 [![GitHub release](https://img.shields.io/github/release/kolappannathan/dotnet-web-api-boilerplate.svg?logo=github&style=flat-square)](https://github.com/kolappannathan/dotnet-web-api-boilerplate/releases)
 
