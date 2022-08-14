@@ -9,18 +9,18 @@ namespace API.Controllers;
 [ApiController]
 public class ValuesController : CustomBaseController
 {
-    private readonly ValueLib valueLib;
+    private readonly ValueLib _valueLib;
 
-    public ValuesController()
+    public ValuesController(ValueLib valueLib)
     {
-        valueLib = new ValueLib();
+        _valueLib = valueLib;
     }
 
     [HttpGet("")]
     [Authorize(Roles = AuthRoles.All)]
     public IActionResult Get()
     {
-        var result = valueLib.GetValueList();
+        var result = _valueLib.GetValueList();
         return webAPIHelper.CreateResponse(result);
     }
 
@@ -28,7 +28,7 @@ public class ValuesController : CustomBaseController
     [Authorize(Roles = AuthRoles.All)]
     public IActionResult Get([FromRoute]int id)
     {
-        var result = valueLib.GetValueById(id);
+        var result = _valueLib.GetValueById(id);
         if (result == string.Empty)
         {
             return new NotFoundResult();
@@ -40,7 +40,7 @@ public class ValuesController : CustomBaseController
     [Authorize(Roles = AuthRoles.Admin)]
     public IActionResult Post([FromBody] string value)
     {
-        var result = valueLib.AddValue(value);
+        var result = _valueLib.AddValue(value);
         return webAPIHelper.CreateResponse(result);
     }
 
@@ -48,7 +48,7 @@ public class ValuesController : CustomBaseController
     [Authorize(Roles = AuthRoles.Admin)]
     public IActionResult Put([FromRoute]int id, [FromBody] string value)
     {
-        var result = valueLib.UpdateValue(value, id);
+        var result = _valueLib.UpdateValue(value, id);
         return webAPIHelper.CreateResponse(result);
     }
 
@@ -56,7 +56,7 @@ public class ValuesController : CustomBaseController
     [Authorize(Roles = AuthRoles.Admin)]
     public IActionResult Delete([FromRoute]int id)
     {
-        var result = valueLib.DeleteValue(id);
+        var result = _valueLib.DeleteValue(id);
         return webAPIHelper.CreateResponse(result);
     }
 }

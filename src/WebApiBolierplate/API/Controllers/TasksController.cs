@@ -10,12 +10,12 @@ namespace API.Controllers;
 [ApiController]
 public class TasksController : CustomBaseController
 {
-    private readonly StarupLib startupLib;
+    private readonly StarupLib _startupLib;
     public IConfiguration Configuration { get; }
 
-    public TasksController(IConfiguration configuration)
+    public TasksController(IConfiguration configuration, StarupLib starupLib)
     {
-        startupLib = new StarupLib();
+        _startupLib = starupLib;
         Configuration = configuration;
     }
 
@@ -23,7 +23,7 @@ public class TasksController : CustomBaseController
     [Authorize(Roles = AuthRoles.Admin)]
     public IActionResult LoadConfig()
     {
-        startupLib.LoadConfig(Configuration);
+        _startupLib.LoadConfig(Configuration);
         return webAPIHelper.CreateResponse(InfoTexts.Success);
     }
 }

@@ -10,21 +10,21 @@ namespace API.Controllers;
 [ApiController]
 public class LoginController : CustomBaseController
 {
-    private readonly UserLib userLib;
+    private readonly UserLib _userLib;
 
-    public LoginController()
+    public LoginController(UserLib userLib)
     {
-        userLib = new UserLib();
+        _userLib = userLib;
     }
 
     [AllowAnonymous]
     [HttpPost]
     public IActionResult Login([FromBody]LoginDTO loginDTO)
     {
-        var result = userLib.ValidateLogin(loginDTO);
+        var result = _userLib.ValidateLogin(loginDTO);
         if (result == 1)
         {
-            var user = userLib.GetUser(loginDTO.UserName);
+            var user = _userLib.GetUser(loginDTO.UserName);
             var jwtHelper = new JWTHelper();
             var token = jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
             return webAPIHelper.CreateResponse(token);

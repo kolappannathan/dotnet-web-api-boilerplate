@@ -21,6 +21,18 @@ startupLib.LoadConfig(builder.Configuration);
 
 builder.Services.AddControllers();
 
+#region Dependency Injection
+
+#region operations
+
+builder.Services.AddScoped<StarupLib>();
+builder.Services.AddScoped<UserLib>();
+builder.Services.AddScoped<ValueLib>();
+
+#endregion operations
+
+#endregion Dependency Injection
+
 #region [Validation Handling]
 
 // To handle model validation errors and change it to 
