@@ -10,13 +10,11 @@ public class Base
 
     public DBAdapter dBAdapter;
     public Core.Lib.Helpers helper;
-    public CsvLogger csvLogger;
 
     #endregion [Declarations]
 
     public Base(IConfiguration configuration)
     {
-        csvLogger = new CsvLogger();
         helper = new Core.Lib.Helpers();
 
         // uncomment this line when there is a valid connection string

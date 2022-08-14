@@ -1,13 +1,15 @@
 ﻿using API.Helpers;
 using API.Operations;
-using Core.Constants;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.AddFile("Logs/API.log");
 
 // To prevent .NET and server info from being added to header if Kestrel is used
 builder.WebHost.ConfigureKestrel(serverOptions => {
@@ -16,16 +18,12 @@ builder.WebHost.ConfigureKestrel(serverOptions => {
 
 #region Configuring Services
 
-var startupLib = new StarupLib();
-startupLib.LoadConfig(builder.Configuration);
-
 builder.Services.AddControllers();
 
 #region Dependency Injection
 
 #region operations
 
-builder.Services.AddScoped<StarupLib>();
 builder.Services.AddScoped<UserLib>();
 builder.Services.AddScoped<ValueLib>();
 

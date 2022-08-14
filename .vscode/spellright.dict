@@ -1,0 +1,8 @@
+startup
+appconfig
+appsettings.json
+src
+launchsettings.json
+editorconfig
+db
+Serilog
