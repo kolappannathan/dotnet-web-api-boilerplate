@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
  - Added Swagger UI
 
+### Changes
+ - Updated the default port
+
 ### Changed
  - Updated .NET to version 6
  - Unified Program.cs & startup.cs
