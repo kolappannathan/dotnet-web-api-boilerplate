@@ -1,6 +1,6 @@
 ﻿using Core.Constants;
 using Microsoft.AspNetCore.Mvc;
-using Model;
+using API.Models;
 using System;
 using System.Net;
 

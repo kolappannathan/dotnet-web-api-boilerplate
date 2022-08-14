@@ -1,14 +1,15 @@
 ﻿using Core.Lib;
 using Core.Lib.Adapters;
+using Core.Constants;
 
-namespace Business.Lib.Core;
+namespace API.Operations;
 
 public class Base
 {
     #region [Declarations]
 
     public DBAdapter dBAdapter;
-    public Helpers helper;
+    public Core.Lib.Helpers helper;
     public CsvLogger csvLogger;
 
     #endregion [Declarations]
@@ -16,7 +17,7 @@ public class Base
     public Base()
     {
         csvLogger = new CsvLogger();
-        helper = new Helpers();
+        helper = new Core.Lib.Helpers();
 
         // uncomment this line when there is a valid connection string
 

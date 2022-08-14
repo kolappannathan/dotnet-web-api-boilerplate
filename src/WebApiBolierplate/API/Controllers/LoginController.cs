@@ -1,8 +1,8 @@
 ﻿using API.Helpers;
-using Business.Lib;
+using API.Operations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Model;
+using API.Models;
 
 namespace API.Controllers;
 

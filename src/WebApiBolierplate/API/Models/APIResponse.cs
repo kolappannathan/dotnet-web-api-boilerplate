@@ -1,4 +1,4 @@
-﻿namespace Model;
+﻿namespace API.Models;
 
 /// <summary>
 /// A class for standard formatting of Data

@@ -1,9 +1,8 @@
-﻿using Business.Lib.Core;
-using Core.Constants;
-using Model;
+﻿using Core.Constants;
+using API.Models;
 using System;
 
-namespace Business.Lib;
+namespace API.Operations;
 
 public class UserLib : Base
 {

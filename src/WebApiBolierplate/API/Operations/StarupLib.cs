@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace Business.Lib.Core;
+namespace API.Operations;
 
 public class StarupLib
 {
