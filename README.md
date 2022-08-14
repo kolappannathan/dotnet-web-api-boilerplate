@@ -13,7 +13,6 @@ This API boilerplate includes the following:
  - Role based JWT authentication.
  - Web API Helpers which standardizes responses, maps errors, etc...
  - An implementation of CSV Error logger.
- - A business library and model projects for code separation.
  - A core library with the following
    - Custom data model attributes
    - Database adapter
@@ -26,12 +25,10 @@ This API boilerplate includes the following:
 
 ###### Change the following values
 
- - In Config.cs in Core.Constants
-    1. Security.EncryptionKey
  - In appsettings.json
     1. Database connection string.
     2. JWT secret, issuer and audience
- - In Base class in BusinessLib, uncomment the line that establishes db connection
+ - In Base class in Operations, uncomment the line that establishes db connection
  - Update the login controller & user lib.
  - This project has a default editorconfig file. If needed customize it.
 

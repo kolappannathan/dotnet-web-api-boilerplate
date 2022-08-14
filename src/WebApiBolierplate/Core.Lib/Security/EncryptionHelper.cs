@@ -13,28 +13,25 @@ namespace Core.Lib.Security;
 /// </summary>
 public class EncryptionHelper
 {
-    private Aes aesEncryptor;
-    private string encryptionKey;
-
     public EncryptionHelper()
     {
-        encryptionKey = Config.Security.EncryptionKey;
     }
 
-    private void BuildAesEncryptor()
+    private Aes BuildAesEncryptor(string encryptionKey)
     {
-        aesEncryptor = Aes.Create();
+        var aesEncryptor = Aes.Create();
         var pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
         aesEncryptor.Key = pdb.GetBytes(32);
         aesEncryptor.IV = pdb.GetBytes(16);
+        return aesEncryptor;
     }
 
     /// <summary>
     /// Encrypts the given string and return ciphertext
     /// </summary>
-    public string EncryptString(string clearText)
+    public string EncryptString(string clearText, string encryptionKey)
     {
-        BuildAesEncryptor();
+        var aesEncryptor = BuildAesEncryptor(encryptionKey);
         var clearBytes = Encoding.Unicode.GetBytes(clearText);
         using (var ms = new MemoryStream())
         {
@@ -50,9 +47,9 @@ public class EncryptionHelper
     /// <summary>
     /// Decrypts the given string and returns plain text
     /// </summary>
-    public string DecryptString(string cipherText)
+    public string DecryptString(string cipherText, string encryptionKey)
     {
-        BuildAesEncryptor();
+        var aesEncryptor = BuildAesEncryptor(encryptionKey);
         cipherText = cipherText.Replace(" ", "+");
         var cipherBytes = Convert.FromBase64String(cipherText);
         using (var ms = new MemoryStream())

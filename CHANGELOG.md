@@ -3,13 +3,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Added
+ - Added dependency Injection
+
+### Changed
+ - Updated the default port
+ - Updated API Helper
+ - Encryption key is no longer part of code
+ - Consolidated Business & Models into API project
+ - Random Number generation now uses RandomNumberGenerator instead of RNGCryptoServiceProvider
+
+### Removed
+ - Removed config static class
 
 ## [6.0.0] - 2022-07-16
 ### Added
  - Added Swagger UI
-
-### Changes
- - Updated the default port
 
 ### Changed
  - Updated .NET to version 6
