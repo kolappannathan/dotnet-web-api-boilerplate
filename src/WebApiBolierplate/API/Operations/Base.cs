@@ -14,13 +14,13 @@ public class Base
 
     #endregion [Declarations]
 
-    public Base()
+    public Base(IConfiguration configuration)
     {
         csvLogger = new CsvLogger();
         helper = new Core.Lib.Helpers();
 
         // uncomment this line when there is a valid connection string
 
-        //dBAdapter = new DBAdapter(Config.DataBase.ConnectionString);
+        //dBAdapter = new DBAdapter(configuration["AppConfig:DataBase:ConnectionString"]);
     }
 }

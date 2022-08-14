@@ -31,6 +31,8 @@ builder.Services.AddScoped<ValueLib>();
 
 #endregion operations
 
+builder.Services.AddScoped<JWTHelper>();
+
 #endregion Dependency Injection
 
 #region [Validation Handling]
@@ -56,9 +58,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = Config.JWT.Issuer,
-            ValidAudience = Config.JWT.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config.JWT.Key))
+            ValidIssuer = builder.Configuration["AppConfig:JWT:Issuer"],
+            ValidAudience = builder.Configuration["AppConfig:JWT:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AppConfig:JWT:Key"]))
         };
     });
 

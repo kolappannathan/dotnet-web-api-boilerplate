@@ -10,13 +10,15 @@ public class JWTHelper
 {
     #region [Declarations]
 
-    private readonly SecurityKey securityKey;
+    private readonly SecurityKey _securityKey;
+    private readonly IConfiguration _configuration;
 
     #endregion [Declarations]
 
-    public JWTHelper()
+    public JWTHelper(IConfiguration configuration)
     {
-        securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config.JWT.Key));
+        _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
+        _configuration = configuration;
     }
 
     #region [Token Generation]
@@ -38,10 +40,10 @@ public class JWTHelper
         }
 
         var token = new JwtTokenBuilder()
-            .AddSecurityKey(securityKey)
-            .AddIssuer(Config.JWT.Issuer)
-            .AddAudience(Config.JWT.Audience)
-            .AddExpiry(Config.JWT.DaysValid)
+            .AddSecurityKey(_securityKey)
+            .AddIssuer(_configuration["AppConfig:JWT:Issuer"])
+            .AddAudience(_configuration["AppConfig:JWT:Audience"])
+            .AddExpiry(Convert.ToInt32(_configuration["AppConfig:JWT:DaysValid"]))
             .AddRole(userRole)
             .AddName(userName)
             .AddUserId(userId)

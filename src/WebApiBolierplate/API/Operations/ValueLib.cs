@@ -4,9 +4,8 @@ public class ValueLib : Base
 {
     private string[] values = { "Jon Snow", "Rob Stark", "Sansa Stark", "Arya Stark", "Bran Stark", "Rickon Stark" };
 
-    public ValueLib()
+    public ValueLib(IConfiguration configuration) : base(configuration)
     {
-
     }
 
     public string[] GetValueList() => values;

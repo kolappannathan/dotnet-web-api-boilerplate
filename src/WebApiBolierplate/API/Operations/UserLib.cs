@@ -9,7 +9,7 @@ public class UserLib : Base
     private const string BrandonStark = "Brandon Stark";
     private const string EddardStark = "Eddard Stark";
 
-    public UserLib()
+    public UserLib(IConfiguration configuration): base(configuration)
     {
 
     }

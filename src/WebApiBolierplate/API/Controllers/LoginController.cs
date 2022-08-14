@@ -11,10 +11,12 @@ namespace API.Controllers;
 public class LoginController : CustomBaseController
 {
     private readonly UserLib _userLib;
+    private readonly JWTHelper _jwtHelper;
 
-    public LoginController(UserLib userLib)
+    public LoginController(UserLib userLib, JWTHelper jwtHelper)
     {
         _userLib = userLib;
+        _jwtHelper = jwtHelper;
     }
 
     [AllowAnonymous]
@@ -25,8 +27,7 @@ public class LoginController : CustomBaseController
         if (result == 1)
         {
             var user = _userLib.GetUser(loginDTO.UserName);
-            var jwtHelper = new JWTHelper();
-            var token = jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
+            var token = _jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
             return webAPIHelper.CreateResponse(token);
         }
         return webAPIHelper.CreateResponse(result);
