@@ -17,8 +17,8 @@ public class JWTHelper
 
     public JWTHelper(IConfiguration configuration)
     {
-        _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
         _configuration = configuration;
+        _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
     }
 
     #region [Token Generation]

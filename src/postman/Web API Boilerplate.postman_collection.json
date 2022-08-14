@@ -3,7 +3,8 @@
 		"_postman_id": "e9a4c362-4912-4385-b212-60bfcd922d54",
 		"name": "Web API Boilerplate",
 		"description": "Postman collection for [https://github.com/kolappannathan/dotnet-web-api-boilerplate](https://github.com/kolappannathan/dotnet-web-api-boilerplate)\n\n*   Set the api-url collection variable to point to the correct URL\n*   Calling the login APIs will automatically update the bearer tokens",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11196299"
 	},
 	"item": [
 		{
@@ -254,33 +255,6 @@
 			]
 		},
 		{
-			"name": "Tasks Controller",
-			"item": [
-				{
-					"name": "Reload config",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{api-url}}tasks/reload/config",
-							"host": [
-								"{{api-url}}tasks"
-							],
-							"path": [
-								"reload",
-								"config"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Values Controller",
 			"item": [
 				{
@@ -447,7 +421,7 @@
 	"variable": [
 		{
 			"key": "api-url",
-			"value": "https://localhost:44332/api/"
+			"value": "https://localhost:7030/api/"
 		},
 		{
 			"key": "auth-token",
