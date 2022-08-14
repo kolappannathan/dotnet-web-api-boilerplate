@@ -102,11 +102,11 @@ public class RandoLib
             throw new ArgumentException("The value of min should be less than max");
         }
 
-        using (var CprytoRNG = new RNGCryptoServiceProvider())
+        using (var generator = RandomNumberGenerator.Create())
         {
             // Generate four random bytes
             var four_bytes = new byte[4];
-            CprytoRNG.GetBytes(four_bytes);
+            generator.GetBytes(four_bytes);
 
             // Convert the bytes to a UInt32
             var scale = BitConverter.ToUInt32(four_bytes, 0);
