@@ -15,37 +15,17 @@ public class WebAPIHelper
     /// <returns></returns>
     public JsonResult CreateResponse(object data)
     {
-        if (data == null || (data is bool && Convert.ToBoolean(data) == false))
+        var apiResponse = data switch
         {
-            var apiResponse = new { Data = string.Empty, Message = Errors.InternalServerError, IsError = true };
-            return new JsonResult(apiResponse)
-            {
-                StatusCode = (int)HttpStatusCode.InternalServerError
-            };
-        }
-        else if (data is int && Convert.ToInt32(data) < 0)
+            bool resData when resData == false => CreateErrorResponse(Errors.InternalServerError),
+            int resData when resData < 0 => CreateErrorResponse(resData),
+            APIResponse resData => resData,
+            _ => new APIResponse(data, string.Empty, false),
+        };
+        return new JsonResult(apiResponse)
         {
-            (string resText, HttpStatusCode resCode) = Notification.GetNotification(Convert.ToInt32(data));
-            var apiResponse = new { Data = resText, Message = Errors.InternalServerError, IsError = true };
-            return new JsonResult(apiResponse)
-            {
-                StatusCode = (int)resCode
-            };
-        }
-        else if (data is APIResponse)
-        { 
-            var resData = (APIResponse)data;
-            var apiResponse = new { Data = resData.Data, Message = resData.Message, IsError = resData.IsError };
-            return new JsonResult(apiResponse)
-            {
-                StatusCode = apiResponse.IsError ? (int)HttpStatusCode.InternalServerError : (int)HttpStatusCode.OK
-            };
-        }
-        else
-        {
-            var apiResponse = new { Data = data, Message = string.Empty, IsError = false };
-            return new JsonResult(apiResponse);
-        }
+            StatusCode = (int)apiResponse.StatusCode
+        };
     }
 
     /// <summary>
@@ -55,7 +35,7 @@ public class WebAPIHelper
     /// <returns>The http response</returns>
     public BadRequestObjectResult CreateBadRequest(string errorText)
     {
-        var apiResponse = new { Data = string.Empty, Message = errorText, IsError = true };
+        var apiResponse = new APIResponse(string.Empty, errorText, true, HttpStatusCode.BadRequest);
         return new BadRequestObjectResult(apiResponse);
     }
 
@@ -65,12 +45,45 @@ public class WebAPIHelper
     /// <param name="errorText">Error message to be sent</param>
     /// <param name="data">Data to be sent</param>
     /// <returns></returns>
-    public JsonResult CreateErrorResponse(string errorText, dynamic data = null)
+    public APIResponse CreateErrorResponse(string errorText, dynamic data = null)
     {
-        var apiResponse = new { Data = data, Message = errorText, IsError = false };
-        return new JsonResult(apiResponse)
+        if (data is int code && code < 0)
         {
-            StatusCode = (int)HttpStatusCode.InternalServerError
-        };
+            return CreateErrorResponse(code, data);
+        }
+        return new APIResponse(data, errorText, true, HttpStatusCode.InternalServerError);
+    }
+
+    private APIResponse CreateErrorResponse(int errorCode, dynamic data = null)
+    {
+        (var resText, var resCode) = GetNotification(Convert.ToInt32(errorCode));
+        return new APIResponse(data, resText, true, resCode);
+    }
+
+    /// <summary>
+    /// Contains mapping for error codes to the Error messages and status
+    /// </summary>
+    private static readonly Dictionary<int, (string, HttpStatusCode)> notifications = new Dictionary<int, (string, HttpStatusCode)>()
+    {
+        { -1, (Errors.InternalServerError, HttpStatusCode.InternalServerError) },
+        { -102, (Errors.AccountNotFound, HttpStatusCode.Unauthorized) },
+        { -103, (Errors.InvalidCredentials, HttpStatusCode.Unauthorized) },
+        { -104, (Errors.AccountDeleted, HttpStatusCode.Unauthorized) }
+    };
+
+    /// <summary>
+    /// Returns the error message, and <see cref="HttpStatusCode"/> for the specified error code
+    /// </summary>
+    /// <param name="code">The error code obtained from business layer or other functions</param>
+    /// <returns></returns>
+    private static (string, HttpStatusCode) GetNotification(int code)
+    {
+        (string, HttpStatusCode) value;
+        bool hasValue = notifications.TryGetValue(code, out value);
+        if (!hasValue)
+        {
+            value = (Errors.InternalServerError, HttpStatusCode.InternalServerError);
+        }
+        return value;
     }
 }
