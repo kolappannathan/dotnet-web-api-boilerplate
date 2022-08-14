@@ -8,7 +8,6 @@ namespace Core.Lib.Security;
 
 /// <summary>
 /// This class offer simple encryption and decryption
-/// This function is taken from the following stack overflow answer with some modifications
 /// Ref: https://stackoverflow.com/a/27484425/5407188
 /// </summary>
 public class EncryptionHelper
