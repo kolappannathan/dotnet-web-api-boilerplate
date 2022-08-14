@@ -8,10 +8,11 @@ public class UserLib : Base
 {
     private const string BrandonStark = "Brandon Stark";
     private const string EddardStark = "Eddard Stark";
+    private readonly ILogger _logger;
 
-    public UserLib(IConfiguration configuration): base(configuration)
+    public UserLib(IConfiguration configuration, ILogger<UserLib> logger): base(configuration)
     {
-
+        _logger = logger;
     }
 
     public int ValidateLogin(LoginDTO login)
@@ -42,7 +43,7 @@ public class UserLib : Base
         }
         catch (Exception ex)
         {
-            csvLogger.Error(ex);
+            _logger.LogError("ValidateLogin - {message}", ex.Message);
             return -1;
         }
     }
@@ -63,7 +64,7 @@ public class UserLib : Base
         }
         catch (Exception ex)
         {
-            csvLogger.Error(ex);
+            _logger.LogError("GetUser - {message}", ex.Message);
             return null;
         }
     }

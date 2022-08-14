@@ -30,8 +30,6 @@ jobs:
       run: |
         cd ./src/WebApiBolierplate
         dotnet test ./Core.Test/Core.Test.csproj
-    - name: IntelliCode Team Completions
-      uses: microsoft/vs-intellicode@v1.0
   build-linux:
     runs-on: ubuntu-latest
     steps:
