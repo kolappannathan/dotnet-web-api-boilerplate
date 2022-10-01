@@ -15,7 +15,7 @@ jobs:
       with:
         fetch-depth: 0 # For the vs-intellicode action (https://github.com/microsoft/vs-intellicode#usage)
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v2.1.0
+      uses: actions/setup-dotnet@v3.0.0
       with:
         dotnet-version: 6.0.x
     - name: Install dependencies
