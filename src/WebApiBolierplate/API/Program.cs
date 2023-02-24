@@ -6,10 +6,20 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.AddFile("Logs/API.log");
+// If needed, Clear default providers
+builder.Logging.ClearProviders();
+
+// Use Serilog
+builder.Host.UseSerilog((hostContext, services, loggerConfig) => {
+    loggerConfig
+        .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+        .WriteTo.File( "Logs/api-.log", rollingInterval: RollingInterval.Day, rollOnFileSizeLimit: true);
+});
 
 // To prevent .NET and server info from being added to header if Kestrel is used
 builder.WebHost.ConfigureKestrel(serverOptions => {
@@ -96,7 +106,6 @@ builder.Services.AddSwaggerGen( c => {
 #endregion Configuring Services
 
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -108,6 +117,9 @@ else
 }
 
 app.UseHttpsRedirection();
+
+app.UseSerilogRequestLogging();
+
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
