@@ -43,6 +43,7 @@ builder.Services.AddScoped<IValueLib, ValueLib>();
 
 builder.Services.AddScoped<IJWTHelper, JWTHelper>();
 builder.Services.AddScoped<IJwtTokenBuilder, JwtTokenBuilder>();
+builder.Services.AddScoped<IWebAPIHelper, WebAPIHelper>();
 
 #endregion Dependency Injection
 

@@ -12,11 +12,13 @@ public class LoginController : CustomBaseController
 {
     private readonly IUserLib _userLib;
     private readonly IJWTHelper _jwtHelper;
+    private readonly IWebAPIHelper _webAPIHelper;
 
-    public LoginController(IUserLib userLib, IJWTHelper jwtHelper)
+    public LoginController(IUserLib userLib, IJWTHelper jwtHelper, IWebAPIHelper webAPIHelper)
     {
         _userLib = userLib;
         _jwtHelper = jwtHelper;
+        _webAPIHelper = webAPIHelper;
     }
 
     [AllowAnonymous]
@@ -28,8 +30,8 @@ public class LoginController : CustomBaseController
         {
             var user = _userLib.GetUser(loginDTO.UserName);
             var token = _jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
-            return webAPIHelper.CreateResponse(token);
+            return _webAPIHelper.CreateResponse(token);
         }
-        return webAPIHelper.CreateResponse(result);
+        return _webAPIHelper.CreateResponse(result);
     }
 }

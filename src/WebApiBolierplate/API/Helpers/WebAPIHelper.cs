@@ -1,18 +1,13 @@
 ﻿using Core.Constants;
 using Microsoft.AspNetCore.Mvc;
 using API.Models;
-using System;
 using System.Net;
+using API.Helpers.Interfaces;
 
 namespace API.Helpers;
 
-public sealed class WebAPIHelper
+public sealed class WebAPIHelper: IWebAPIHelper
 {
-    /// <summary>
-    /// Creates a error or successful response based on the data to be sent
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
     public JsonResult CreateResponse(object data)
     {
         var apiResponse = data switch
@@ -28,23 +23,12 @@ public sealed class WebAPIHelper
         };
     }
 
-    /// <summary>
-    /// Creates a Json response with 400 status code(Bad Request)
-    /// </summary>
-    /// <param name="errorText">Error message to be sent</param>
-    /// <returns>The http response</returns>
     public BadRequestObjectResult CreateBadRequest(string errorText)
     {
         var apiResponse = new APIResponse(string.Empty, errorText, true, HttpStatusCode.BadRequest);
         return new BadRequestObjectResult(apiResponse);
     }
 
-    /// <summary>
-    /// Creates an error response with a 500 status code(Internal Server error)
-    /// </summary>
-    /// <param name="errorText">Error message to be sent</param>
-    /// <param name="data">Data to be sent</param>
-    /// <returns></returns>
     public APIResponse CreateErrorResponse(string errorText, dynamic data = null)
     {
         if (data is int code && code < 0)
@@ -53,6 +37,8 @@ public sealed class WebAPIHelper
         }
         return new APIResponse(data, errorText, true, HttpStatusCode.InternalServerError);
     }
+
+    #region Private Functions
 
     private APIResponse CreateErrorResponse(int errorCode, dynamic data = null)
     {
@@ -86,4 +72,6 @@ public sealed class WebAPIHelper
         }
         return value;
     }
+
+    #endregion Private Functions
 }

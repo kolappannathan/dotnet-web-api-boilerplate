@@ -1,4 +1,5 @@
-﻿using API.Operations.Interfaces;
+﻿using API.Helpers.Interfaces;
+using API.Operations.Interfaces;
 using Core.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace API.Controllers;
 public class ValuesController : CustomBaseController
 {
     private readonly IValueLib _valueLib;
+    private readonly IWebAPIHelper _webAPIHelper;
 
-    public ValuesController(IValueLib valueLib)
+    public ValuesController(IValueLib valueLib, IWebAPIHelper webAPIHelper)
     {
         _valueLib = valueLib;
+        _webAPIHelper = webAPIHelper;
     }
 
     [HttpGet("")]
@@ -21,7 +24,7 @@ public class ValuesController : CustomBaseController
     public IActionResult Get()
     {
         var result = _valueLib.GetValueList();
-        return webAPIHelper.CreateResponse(result);
+        return _webAPIHelper.CreateResponse(result);
     }
 
     [HttpGet("{id}")]
@@ -33,7 +36,7 @@ public class ValuesController : CustomBaseController
         {
             return new NotFoundResult();
         }
-        return webAPIHelper.CreateResponse(result);
+        return _webAPIHelper.CreateResponse(result);
     }
 
     [HttpPost("")]
@@ -41,7 +44,7 @@ public class ValuesController : CustomBaseController
     public IActionResult Post([FromBody] string value)
     {
         var result = _valueLib.AddValue(value);
-        return webAPIHelper.CreateResponse(result);
+        return _webAPIHelper.CreateResponse(result);
     }
 
     [HttpPut("{id}")]
@@ -49,7 +52,7 @@ public class ValuesController : CustomBaseController
     public IActionResult Put([FromRoute]int id, [FromBody] string value)
     {
         var result = _valueLib.UpdateValue(value, id);
-        return webAPIHelper.CreateResponse(result);
+        return _webAPIHelper.CreateResponse(result);
     }
 
     [HttpDelete("{id}")]
@@ -57,6 +60,6 @@ public class ValuesController : CustomBaseController
     public IActionResult Delete([FromRoute]int id)
     {
         var result = _valueLib.DeleteValue(id);
-        return webAPIHelper.CreateResponse(result);
+        return _webAPIHelper.CreateResponse(result);
     }
 }
