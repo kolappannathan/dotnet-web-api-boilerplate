@@ -19,7 +19,11 @@ public class EncryptionHelper
     private Aes BuildAesEncryptor(string encryptionKey)
     {
         var aesEncryptor = Aes.Create();
-        var pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+        var pdb = new Rfc2898DeriveBytes(
+            password: encryptionKey,
+            salt: "335f0298-9eae-4285-890e-ef7243c974f0"u8.ToArray(),
+            iterations: 5033,
+            hashAlgorithm: HashAlgorithmName.SHA512);
         aesEncryptor.Key = pdb.GetBytes(32);
         aesEncryptor.IV = pdb.GetBytes(16);
         return aesEncryptor;

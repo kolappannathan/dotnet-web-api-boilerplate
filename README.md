@@ -31,6 +31,8 @@ This API boilerplate includes the following:
  - In Base class in Operations, uncomment the line that establishes db connection
  - Update the login controller & user lib.
  - This project has a default editorconfig file. If needed customize it.
+ - In program.cs
+  1. Update CORS websites list
 
 ###### Remove the following
  - Values controller & values lib

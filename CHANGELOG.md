@@ -4,6 +4,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [7.0.0] - 2023-02-27
+### Added
+ - CORS settings
+
+### Changed
+ - Updated .NET version to 7
+ - Using Serilog.AspNetCore for logging instead of serilog extensions as recommended by Serilog
+ - Log files are now separated by date
+ - Using new syntax for Argument null checks
+ - Updated dependencies
+
 ## [6.1.0] - 2022-08-15
 ### Added
  - Added dependency Injection
