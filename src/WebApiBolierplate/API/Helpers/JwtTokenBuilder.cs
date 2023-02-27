@@ -42,10 +42,7 @@ public class JwtTokenBuilder
     /// </summary>
     private void EnsureArguments()
     {
-        if (securityKey == null)
-        {
-            throw new ArgumentNullException("Security Key");
-        }
+        ArgumentNullException.ThrowIfNull(securityKey);
 
         if (expiryInDays == 0)
         {

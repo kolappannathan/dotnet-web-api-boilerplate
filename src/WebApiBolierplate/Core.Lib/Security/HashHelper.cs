@@ -17,12 +17,10 @@ public class HashHelper
     /// <param name="plainText"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentException"></exception>
     public string HashBCrypt(string plainText)
     {
-        if (string.IsNullOrEmpty(plainText))
-        {
-            throw new ArgumentNullException("plainText", AllPrametersMandatory);
-        }
+        ArgumentException.ThrowIfNullOrEmpty(plainText);
 
         var hash = BCrypt.Net.BCrypt.HashPassword(plainText, workFactor: 10);
         return hash;
@@ -35,12 +33,11 @@ public class HashHelper
     /// <param name="hash"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentException"></exception>
     public bool VerifyBCrypt(string plainText, string hash)
     {
-        if (string.IsNullOrEmpty(plainText) || string.IsNullOrEmpty(hash))
-        {
-            throw new ArgumentNullException("plainText", AllPrametersMandatory);
-        }
+        ArgumentException.ThrowIfNullOrEmpty(plainText);
+        ArgumentException.ThrowIfNullOrEmpty(hash);
 
         var isMatch = BCrypt.Net.BCrypt.Verify(plainText, hash);
         return isMatch;

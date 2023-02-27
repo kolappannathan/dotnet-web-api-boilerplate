@@ -9,9 +9,6 @@ public class DBAdapter
     #region [Declarations]
 
     private readonly SqlConnection connection;
-    private const string SqlCommandNull = "SQL command cannot be null";
-    private const string ConnectionStringNull = "Connection string cannot be empty";
-    private const string SPNameNull = "Name of the stored procedure must be specified";
 
     #endregion [Declarations]
 
@@ -20,12 +17,10 @@ public class DBAdapter
     /// </summary>
     /// <param name="connectionString">The database connection string</param>
     /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentException"></exception>
     public DBAdapter(string connectionString)
     {
-        if (string.IsNullOrEmpty(connectionString))
-        {
-            throw new ArgumentNullException(connectionString, ConnectionStringNull);
-        }
+        ArgumentException.ThrowIfNullOrEmpty(connectionString);
 
         connection = new SqlConnection(connectionString);
         connection.Open();
@@ -58,12 +53,10 @@ public class DBAdapter
     /// <param name="name">Name of the stored procedure</param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentException"></exception>
     public SqlCommand GetStoredProcedure(string name)
     {
-        if (string.IsNullOrEmpty(name))
-        {
-            throw new ArgumentNullException(name, SPNameNull);
-        }
+        ArgumentException.ThrowIfNullOrEmpty(name);
         if (connection.State != ConnectionState.Open)
         {
             connection.Open();
@@ -84,10 +77,7 @@ public class DBAdapter
     /// <exception cref="ArgumentNullException"></exception>
     public object ExecuteScalar(SqlCommand dbCommand)
     {
-        if (dbCommand == null)
-        {
-            throw new ArgumentNullException("dbCommand", SqlCommandNull);
-        }
+        ArgumentNullException.ThrowIfNull(dbCommand);
 
         var result = dbCommand.ExecuteScalar();
         return result;
@@ -101,10 +91,7 @@ public class DBAdapter
     /// <exception cref="ArgumentNullException"></exception>
     public IDataReader ExecuteReader(SqlCommand dbCommand)
     {
-        if (dbCommand == null)
-        {
-            throw new ArgumentNullException("dbCommand", SqlCommandNull);
-        }
+        ArgumentNullException.ThrowIfNull(dbCommand);
 
         var result = dbCommand.ExecuteReader();
         return result;
@@ -118,10 +105,7 @@ public class DBAdapter
     /// <exception cref="ArgumentNullException"></exception>
     public int ExecuteNonQuery(SqlCommand dbCommand)
     {
-        if (dbCommand == null)
-        {
-            throw new ArgumentNullException("dbCommand", SqlCommandNull);
-        }
+        ArgumentNullException.ThrowIfNull(dbCommand);
 
         var result = dbCommand.ExecuteNonQuery();
         return result;

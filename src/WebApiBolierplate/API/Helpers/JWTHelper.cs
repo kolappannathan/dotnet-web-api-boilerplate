@@ -34,10 +34,7 @@ public class JWTHelper
     /// /// <exception cref="ArgumentNullException">User Id is a must</exception>
     public string GenerateToken(string userId, string userRole = null, string userName = null, string companyId = null)
     {
-        if (string.IsNullOrEmpty(userId))
-        {
-            throw new ArgumentNullException("userId", Errors.UserIdMandatory);
-        }
+        ArgumentException.ThrowIfNullOrEmpty(userId);
 
         var token = new JwtTokenBuilder()
             .AddSecurityKey(_securityKey)
