@@ -35,4 +35,4 @@ This API boilerplate includes the following:
    1. Update CORS websites list
 
 ###### Remove the following
- - Values controller & values lib
+ - Values controller, values lib & corresponding interfaces
