@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace API.Helpers;
 
-public class ValidationHelper
+public sealed class ValidationHelper
 {
     private readonly WebAPIHelper webAPIHelper;
 

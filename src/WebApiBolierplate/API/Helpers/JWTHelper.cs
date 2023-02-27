@@ -6,7 +6,7 @@ using System.Text;
 
 namespace API.Helpers;
 
-public class JWTHelper
+public sealed class JWTHelper
 {
     #region [Declarations]
 

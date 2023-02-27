@@ -4,7 +4,7 @@ using System;
 
 namespace API.Operations;
 
-public class UserLib : Base
+public sealed class UserLib : Base
 {
     private const string BrandonStark = "Brandon Stark";
     private const string EddardStark = "Eddard Stark";

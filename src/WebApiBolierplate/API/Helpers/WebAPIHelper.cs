@@ -6,7 +6,7 @@ using System.Net;
 
 namespace API.Helpers;
 
-public class WebAPIHelper
+public sealed class WebAPIHelper
 {
     /// <summary>
     /// Creates a error or successful response based on the data to be sent

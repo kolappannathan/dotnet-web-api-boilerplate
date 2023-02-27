@@ -2,7 +2,7 @@
 
 namespace API.Models;
 
-public class LoginDTO
+public sealed class LoginDTO
 {
     public LoginDTO()
     {

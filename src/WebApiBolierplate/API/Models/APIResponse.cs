@@ -5,7 +5,7 @@ namespace API.Models;
 /// <summary>
 /// A class for standard formatting of Data
 /// </summary>
-public class APIResponse
+public sealed class APIResponse
 {
     public APIResponse(dynamic data, string message, bool isError, HttpStatusCode statusCode)
     {

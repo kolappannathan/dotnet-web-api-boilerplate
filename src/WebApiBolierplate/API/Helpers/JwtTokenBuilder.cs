@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace API.Helpers;
 
-public class JwtTokenBuilder
+public sealed class JwtTokenBuilder
 {
     #region [Declarations]
 

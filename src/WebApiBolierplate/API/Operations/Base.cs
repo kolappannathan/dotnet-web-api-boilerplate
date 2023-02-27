@@ -4,7 +4,7 @@ using Core.Constants;
 
 namespace API.Operations;
 
-public class Base
+public abstract class Base
 {
     #region [Declarations]
 
