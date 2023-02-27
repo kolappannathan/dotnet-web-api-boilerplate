@@ -55,18 +55,12 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Adding values]
 
-    /// <summary>
-    /// Adds the security key used for signing JWT token
-    /// </summary>
     public IJwtTokenBuilder AddSecurityKey(SecurityKey securityKey)
     {
         this.securityKey = securityKey;
         return this;
     }
 
-    /// <summary>
-    /// Adds expiry time in days to JWT token
-    /// </summary>
     public IJwtTokenBuilder AddExpiry(int expiryInDays)
     {
         this.expiryInDays = expiryInDays;
@@ -77,49 +71,31 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Adding Claims]
 
-    /// <summary>
-    /// Adds issuer to JWT token
-    /// </summary>
     public IJwtTokenBuilder AddIssuer(string issuer)
     {
         return AddClaim(JwtRegisteredClaimNames.Iss, issuer);
     }
 
-    /// <summary>
-    /// Adds audience value to JWT token
-    /// </summary>
     public IJwtTokenBuilder AddAudience(string audience)
     {
         return AddClaim(JwtRegisteredClaimNames.Aud, audience);
     }
 
-    /// <summary>
-    /// Adds subject as a claim to the token
-    /// </summary>
     public IJwtTokenBuilder AddSubject(string subject)
     {
         return AddClaim(JwtRegisteredClaimNames.Sub, subject);
     }
 
-    /// <summary>
-    /// Adds user name as claim to the token
-    /// </summary>
     public IJwtTokenBuilder AddName(string username)
     {
         return AddClaim(JwtRegisteredClaimNames.NameId, username);
     }
 
-    /// <summary>
-    /// Adds email as claim to JWT token
-    /// </summary>
     public IJwtTokenBuilder AddEmail(string email)
     {
         return AddClaim(JwtRegisteredClaimNames.Email, email);
     }
 
-    /// <summary>
-    /// Adds user role as claim to the token
-    /// </summary>
     public IJwtTokenBuilder AddRole(string value)
     {
         // Changing this to JwtRegisteredClaimNames will break role based authentication
@@ -142,12 +118,6 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Generic Claims]
 
-    /// <summary>
-    /// Adds a given value to the given claim
-    /// </summary>
-    /// <param name="type">claim type</param>
-    /// <param name="value">value for the claim</param>
-    /// <returns></returns>
     public IJwtTokenBuilder AddClaim(string type, string value)
     {
         if (value != null && type != null)
@@ -157,11 +127,6 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
         return this;
     }
 
-    /// <summary>
-    /// Bulk add claims to the JWT tokens
-    /// </summary>
-    /// <param name="claimList">list of claim types and its corresponding values</param>
-    /// <returns></returns>
     public IJwtTokenBuilder AddClaims(Dictionary<string, string> claimList)
     {
         foreach (var claim in claimList)
