@@ -32,7 +32,7 @@ This API boilerplate includes the following:
  - Update the login controller & user lib.
  - This project has a default editorconfig file. If needed customize it.
  - In program.cs
-  1. Update CORS websites list
+   1. Update CORS websites list
 
 ###### Remove the following
  - Values controller & values lib
