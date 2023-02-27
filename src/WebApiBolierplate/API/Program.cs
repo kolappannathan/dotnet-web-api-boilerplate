@@ -9,6 +9,7 @@ using System.Text;
 using Serilog;
 using Serilog.Events;
 using API.Operations.Interfaces;
+using API.Helpers.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,7 +41,8 @@ builder.Services.AddScoped<IValueLib, ValueLib>();
 
 #endregion operations
 
-builder.Services.AddScoped<JWTHelper>();
+builder.Services.AddScoped<IJWTHelper, JWTHelper>();
+builder.Services.AddScoped<IJwtTokenBuilder, JwtTokenBuilder>();
 
 #endregion Dependency Injection
 

@@ -1,24 +1,25 @@
-﻿using Core.Constants;
+﻿using API.Helpers.Interfaces;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
 namespace API.Helpers;
 
-public sealed class JWTHelper
+public sealed class JWTHelper : IJWTHelper
 {
     #region [Declarations]
 
     private readonly SecurityKey _securityKey;
     private readonly IConfiguration _configuration;
+    private IJwtTokenBuilder jwtTokenBuilder;
 
     #endregion [Declarations]
 
-    public JWTHelper(IConfiguration configuration)
+    public JWTHelper(IConfiguration configuration, IJwtTokenBuilder jwtTokenBuilder)
     {
         _configuration = configuration;
         _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
+        this.jwtTokenBuilder = jwtTokenBuilder;
     }
 
     #region [Token Generation]
@@ -36,7 +37,7 @@ public sealed class JWTHelper
     {
         ArgumentException.ThrowIfNullOrEmpty(userId);
 
-        var token = new JwtTokenBuilder()
+        var token = jwtTokenBuilder
             .AddSecurityKey(_securityKey)
             .AddIssuer(_configuration["AppConfig:JWT:Issuer"])
             .AddAudience(_configuration["AppConfig:JWT:Audience"])

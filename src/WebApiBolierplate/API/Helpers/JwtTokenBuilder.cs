@@ -1,4 +1,5 @@
-﻿using Core.Constants;
+﻿using API.Helpers.Interfaces;
+using Core.Constants;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Security.Claims;
 
 namespace API.Helpers;
 
-public sealed class JwtTokenBuilder
+public sealed class JwtTokenBuilder: IJwtTokenBuilder
 {
     #region [Declarations]
 
@@ -57,7 +58,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds the security key used for signing JWT token
     /// </summary>
-    public JwtTokenBuilder AddSecurityKey(SecurityKey securityKey)
+    public IJwtTokenBuilder AddSecurityKey(SecurityKey securityKey)
     {
         this.securityKey = securityKey;
         return this;
@@ -66,7 +67,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds expiry time in days to JWT token
     /// </summary>
-    public JwtTokenBuilder AddExpiry(int expiryInDays)
+    public IJwtTokenBuilder AddExpiry(int expiryInDays)
     {
         this.expiryInDays = expiryInDays;
         return this;
@@ -79,7 +80,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds issuer to JWT token
     /// </summary>
-    public JwtTokenBuilder AddIssuer(string issuer)
+    public IJwtTokenBuilder AddIssuer(string issuer)
     {
         return AddClaim(JwtRegisteredClaimNames.Iss, issuer);
     }
@@ -87,7 +88,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds audience value to JWT token
     /// </summary>
-    public JwtTokenBuilder AddAudience(string audience)
+    public IJwtTokenBuilder AddAudience(string audience)
     {
         return AddClaim(JwtRegisteredClaimNames.Aud, audience);
     }
@@ -95,7 +96,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds subject as a claim to the token
     /// </summary>
-    public JwtTokenBuilder AddSubject(string subject)
+    public IJwtTokenBuilder AddSubject(string subject)
     {
         return AddClaim(JwtRegisteredClaimNames.Sub, subject);
     }
@@ -103,7 +104,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds user name as claim to the token
     /// </summary>
-    public JwtTokenBuilder AddName(string username)
+    public IJwtTokenBuilder AddName(string username)
     {
         return AddClaim(JwtRegisteredClaimNames.NameId, username);
     }
@@ -111,7 +112,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds email as claim to JWT token
     /// </summary>
-    public JwtTokenBuilder AddEmail(string email)
+    public IJwtTokenBuilder AddEmail(string email)
     {
         return AddClaim(JwtRegisteredClaimNames.Email, email);
     }
@@ -119,7 +120,7 @@ public sealed class JwtTokenBuilder
     /// <summary>
     /// Adds user role as claim to the token
     /// </summary>
-    public JwtTokenBuilder AddRole(string value)
+    public IJwtTokenBuilder AddRole(string value)
     {
         // Changing this to JwtRegisteredClaimNames will break role based authentication
         return AddClaim(ClaimTypes.Role, value);
@@ -127,12 +128,12 @@ public sealed class JwtTokenBuilder
 
     #region [Custom Claims]
 
-    public JwtTokenBuilder AddUserId(string value)
+    public IJwtTokenBuilder AddUserId(string value)
     {
         return AddClaim(CustomClaims.UserIdentifier, value);
     }
 
-    public JwtTokenBuilder AddCompanyId(string value)
+    public IJwtTokenBuilder AddCompanyId(string value)
     {
         return AddClaim(CustomClaims.CompanyIdentifier, value);
     }
@@ -147,7 +148,7 @@ public sealed class JwtTokenBuilder
     /// <param name="type">claim type</param>
     /// <param name="value">value for the claim</param>
     /// <returns></returns>
-    public JwtTokenBuilder AddClaim(string type, string value)
+    public IJwtTokenBuilder AddClaim(string type, string value)
     {
         if (value != null && type != null)
         {
@@ -161,7 +162,7 @@ public sealed class JwtTokenBuilder
     /// </summary>
     /// <param name="claimList">list of claim types and its corresponding values</param>
     /// <returns></returns>
-    public JwtTokenBuilder AddClaims(Dictionary<string, string> claimList)
+    public IJwtTokenBuilder AddClaims(Dictionary<string, string> claimList)
     {
         foreach (var claim in claimList)
         {
