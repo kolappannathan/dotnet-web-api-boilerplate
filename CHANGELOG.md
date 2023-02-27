@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Added
+ - CORS settings
+
 ### Changed
  - Updated .NET version to 7
  - Using Serilog.AspNetCore for logging instead of serilog extensions as recommended by Serilog

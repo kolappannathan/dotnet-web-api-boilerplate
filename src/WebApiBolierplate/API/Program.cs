@@ -116,6 +116,13 @@ else
     app.UseHsts();
 }
 
+app.UseCors(options =>
+    options
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .WithOrigins(new[] { "https://localhost:7030/" })
+);
+
 app.UseHttpsRedirection();
 
 app.UseSerilogRequestLogging();
