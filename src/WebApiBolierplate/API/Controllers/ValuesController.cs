@@ -1,4 +1,4 @@
-﻿using API.Operations;
+﻿using API.Operations.Interfaces;
 using Core.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +9,9 @@ namespace API.Controllers;
 [ApiController]
 public class ValuesController : CustomBaseController
 {
-    private readonly ValueLib _valueLib;
+    private readonly IValueLib _valueLib;
 
-    public ValuesController(ValueLib valueLib)
+    public ValuesController(IValueLib valueLib)
     {
         _valueLib = valueLib;
     }

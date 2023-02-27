@@ -1,6 +1,8 @@
-﻿namespace API.Operations;
+﻿using API.Operations.Interfaces;
 
-public sealed class ValueLib : Base
+namespace API.Operations;
+
+public sealed class ValueLib : Base, IValueLib
 {
     private string[] values = { "Jon Snow", "Rob Stark", "Sansa Stark", "Arya Stark", "Bran Stark", "Rickon Stark" };
 

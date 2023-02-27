@@ -1,8 +1,8 @@
 ﻿using API.Helpers;
-using API.Operations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using API.Models;
+using API.Operations.Interfaces;
 
 namespace API.Controllers;
 
@@ -10,10 +10,10 @@ namespace API.Controllers;
 [ApiController]
 public class LoginController : CustomBaseController
 {
-    private readonly UserLib _userLib;
+    private readonly IUserLib _userLib;
     private readonly JWTHelper _jwtHelper;
 
-    public LoginController(UserLib userLib, JWTHelper jwtHelper)
+    public LoginController(IUserLib userLib, JWTHelper jwtHelper)
     {
         _userLib = userLib;
         _jwtHelper = jwtHelper;

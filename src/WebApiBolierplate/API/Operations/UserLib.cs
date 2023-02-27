@@ -1,16 +1,16 @@
 ﻿using Core.Constants;
 using API.Models;
-using System;
+using API.Operations.Interfaces;
 
 namespace API.Operations;
 
-public sealed class UserLib : Base
+public sealed class UserLib : Base, IUserLib
 {
     private const string BrandonStark = "Brandon Stark";
     private const string EddardStark = "Eddard Stark";
     private readonly ILogger _logger;
 
-    public UserLib(IConfiguration configuration, ILogger<UserLib> logger): base(configuration)
+    public UserLib(IConfiguration configuration, ILogger<IUserLib> logger): base(configuration)
     {
         _logger = logger;
     }
@@ -19,6 +19,8 @@ public sealed class UserLib : Base
     {
         try
         {
+            _logger.LogInformation("Login validation started");
+
             if (login.UserName == BrandonStark && login.Password == "My direwolf is Summer")
             {
                 return 1;

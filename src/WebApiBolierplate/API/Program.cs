@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using Serilog;
 using Serilog.Events;
+using API.Operations.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,8 +35,8 @@ builder.Services.AddControllers();
 
 #region operations
 
-builder.Services.AddScoped<UserLib>();
-builder.Services.AddScoped<ValueLib>();
+builder.Services.AddScoped<IUserLib, UserLib>();
+builder.Services.AddScoped<IValueLib, ValueLib>();
 
 #endregion operations
 
