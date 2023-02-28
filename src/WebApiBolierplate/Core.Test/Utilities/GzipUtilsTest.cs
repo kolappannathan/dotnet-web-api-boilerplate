@@ -8,19 +8,19 @@ namespace Core.Test.Utilities;
 [TestClass]
 public sealed class GzipUtilsTest
 {
-    private readonly IGzipUtils gzipUtils;
-    private const string sampleString = "This is a sample string";
+    private readonly IGzipUtils _gzipUtils;
+    private const string _sampleString = "This is a sample string";
 
     public GzipUtilsTest()
     {
-        gzipUtils = new GzipUtils();
+        _gzipUtils = new GzipUtils();
     }
 
     [TestMethod]
     public void TestGZip()
     {
-        var compressedString = gzipUtils.CompressToString(sampleString, Encoding.UTF8);
-        var decompressedString = gzipUtils.DecompressString(compressedString, Encoding.UTF8);
-        Assert.AreEqual(sampleString, decompressedString);
+        var compressedString = _gzipUtils.CompressToString(_sampleString, Encoding.UTF8);
+        var decompressedString = _gzipUtils.DecompressString(compressedString, Encoding.UTF8);
+        Assert.AreEqual(_sampleString, decompressedString);
     }
 }

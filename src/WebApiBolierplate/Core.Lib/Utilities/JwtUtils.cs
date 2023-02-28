@@ -13,9 +13,9 @@ public sealed class JwtUtils: IJwtUtils
 {
     #region [Declarations]
 
-    private SecurityKey securityKey = null;
-    private int expiryInDays = 0;
-    private List<Claim> claims = new();
+    private SecurityKey _securityKey = null;
+    private int _expiryInDays = 0;
+    private List<Claim> _claims = new();
 
     #endregion [Declarations]
 
@@ -33,9 +33,9 @@ public sealed class JwtUtils: IJwtUtils
     /// </summary>
     private void EnsureArguments()
     {
-        ArgumentNullException.ThrowIfNull(securityKey);
+        ArgumentNullException.ThrowIfNull(_securityKey);
 
-        if (expiryInDays == 0)
+        if (_expiryInDays == 0)
         {
             throw new ArgumentNullException("Expiry Time");
         }
@@ -50,13 +50,13 @@ public sealed class JwtUtils: IJwtUtils
         AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("D"));
 
         var currentUnixTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-        claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, currentUnixTime, ClaimValueTypes.Integer64));
-        claims.Add(new Claim(JwtRegisteredClaimNames.Iat, currentUnixTime, ClaimValueTypes.Integer64));
+        _claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, currentUnixTime, ClaimValueTypes.Integer64));
+        _claims.Add(new Claim(JwtRegisteredClaimNames.Iat, currentUnixTime, ClaimValueTypes.Integer64));
 
         return new JwtSecurityToken(
-                          claims: claims,
-                          expires: DateTime.UtcNow.AddDays(expiryInDays),
-                          signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
+                          claims: _claims,
+                          expires: DateTime.UtcNow.AddDays(_expiryInDays),
+                          signingCredentials: new SigningCredentials(_securityKey, SecurityAlgorithms.HmacSha256));
     }
 
     #endregion [Private Functions]
@@ -65,13 +65,13 @@ public sealed class JwtUtils: IJwtUtils
 
     public IJwtUtils AddSecurityKey(string securityKey)
     {
-        this.securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
+        this._securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
         return this;
     }
 
     public IJwtUtils AddExpiry(int expiryInDays)
     {
-        this.expiryInDays = expiryInDays;
+        this._expiryInDays = expiryInDays;
         return this;
     }
 
@@ -130,7 +130,7 @@ public sealed class JwtUtils: IJwtUtils
     {
         if (value != null && type != null)
         {
-            claims.Add(new Claim(type, value));
+            _claims.Add(new Claim(type, value));
         }
         return this;
     }
@@ -141,7 +141,7 @@ public sealed class JwtUtils: IJwtUtils
         {
             if (claim.Value != null && claim.Key != null)
             {
-                claims.Add(new Claim(claim.Key, claim.Value));
+                _claims.Add(new Claim(claim.Key, claim.Value));
             }
         }
         return this;

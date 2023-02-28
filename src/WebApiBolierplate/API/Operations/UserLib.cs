@@ -6,7 +6,7 @@ namespace API.Operations;
 
 public sealed class UserLib : IUserLib
 {
-    private const string EddardStark = "Eddard Stark";
+    private const string _eddardStark = "Eddard Stark";
     private readonly ILogger _logger;
 
     public UserLib(IConfiguration configuration, ILogger<IUserLib> logger)
@@ -23,7 +23,7 @@ public sealed class UserLib : IUserLib
                 Name = userName,
                 Email = $"{userName}@gameofthrones.com",
                 CompanyId = "GOT",
-                Roles = userName == EddardStark ? Roles.Admin : Roles.User,
+                Roles = userName == _eddardStark ? Roles.Admin : Roles.User,
                 Id = Guid.NewGuid().ToString("D")
             };
             return user;

@@ -9,9 +9,9 @@ public sealed class RandomUtils : IRandomUtils
 {
     #region [Declarations]
 
-    private string Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private string Lowercase = "abcdefghijklmnopqrstuvwxyz";
-    private string Number = "0123456789";
+    private string _uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private string _lowercase = "abcdefghijklmnopqrstuvwxyz";
+    private string _numbers = "0123456789";
 
     #endregion Declarations
 
@@ -28,25 +28,25 @@ public sealed class RandomUtils : IRandomUtils
         switch (charSet)
         {
             case CharSet.Alphabets:
-                s1 = Uppercase + Lowercase;
+                s1 = _uppercase + _lowercase;
                 break;
             case CharSet.Numbers:
-                s1 = Number;
+                s1 = _numbers;
                 break;
             case CharSet.AlphaNumeric:
-                s1 = Uppercase + Lowercase + Number;
+                s1 = _uppercase + _lowercase + _numbers;
                 break;
             case CharSet.UppercaseOnly:
-                s1 = Uppercase;
+                s1 = _uppercase;
                 break;
             case CharSet.LowercaseOnly:
-                s1 = Lowercase;
+                s1 = _lowercase;
                 break;
             case CharSet.UppercaseWithNumbers:
-                s1 = Uppercase + Number;
+                s1 = _uppercase + _numbers;
                 break;
             case CharSet.LowercaseWithNumbers:
-                s1 = Lowercase + Number;
+                s1 = _lowercase + _numbers;
                 break;
         }
         return s1.ToCharArray();

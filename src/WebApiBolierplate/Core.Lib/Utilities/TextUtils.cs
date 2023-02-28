@@ -6,8 +6,8 @@ public sealed class TextUtils: ITextUtils
 {
     #region [Private variables]
 
-    private readonly string lineSeparator = ((char)0x2028).ToString();
-    private readonly string paragraphSeparator = ((char)0x2029).ToString();
+    private readonly string _lineSeparator = ((char)0x2028).ToString();
+    private readonly string _paragraphSeparator = ((char)0x2029).ToString();
 
     #endregion [Private variables]
 
@@ -23,8 +23,8 @@ public sealed class TextUtils: ITextUtils
         return text.Replace("\r\n", string.Empty)
                     .Replace("\n", string.Empty)
                     .Replace("\r", string.Empty)
-                    .Replace(lineSeparator, string.Empty)
-                    .Replace(paragraphSeparator, string.Empty);
+                    .Replace(_lineSeparator, string.Empty)
+                    .Replace(_paragraphSeparator, string.Empty);
     }
 
     #endregion [Public functions]

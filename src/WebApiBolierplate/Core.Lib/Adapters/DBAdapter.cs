@@ -8,7 +8,7 @@ public sealed class DbAdapter
 {
     #region [Declarations]
 
-    private readonly SqlConnection connection;
+    private readonly SqlConnection _sqlConnection;
 
     #endregion [Declarations]
 
@@ -22,8 +22,8 @@ public sealed class DbAdapter
     {
         ArgumentException.ThrowIfNullOrEmpty(connectionString);
 
-        connection = new SqlConnection(connectionString);
-        connection.Open();
+        _sqlConnection = new SqlConnection(connectionString);
+        _sqlConnection.Open();
     }
 
     /// <summary>
@@ -31,14 +31,14 @@ public sealed class DbAdapter
     /// </summary>
     ~DbAdapter()
     {
-        if (connection != null)
+        if (_sqlConnection != null)
         {
             // Don't close the connection if the conection is already closed or broken
-            if (connection.State != ConnectionState.Closed || connection.State != ConnectionState.Broken)
+            if (_sqlConnection.State != ConnectionState.Closed || _sqlConnection.State != ConnectionState.Broken)
             {
                 try
                 {
-                    connection.Close();
+                    _sqlConnection.Close();
                 }
                 catch
                 {
@@ -57,12 +57,12 @@ public sealed class DbAdapter
     public SqlCommand GetStoredProcedure(string name)
     {
         ArgumentException.ThrowIfNullOrEmpty(name);
-        if (connection.State != ConnectionState.Open)
+        if (_sqlConnection.State != ConnectionState.Open)
         {
-            connection.Open();
+            _sqlConnection.Open();
         }
 
-        var dbCommand = new SqlCommand(name, connection)
+        var dbCommand = new SqlCommand(name, _sqlConnection)
         {
             CommandType = CommandType.StoredProcedure
         };

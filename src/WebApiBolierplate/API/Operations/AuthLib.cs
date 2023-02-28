@@ -8,8 +8,8 @@ public class AuthLib : IAuthLib
 {
     #region [Declarations]
 
-    private const string BrandonStark = "Brandon Stark";
-    private const string EddardStark = "Eddard Stark";
+    private const string _brandonStark = "Brandon Stark";
+    private const string _eddardStark = "Eddard Stark";
     private readonly IConfiguration _configuration;
     private IJwtUtils _jwtTokenBuilder;
     private readonly ILogger _logger;
@@ -29,19 +29,19 @@ public class AuthLib : IAuthLib
         {
             _logger.LogInformation("Login validation started");
 
-            if (login.UserName == BrandonStark && login.Password == "My direwolf is Summer")
+            if (login.UserName == _brandonStark && login.Password == "My direwolf is Summer")
             {
                 return 1;
             }
-            else if (login.UserName == EddardStark && login.Password == "I'm the lord of WinterFell")
+            else if (login.UserName == _eddardStark && login.Password == "I'm the lord of WinterFell")
             {
                 return 1;
             }
-            else if (login.UserName == BrandonStark && login.Password == "My direwolf is Lady")
+            else if (login.UserName == _brandonStark && login.Password == "My direwolf is Lady")
             {
                 return -103; // invalid credential
             }
-            else if (login.UserName == BrandonStark && login.Password == "Eddard's elder brother")
+            else if (login.UserName == _brandonStark && login.Password == "Eddard's elder brother")
             {
                 return -104; // account deleted
             }
