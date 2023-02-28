@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
  - Helper functions now use dependency injection
  - Made all non-derived classes sealed for security and performance
  - Optimizations to JWT helpers, moved JWT token builder in core project
+ - Private variables now start with underscore
 
 ### Removed
  - Base class for operations is removed
