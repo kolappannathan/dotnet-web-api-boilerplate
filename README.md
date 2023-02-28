@@ -28,7 +28,7 @@ This API boilerplate includes the following:
  - In appsettings.json
     1. Database connection string.
     2. JWT secret, issuer and audience
- - Update the login controller & user lib.
+ - Update the login controller, user lib & auth lib.
  - In program.cs
    1. Update CORS websites list
 

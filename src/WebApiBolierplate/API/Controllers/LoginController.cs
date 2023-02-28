@@ -11,13 +11,13 @@ namespace API.Controllers;
 public class LoginController : CustomBaseController
 {
     private readonly IUserLib _userLib;
-    private readonly IJWTHelper _jwtHelper;
+    private readonly IAuthLib _authLib;
     private readonly IWebAPIHelper _webAPIHelper;
 
-    public LoginController(IUserLib userLib, IJWTHelper jwtHelper, IWebAPIHelper webAPIHelper)
+    public LoginController(IUserLib userLib, IAuthLib authLib, IWebAPIHelper webAPIHelper)
     {
         _userLib = userLib;
-        _jwtHelper = jwtHelper;
+        _authLib = authLib;
         _webAPIHelper = webAPIHelper;
     }
 
@@ -25,11 +25,11 @@ public class LoginController : CustomBaseController
     [HttpPost]
     public IActionResult Login([FromBody]LoginDTO loginDTO)
     {
-        var result = _userLib.ValidateLogin(loginDTO);
+        var result = _authLib.ValidateLogin(loginDTO);
         if (result == 1)
         {
             var user = _userLib.GetUser(loginDTO.UserName);
-            var token = _jwtHelper.GenerateToken(userId: user.Id,
+            var token = _authLib.GenerateToken(userId: user.Id,
                                                  userRole: user.Roles,
                                                  userName: user.Name,
                                                  companyId: user.CompanyId);

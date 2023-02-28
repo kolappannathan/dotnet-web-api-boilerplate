@@ -1,7 +1,11 @@
-﻿namespace API.Helpers.Interfaces;
+﻿using API.Models;
 
-public interface IJWTHelper
+namespace API.Operations.Interfaces;
+
+public interface IAuthLib
 {
+    public int ValidateLogin(LoginDTO login);
+
     /// <summary>
     /// Generates a signed token for the given user Id and role
     /// </summary>

@@ -1,13 +1,15 @@
-﻿using API.Helpers.Interfaces;
+﻿using Core.Lib.Utilities.Interfaces;
 using Core.Constants;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System;
 
-namespace API.Helpers;
+namespace Core.Lib.Utilities;
 
-public sealed class JwtTokenBuilder: IJwtTokenBuilder
+public sealed class JwtUtils: IJwtUtils
 {
     #region [Declarations]
 
@@ -61,13 +63,13 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Adding values]
 
-    public IJwtTokenBuilder AddSecurityKey(string securityKey)
+    public IJwtUtils AddSecurityKey(string securityKey)
     {
         this.securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
         return this;
     }
 
-    public IJwtTokenBuilder AddExpiry(int expiryInDays)
+    public IJwtUtils AddExpiry(int expiryInDays)
     {
         this.expiryInDays = expiryInDays;
         return this;
@@ -77,32 +79,32 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Adding Claims]
 
-    public IJwtTokenBuilder AddIssuer(string issuer)
+    public IJwtUtils AddIssuer(string issuer)
     {
         return AddClaim(JwtRegisteredClaimNames.Iss, issuer);
     }
 
-    public IJwtTokenBuilder AddAudience(string audience)
+    public IJwtUtils AddAudience(string audience)
     {
         return AddClaim(JwtRegisteredClaimNames.Aud, audience);
     }
 
-    public IJwtTokenBuilder AddSubject(string subject)
+    public IJwtUtils AddSubject(string subject)
     {
         return AddClaim(JwtRegisteredClaimNames.Sub, subject);
     }
 
-    public IJwtTokenBuilder AddName(string username)
+    public IJwtUtils AddName(string username)
     {
         return AddClaim(JwtRegisteredClaimNames.NameId, username);
     }
 
-    public IJwtTokenBuilder AddEmail(string email)
+    public IJwtUtils AddEmail(string email)
     {
         return AddClaim(JwtRegisteredClaimNames.Email, email);
     }
 
-    public IJwtTokenBuilder AddRole(string value)
+    public IJwtUtils AddRole(string value)
     {
         // Changing this to JwtRegisteredClaimNames will break role based authentication
         return AddClaim(ClaimTypes.Role, value);
@@ -110,12 +112,12 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Custom Claims]
 
-    public IJwtTokenBuilder AddUserId(string value)
+    public IJwtUtils AddUserId(string value)
     {
         return AddClaim(CustomClaims.UserIdentifier, value);
     }
 
-    public IJwtTokenBuilder AddCompanyId(string value)
+    public IJwtUtils AddCompanyId(string value)
     {
         return AddClaim(CustomClaims.CompanyIdentifier, value);
     }
@@ -124,7 +126,7 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     #region [Generic Claims]
 
-    public IJwtTokenBuilder AddClaim(string type, string value)
+    public IJwtUtils AddClaim(string type, string value)
     {
         if (value != null && type != null)
         {
@@ -133,7 +135,7 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
         return this;
     }
 
-    public IJwtTokenBuilder AddClaims(Dictionary<string, string> claimList)
+    public IJwtUtils AddClaims(Dictionary<string, string> claimList)
     {
         foreach (var claim in claimList)
         {

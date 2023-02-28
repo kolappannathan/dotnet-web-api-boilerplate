@@ -5,15 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ### Added
  - Added interfaces for library classes, helper functions
+ - New AuthLib class for checking login and generating token
 
 ### Changed
  - Helper functions now use dependency injection
  - Made all non-derived classes sealed for security and performance
- - Optimizations to JWT helpers
+ - Optimizations to JWT helpers, moved JWT token builder in core project
 
 ### Removed
  - Base class for operations is removed
  - Removed unused constants
+ - Removed JWT Helper function from API project
 
 ## [7.0.0] - 2023-02-27
 ### Added

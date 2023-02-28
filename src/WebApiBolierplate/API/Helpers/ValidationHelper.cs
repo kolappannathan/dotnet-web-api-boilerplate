@@ -5,13 +5,6 @@ namespace API.Helpers;
 
 public sealed class ValidationHelper
 {
-    private readonly WebAPIHelper webAPIHelper;
-
-    public ValidationHelper()
-    {
-        webAPIHelper = new WebAPIHelper();
-    }
-
     /// <summary>
     /// Obtains all model validation errors and combaines them into a single CSV error text
     /// </summary>
@@ -28,6 +21,6 @@ public sealed class ValidationHelper
             }
         }
         errorText = errorText[1..].Trim();
-        return webAPIHelper.CreateBadRequest(errorText);
+        return new WebAPIHelper().CreateBadRequest(errorText);
     }
 }

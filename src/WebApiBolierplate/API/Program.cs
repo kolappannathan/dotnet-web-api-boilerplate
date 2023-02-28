@@ -11,6 +11,8 @@ using Serilog.Events;
 using API.Operations.Interfaces;
 using API.Helpers.Interfaces;
 using Core.Lib.Adapters;
+using Core.Lib.Utilities.Interfaces;
+using Core.Lib.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,11 +41,11 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUserLib, UserLib>();
 builder.Services.AddScoped<IValueLib, ValueLib>();
+builder.Services.AddScoped<IAuthLib, AuthLib>();
 
 #endregion operations
 
-builder.Services.AddScoped<IJWTHelper, JWTHelper>();
-builder.Services.AddScoped<IJwtTokenBuilder, JwtTokenBuilder>();
+builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IWebAPIHelper, WebAPIHelper>();
 
 #endregion Dependency Injection
