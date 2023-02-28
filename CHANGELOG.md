@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
  - Helper functions now use dependency injection
  - Made all non-derived classes sealed for security and performance
+ - Optimizations to JWT helpers
 
 ### Removed
  - Base class for operations is removed
