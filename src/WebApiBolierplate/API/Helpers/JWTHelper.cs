@@ -1,7 +1,4 @@
 ﻿using API.Helpers.Interfaces;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
 
 namespace API.Helpers;
 
@@ -26,19 +23,17 @@ public sealed class JWTHelper : IJWTHelper
     {
         ArgumentException.ThrowIfNullOrEmpty(userId);
 
-        SecurityKey _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
-
-        var token = _jwtTokenBuilder
-            .AddSecurityKey(_securityKey)
+        _jwtTokenBuilder
+            .AddSecurityKey(_configuration["AppConfig:JWT:Key"])
             .AddIssuer(_configuration["AppConfig:JWT:Issuer"])
             .AddAudience(_configuration["AppConfig:JWT:Audience"])
             .AddExpiry(Convert.ToInt32(_configuration["AppConfig:JWT:DaysValid"]))
             .AddRole(userRole)
             .AddName(userName)
             .AddUserId(userId)
-            .AddCompanyId(companyId)
-            .Build();
-        return new JwtSecurityTokenHandler().WriteToken(token);
+            .AddCompanyId(companyId);
+
+        return _jwtTokenBuilder.GenerateToken();
     }
 
     #endregion [Token Generation]

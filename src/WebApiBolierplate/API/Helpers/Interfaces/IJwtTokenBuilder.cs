@@ -5,14 +5,14 @@ namespace API.Helpers.Interfaces;
 
 public interface IJwtTokenBuilder
 {
-    public JwtSecurityToken Build();
+    public string GenerateToken();
 
     #region [Adding values]
 
     /// <summary>
     /// Adds the security key used for signing JWT token
     /// </summary>
-    public IJwtTokenBuilder AddSecurityKey(SecurityKey securityKey);
+    public IJwtTokenBuilder AddSecurityKey(string securityKey);
 
     /// <summary>
     /// Adds expiry time in days to JWT token

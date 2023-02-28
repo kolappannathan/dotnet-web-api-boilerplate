@@ -1,10 +1,9 @@
 ﻿using API.Helpers.Interfaces;
 using Core.Constants;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace API.Helpers;
 
@@ -14,26 +13,15 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
 
     private SecurityKey securityKey = null;
     private int expiryInDays = 0;
-    private List<Claim> claims = new List<Claim>();
+    private List<Claim> claims = new();
 
     #endregion [Declarations]
 
-    public JwtSecurityToken Build()
+    public string GenerateToken()
     {
         EnsureArguments();
-
-        AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("D"));
-
-        var currentUnixTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-        claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, currentUnixTime, ClaimValueTypes.Integer64));
-        claims.Add(new Claim(JwtRegisteredClaimNames.Iat, currentUnixTime, ClaimValueTypes.Integer64));
-
-        var token = new JwtSecurityToken(
-                          claims: claims,
-                          expires: DateTime.UtcNow.AddDays(expiryInDays),
-                          signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
-
-        return token;
+        var token = BuildJwtSecurityToken();
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
     #region [Private Functions]
@@ -51,13 +39,31 @@ public sealed class JwtTokenBuilder: IJwtTokenBuilder
         }
     }
 
+    /// <summary>
+    /// Adds the final claim for issued at, jwt id and builds JwtSecurityToken object
+    /// </summary>
+    /// <returns></returns>
+    private JwtSecurityToken BuildJwtSecurityToken()
+    {
+        AddClaim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("D"));
+
+        var currentUnixTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+        claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, currentUnixTime, ClaimValueTypes.Integer64));
+        claims.Add(new Claim(JwtRegisteredClaimNames.Iat, currentUnixTime, ClaimValueTypes.Integer64));
+
+        return new JwtSecurityToken(
+                          claims: claims,
+                          expires: DateTime.UtcNow.AddDays(expiryInDays),
+                          signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
+    }
+
     #endregion [Private Functions]
 
     #region [Adding values]
 
-    public IJwtTokenBuilder AddSecurityKey(SecurityKey securityKey)
+    public IJwtTokenBuilder AddSecurityKey(string securityKey)
     {
-        this.securityKey = securityKey;
+        this.securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
         return this;
     }
 
