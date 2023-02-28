@@ -4,7 +4,7 @@ using static Core.Constants.Enums;
 
 namespace Core.Lib.Utilities;
 
-public class RandomUtils
+public sealed class RandomUtils
 {
     #region [Declarations]
 

@@ -1,6 +1,6 @@
 ﻿namespace Core.Lib.Utilities;
 
-public class TextUtils
+public sealed class TextUtils
 {
     #region [Private variables]
 

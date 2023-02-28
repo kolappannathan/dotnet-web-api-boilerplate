@@ -2,7 +2,7 @@
 
 namespace Core.Lib.Utilities;
 
-public class BcryptUtils
+public sealed class BcryptUtils
 {
     private const string AllPrametersMandatory = "All the parameters are mandatory";
 

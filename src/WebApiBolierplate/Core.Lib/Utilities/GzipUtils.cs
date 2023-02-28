@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Lib.Utilities;
 
-public class GzipUtils
+public sealed class GzipUtils
 {
     public GzipUtils()
     {

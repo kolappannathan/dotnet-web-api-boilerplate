@@ -2,7 +2,7 @@
 
 namespace Core.Lib.Utilities;
 
-public class DateUtils
+public sealed class DateUtils
 {
     public DateUtils()
     {
