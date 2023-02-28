@@ -29,7 +29,10 @@ public class LoginController : CustomBaseController
         if (result == 1)
         {
             var user = _userLib.GetUser(loginDTO.UserName);
-            var token = _jwtHelper.GenerateToken(user.Id, user.Roles, user.Name, user.CompanyId);
+            var token = _jwtHelper.GenerateToken(userId: user.Id,
+                                                 userRole: user.Roles,
+                                                 userName: user.Name,
+                                                 companyId: user.CompanyId);
             return _webAPIHelper.CreateResponse(token);
         }
         return _webAPIHelper.CreateResponse(result);

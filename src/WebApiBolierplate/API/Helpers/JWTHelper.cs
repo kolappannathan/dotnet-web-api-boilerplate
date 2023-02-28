@@ -9,17 +9,15 @@ public sealed class JWTHelper : IJWTHelper
 {
     #region [Declarations]
 
-    private readonly SecurityKey _securityKey;
     private readonly IConfiguration _configuration;
-    private IJwtTokenBuilder jwtTokenBuilder;
+    private IJwtTokenBuilder _jwtTokenBuilder;
 
     #endregion [Declarations]
 
     public JWTHelper(IConfiguration configuration, IJwtTokenBuilder jwtTokenBuilder)
     {
         _configuration = configuration;
-        _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
-        this.jwtTokenBuilder = jwtTokenBuilder;
+        _jwtTokenBuilder = jwtTokenBuilder;
     }
 
     #region [Token Generation]
@@ -28,7 +26,9 @@ public sealed class JWTHelper : IJWTHelper
     {
         ArgumentException.ThrowIfNullOrEmpty(userId);
 
-        var token = jwtTokenBuilder
+        SecurityKey _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppConfig:JWT:Key"]));
+
+        var token = _jwtTokenBuilder
             .AddSecurityKey(_securityKey)
             .AddIssuer(_configuration["AppConfig:JWT:Issuer"])
             .AddAudience(_configuration["AppConfig:JWT:Audience"])
