@@ -3,11 +3,11 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace Core.Lib.Compression;
+namespace Core.Lib.Utilities;
 
-public class GzipHelper
+public class GzipUtils
 {
-    public GzipHelper()
+    public GzipUtils()
     {
 
     }

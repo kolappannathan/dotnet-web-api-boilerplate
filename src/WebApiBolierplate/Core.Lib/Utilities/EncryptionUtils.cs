@@ -4,15 +4,15 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Core.Lib.Security;
+namespace Core.Lib.Utilities;
 
 /// <summary>
 /// This class offer simple encryption and decryption
 /// Ref: https://stackoverflow.com/a/27484425/5407188
 /// </summary>
-public class EncryptionHelper
+public class EncryptionUtils
 {
-    public EncryptionHelper()
+    public EncryptionUtils()
     {
     }
 

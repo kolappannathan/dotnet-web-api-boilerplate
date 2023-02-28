@@ -2,9 +2,9 @@
 
 namespace Core.Lib.Utilities;
 
-public class DateLib
+public class DateUtils
 {
-    public DateLib()
+    public DateUtils()
     {
 
     }

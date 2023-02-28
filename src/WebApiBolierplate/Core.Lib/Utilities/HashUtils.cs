@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Core.Lib.Security;
+namespace Core.Lib.Utilities;
 
-public class HashHelper
+public class BcryptUtils
 {
     private const string AllPrametersMandatory = "All the parameters are mandatory";
 
-    public HashHelper()
+    public BcryptUtils()
     {
 
     }

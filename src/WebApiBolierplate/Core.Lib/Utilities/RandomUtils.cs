@@ -4,7 +4,7 @@ using static Core.Constants.Enums;
 
 namespace Core.Lib.Utilities;
 
-public class RandoLib
+public class RandomUtils
 {
     #region [Declarations]
 
@@ -14,7 +14,7 @@ public class RandoLib
 
     #endregion Declarations
 
-    public RandoLib()
+    public RandomUtils()
     {
 
     }

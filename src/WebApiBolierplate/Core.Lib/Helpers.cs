@@ -1,6 +1,4 @@
-﻿using Core.Lib.Compression;
-using Core.Lib.Security;
-using Core.Lib.Utilities;
+﻿using Core.Lib.Utilities;
 
 namespace Core.Lib;
 
@@ -11,23 +9,23 @@ public class Helpers
 {
     #region [Declarations]
 
-    public HashHelper Hash;
-    public RandoLib Rando;
-    public GzipHelper GZip;
-    public EncryptionHelper Encryption;
+    public HashUtils Hash;
+    public RandomUtils Rando;
+    public GzipUtils GZip;
+    public EncryptionUtils Encryption;
     public TextUtils TextUtilities;
-    public DateLib DateLib;
+    public DateUtils DateLib;
 
     #endregion [Declarations]
 
     public Helpers()
     {
-        Hash = new HashHelper();
-        Encryption = new EncryptionHelper();
-        Rando = new RandoLib();
-        GZip = new GzipHelper();
+        Hash = new HashUtils();
+        Encryption = new EncryptionUtils();
+        Rando = new RandomUtils();
+        GZip = new GzipUtils();
         TextUtilities = new TextUtils();
-        DateLib = new DateLib();
+        DateLib = new DateUtils();
     }
 
 }
