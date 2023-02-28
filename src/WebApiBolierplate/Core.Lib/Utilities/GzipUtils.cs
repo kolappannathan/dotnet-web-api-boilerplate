@@ -1,23 +1,13 @@
-﻿using System;
+﻿using Core.Lib.Utilities.Interfaces;
+using System;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
 
 namespace Core.Lib.Utilities;
 
-public sealed class GzipUtils
+public sealed class GzipUtils : IGzipUtils
 {
-    public GzipUtils()
-    {
-
-    }
-
-    /// <summary>
-    /// Compress the given string into a gzip string
-    /// </summary>
-    /// <param name="s">Uncompressed string</param>
-    /// <param name="encoding">Encoding of the string</param>
-    /// <returns></returns>
     public string CompressToString(string s, Encoding encoding)
     {
         var bytes = encoding.GetBytes(s);
@@ -32,12 +22,6 @@ public sealed class GzipUtils
         }
     }
 
-    /// <summary>
-    /// Decompress a gzip response.
-    /// </summary>
-    /// <param name="s">Compressed string</param>
-    /// <param name="encoding">Encoding of the string</param>
-    /// <returns></returns>
     public string DecompressString(string s, Encoding encoding)
     {
         var bytes = Convert.FromBase64String(s);

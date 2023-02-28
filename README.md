@@ -11,8 +11,8 @@ A boilerplate / template for a WebAPI server based on ASP.Net.
 This API boilerplate includes the following:
 
  - Role based JWT authentication.
- - Web API Helpers which standardizes responses, maps errors, etc...
- - An implementation of CSV Error logger.
+ - Web API Helper which standardizes responses, maps errors, etc...
+ - An implementation of Serilog for logging.
  - A core library with the following
    - Custom data model attributes
    - Database adapter
@@ -28,9 +28,7 @@ This API boilerplate includes the following:
  - In appsettings.json
     1. Database connection string.
     2. JWT secret, issuer and audience
- - In Base class in Operations, uncomment the line that establishes db connection
  - Update the login controller & user lib.
- - This project has a default editorconfig file. If needed customize it.
  - In program.cs
    1. Update CORS websites list
 

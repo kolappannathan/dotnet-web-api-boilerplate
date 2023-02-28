@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Core.Lib.Utilities.Interfaces;
+using System;
 using System.Security.Cryptography;
 using static Core.Constants.Enums;
 
 namespace Core.Lib.Utilities;
 
-public sealed class RandomUtils
+public sealed class RandomUtils : IRandomUtils
 {
     #region [Declarations]
 
@@ -13,11 +14,6 @@ public sealed class RandomUtils
     private string Number = "0123456789";
 
     #endregion Declarations
-
-    public RandomUtils()
-    {
-
-    }
 
     #region [Private Functions]
 
@@ -60,13 +56,6 @@ public sealed class RandomUtils
 
     #region [Public Functions]
 
-    /// <summary>
-    /// Generates a random string using cryptography of the specified length
-    /// </summary>
-    /// <param name="length">Length of the random string</param>
-    /// <param name="charSet">The <see cref="CharSet"/> enum variable describing which chracters to be used</param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
     public string GenRandomChar(int length, CharSet charSet)
     {
         if (length <= 0)
@@ -86,15 +75,6 @@ public sealed class RandomUtils
         return finalString;
     }
 
-
-    /// <summary>
-    /// Generates a random number using cryptography within the specified range
-    /// Ref: https://stackoverflow.com/a/38669162/5407188
-    /// </summary>
-    /// <param name="min">minimum value for the random number</param>
-    /// <param name="max">maximum value for the random number</param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
     public int GenRandomNumber(int min, int max)
     {
         if (min >= max)

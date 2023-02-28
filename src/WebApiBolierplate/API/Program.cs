@@ -10,6 +10,7 @@ using Serilog;
 using Serilog.Events;
 using API.Operations.Interfaces;
 using API.Helpers.Interfaces;
+using Core.Lib.Adapters;
 
 var builder = WebApplication.CreateBuilder(args);
 

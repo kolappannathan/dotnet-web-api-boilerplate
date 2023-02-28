@@ -4,13 +4,13 @@ using API.Operations.Interfaces;
 
 namespace API.Operations;
 
-public sealed class UserLib : Base, IUserLib
+public sealed class UserLib : IUserLib
 {
     private const string BrandonStark = "Brandon Stark";
     private const string EddardStark = "Eddard Stark";
     private readonly ILogger _logger;
 
-    public UserLib(IConfiguration configuration, ILogger<IUserLib> logger): base(configuration)
+    public UserLib(IConfiguration configuration, ILogger<IUserLib> logger)
     {
         _logger = logger;
     }

@@ -1,4 +1,5 @@
 ﻿using Core.Constants;
+using Core.Lib.Utilities.Interfaces;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -10,12 +11,9 @@ namespace Core.Lib.Utilities;
 /// This class offer simple encryption and decryption
 /// Ref: https://stackoverflow.com/a/27484425/5407188
 /// </summary>
-public sealed class EncryptionUtils
+public sealed class SecurityUtils : ISecurityUtils
 {
-    public EncryptionUtils()
-    {
-    }
-
+    #region [Private Functions]
     private Aes BuildAesEncryptor(string encryptionKey)
     {
         var aesEncryptor = Aes.Create();
@@ -29,9 +27,8 @@ public sealed class EncryptionUtils
         return aesEncryptor;
     }
 
-    /// <summary>
-    /// Encrypts the given string and return ciphertext
-    /// </summary>
+    #endregion [Private Functions]
+
     public string EncryptString(string clearText, string encryptionKey)
     {
         var aesEncryptor = BuildAesEncryptor(encryptionKey);
@@ -47,9 +44,6 @@ public sealed class EncryptionUtils
         }
     }
 
-    /// <summary>
-    /// Decrypts the given string and returns plain text
-    /// </summary>
     public string DecryptString(string cipherText, string encryptionKey)
     {
         var aesEncryptor = BuildAesEncryptor(encryptionKey);
@@ -64,5 +58,22 @@ public sealed class EncryptionUtils
             var clearText = Encoding.Unicode.GetString(ms.ToArray());
             return clearText;
         }
+    }
+
+    public string HashBCrypt(string plainText)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(plainText);
+
+        var hash = BCrypt.Net.BCrypt.HashPassword(plainText, workFactor: 10);
+        return hash;
+    }
+
+    public bool VerifyBCrypt(string plainText, string hash)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(plainText);
+        ArgumentException.ThrowIfNullOrEmpty(hash);
+
+        var isMatch = BCrypt.Net.BCrypt.Verify(plainText, hash);
+        return isMatch;
     }
 }

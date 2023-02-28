@@ -1,6 +1,8 @@
-﻿namespace Core.Lib.Utilities;
+﻿using Core.Lib.Utilities.Interfaces;
 
-public sealed class TextUtils
+namespace Core.Lib.Utilities;
+
+public sealed class TextUtils: ITextUtils
 {
     #region [Private variables]
 
@@ -9,17 +11,8 @@ public sealed class TextUtils
 
     #endregion [Private variables]
 
-    public TextUtils()
-    {
-
-    }
-
     #region [Public functions]
 
-    /// <summary>
-    /// Removes all line endings such as Line ending, paragraph endings, etc...
-    /// Ref: https://stackoverflow.com/a/6765676/5407188
-    /// </summary>
     public string RemoveLineEndings(string text)
     {
         if (string.IsNullOrEmpty(text))

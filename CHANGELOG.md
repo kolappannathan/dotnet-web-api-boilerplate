@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
  - Helper functions now use dependency injection
  - Made all non-derived classes sealed for security and performance
 
+### Removed
+ - Base class for operations is removed
+
 ## [7.0.0] - 2023-02-27
 ### Added
  - CORS settings

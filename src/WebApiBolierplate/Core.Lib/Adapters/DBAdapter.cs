@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Core.Lib.Adapters;
 
-public class DBAdapter
+public sealed class DbAdapter
 {
     #region [Declarations]
 
@@ -18,7 +18,7 @@ public class DBAdapter
     /// <param name="connectionString">The database connection string</param>
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="ArgumentException"></exception>
-    public DBAdapter(string connectionString)
+    public DbAdapter(string connectionString)
     {
         ArgumentException.ThrowIfNullOrEmpty(connectionString);
 
@@ -29,7 +29,7 @@ public class DBAdapter
     /// <summary>
     /// Closes the connection when the object is destroyed
     /// </summary>
-    ~DBAdapter()
+    ~DbAdapter()
     {
         if (connection != null)
         {

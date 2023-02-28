@@ -2,11 +2,11 @@
 
 namespace API.Operations;
 
-public sealed class ValueLib : Base, IValueLib
+public sealed class ValueLib : IValueLib
 {
     private string[] values = { "Jon Snow", "Rob Stark", "Sansa Stark", "Arya Stark", "Bran Stark", "Rickon Stark" };
 
-    public ValueLib(IConfiguration configuration) : base(configuration)
+    public ValueLib(IConfiguration configuration)
     {
     }
 
