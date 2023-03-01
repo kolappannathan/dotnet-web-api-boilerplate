@@ -3,15 +3,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [7.1.0] - 2023-03-02
 ### Added
- - Added interfaces for library classes, helper functions
- - New AuthLib class for checking login and generating token
+ - Added interfaces for library classes, helper functions.
+ - New AuthLib class for checking login and generating token.
 
 ### Changed
- - Helper functions now use dependency injection
- - Made all non-derived classes sealed for security and performance
- - Optimizations to JWT helpers, moved JWT token builder in core project
- - Private variables now start with underscore
+ - Helper functions now use dependency injection.
+ - Made all non-derived classes sealed for security and performance.
+ - Optimizations to JWT helpers, moved JWT token builder in core project.
+ - Private variables now start with underscore.
+ - JWT config now has Hours valid instead of days.
 
 ### Removed
  - Base class for operations is removed

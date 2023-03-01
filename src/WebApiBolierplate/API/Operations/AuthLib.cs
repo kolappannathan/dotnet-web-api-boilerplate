@@ -66,7 +66,7 @@ public class AuthLib : IAuthLib
             .AddSecurityKey(_configuration["AppConfig:JWT:Key"])
             .AddIssuer(_configuration["AppConfig:JWT:Issuer"])
             .AddAudience(_configuration["AppConfig:JWT:Audience"])
-            .AddExpiry(Convert.ToInt32(_configuration["AppConfig:JWT:DaysValid"]))
+            .AddExpiry(Convert.ToInt32(_configuration["AppConfig:JWT:HoursValid"]))
             .AddRole(userRole)
             .AddName(userName)
             .AddUserId(userId)

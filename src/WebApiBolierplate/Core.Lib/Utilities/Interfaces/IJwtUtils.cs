@@ -14,9 +14,9 @@ public interface IJwtUtils
     public IJwtUtils AddSecurityKey(string securityKey);
 
     /// <summary>
-    /// Adds expiry time in days to JWT token
+    /// Adds expiry time in hours to JWT token
     /// </summary>
-    public IJwtUtils AddExpiry(int expiryInDays);
+    public IJwtUtils AddExpiry(int expiryInHours);
 
     #endregion [Adding values]
 

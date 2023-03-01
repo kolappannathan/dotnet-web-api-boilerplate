@@ -14,7 +14,7 @@ public sealed class JwtUtils: IJwtUtils
     #region [Declarations]
 
     private SecurityKey _securityKey = null;
-    private int _expiryInDays = 0;
+    private int _expiryInHours = 0;
     private List<Claim> _claims = new();
 
     #endregion [Declarations]
@@ -35,7 +35,7 @@ public sealed class JwtUtils: IJwtUtils
     {
         ArgumentNullException.ThrowIfNull(_securityKey);
 
-        if (_expiryInDays == 0)
+        if (_expiryInHours == 0)
         {
             throw new ArgumentNullException("Expiry Time");
         }
@@ -55,7 +55,7 @@ public sealed class JwtUtils: IJwtUtils
 
         return new JwtSecurityToken(
                           claims: _claims,
-                          expires: DateTime.UtcNow.AddDays(_expiryInDays),
+                          expires: DateTime.UtcNow.AddHours(_expiryInHours),
                           signingCredentials: new SigningCredentials(_securityKey, SecurityAlgorithms.HmacSha256));
     }
 
@@ -65,13 +65,13 @@ public sealed class JwtUtils: IJwtUtils
 
     public IJwtUtils AddSecurityKey(string securityKey)
     {
-        this._securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
+        _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
         return this;
     }
 
-    public IJwtUtils AddExpiry(int expiryInDays)
+    public IJwtUtils AddExpiry(int expiryInHours)
     {
-        this._expiryInDays = expiryInDays;
+        _expiryInHours = expiryInHours;
         return this;
     }
 
