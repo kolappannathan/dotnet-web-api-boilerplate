@@ -13,6 +13,7 @@ using API.Helpers.Interfaces;
 using Core.Lib.Adapters;
 using Core.Lib.Utilities.Interfaces;
 using Core.Lib.Utilities;
+using API.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,51 +36,10 @@ builder.WebHost.ConfigureKestrel(serverOptions => {
 
 builder.Services.AddControllers();
 
-#region Dependency Injection
-
-#region operations
-
-builder.Services.AddScoped<IUserLib, UserLib>();
-builder.Services.AddScoped<IValueLib, ValueLib>();
-builder.Services.AddScoped<IAuthLib, AuthLib>();
-
-#endregion operations
-
-builder.Services.AddScoped<IJwtUtils, JwtUtils>();
-builder.Services.AddScoped<IWebAPIHelper, WebAPIHelper>();
-
-#endregion Dependency Injection
-
-#region [Validation Handling]
-
-// To handle model validation errors and change it to 
-// Ref: https://stackoverflow.com/a/51159755/5407188
-
-var validationHelper = new ValidationHelper();
-
-builder.Services.Configure<ApiBehaviorOptions>(o => {
-    o.InvalidModelStateResponseFactory = actionContext => validationHelper.GetDataValidationError(actionContext.ModelState);
-});
-
-#endregion [Validation Handling]
-
-#region [Authentication]
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options => {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["AppConfig:JWT:Issuer"],
-            ValidAudience = builder.Configuration["AppConfig:JWT:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AppConfig:JWT:Key"]))
-        };
-    });
-
-#endregion [Authentication]
+builder.Services
+    .AddProjectServices()
+    .AddProjectValidations()
+    .AddProjectAuthServices(builder.Configuration);
 
 #region Swagger
 
