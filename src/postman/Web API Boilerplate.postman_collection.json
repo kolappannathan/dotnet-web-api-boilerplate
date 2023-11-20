@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "e9a4c362-4912-4385-b212-60bfcd922d54",
 		"name": "Web API Boilerplate",
-		"description": "Postman collection for [https://github.com/kolappannathan/dotnet-web-api-boilerplate](https://github.com/kolappannathan/dotnet-web-api-boilerplate)\n\n*   Set the api-url collection variable to point to the correct URL\n*   Calling the login APIs will automatically update the bearer tokens",
+		"description": "Postman collection for [https://github.com/kolappannathan/dotnet-web-api-boilerplate](https://github.com/kolappannathan/dotnet-web-api-boilerplate)\n\n- Set the api-url collection variable to point to the correct URL\n- Calling the login APIs will automatically update the bearer tokens",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11196299"
 	},
@@ -17,11 +17,11 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Successful POST request\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Your test name\", function () {\r",
+									"pm.test(\"Set auth-token\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.collectionVariables.set(\"auth-token\", jsonData.data);\r",
 									"});"
@@ -61,11 +61,11 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Successful POST request\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Your test name\", function () {\r",
+									"pm.test(\"Set auth-token\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.collectionVariables.set(\"auth-token\", jsonData.data);\r",
 									"});\r",
@@ -101,6 +101,19 @@
 				},
 				{
 					"name": "Invalid Credential",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -127,6 +140,24 @@
 				},
 				{
 					"name": "Deleted account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check deleted account prompt\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('The user account has been deleted. Contact administrator.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -153,6 +184,24 @@
 				},
 				{
 					"name": "User 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Signup prompt\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('No acount exists for the specified username. Are you trying to Signup?');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -179,6 +228,19 @@
 				},
 				{
 					"name": "Throw me an Exception",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -205,6 +267,19 @@
 				},
 				{
 					"name": "I want validation error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -259,6 +334,31 @@
 			"item": [
 				{
 					"name": "Values List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Value List\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql([\r",
+									"        \"Jon Snow\",\r",
+									"        \"Rob Stark\",\r",
+									"        \"Sansa Stark\",\r",
+									"        \"Arya Stark\",\r",
+									"        \"Bran Stark\",\r",
+									"        \"Rickon Stark\"\r",
+									"    ]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -274,6 +374,24 @@
 				},
 				{
 					"name": "Value Detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data).to.eql('Jon Snow');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -292,6 +410,19 @@
 				},
 				{
 					"name": "Value Detail NotFound",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -310,6 +441,19 @@
 				},
 				{
 					"name": "Validate Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -336,6 +480,19 @@
 				},
 				{
 					"name": "Validate Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -365,6 +522,19 @@
 				},
 				{
 					"name": "Value Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -421,7 +591,7 @@
 	"variable": [
 		{
 			"key": "api-url",
-			"value": "https://localhost:7030/api/"
+			"value": "https://localhost:44332/api/"
 		},
 		{
 			"key": "auth-token",
