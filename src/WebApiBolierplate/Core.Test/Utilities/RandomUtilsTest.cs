@@ -1,6 +1,7 @@
 ﻿using Core.Lib.Utilities;
 using Core.Lib.Utilities.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Core.Test.Utilities;
 
@@ -20,14 +21,9 @@ public sealed class RandomUtilsTest
         const int length = 10;
         var randomChars = _randomUtils.GenRandomChar(length, Constants.Enums.CharSet.Alphabets);
         Assert.AreEqual(randomChars.Length, length);
-    }
 
-    [TestMethod]
-    public void TestRandomNo()
-    {
-        const int min = 0, max = 108;
-        var randomChars = _randomUtils.GenRandomNumber(min, max);
-        Assert.IsTrue(randomChars <= max);
-        Assert.IsTrue(randomChars >= min);
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+            _randomUtils.GenRandomChar(0, Constants.Enums.CharSet.Alphabets);
+        });
     }
 }

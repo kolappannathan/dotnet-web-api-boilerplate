@@ -6,3 +6,4 @@ launchsettings.json
 editorconfig
 db
 Serilog
+Bcrypt
