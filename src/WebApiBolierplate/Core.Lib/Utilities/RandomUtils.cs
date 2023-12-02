@@ -58,10 +58,7 @@ public sealed class RandomUtils : IRandomUtils
 
     public string GenRandomChar(int length, CharSet charSet)
     {
-        if (length <= 0)
-        {
-            throw new ArgumentException("Length of the random character must be greater than zero", nameof(length));
-        }
+        ArgumentOutOfRangeException.ThrowIfLessThan(length, 1);
 
         var chars = GetChars(charSet);
         var stringChars = RandomNumberGenerator.GetString(chars, length);

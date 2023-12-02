@@ -34,11 +34,7 @@ public sealed class JwtUtils: IJwtUtils
     private void EnsureArguments()
     {
         ArgumentNullException.ThrowIfNull(_securityKey);
-
-        if (_expiryInHours == 0)
-        {
-            throw new ArgumentNullException("Expiry Time");
-        }
+        ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(_expiryInHours, 0);
     }
 
     /// <summary>
