@@ -10,6 +10,7 @@ public sealed class SecurityUtilsTest
     private readonly ISecurityUtils _securityUtils;
     private const string _sampleString = "This is a sample string";
     private const string _key = "THk5emRHRmphMjkyWlhKbWJHOTNMbU52YlM5eGRXVnpkR2x2Ym5Ndk16azJORGs1TnpZdmFYTXRh";
+    private const string _salt = "umssxcahqnumssxcahqnumssxcahqn";
 
     public SecurityUtilsTest()
     {
@@ -20,8 +21,8 @@ public sealed class SecurityUtilsTest
     public void TestHash()
     {
 
-        var hashedValue = _securityUtils.HashBCrypt(_sampleString);
-        var hashComparission = _securityUtils.VerifyBCrypt(_sampleString, hashedValue);
+        var hashedValue = _securityUtils.HashBCrypt(_sampleString, _salt);
+        var hashComparission = _securityUtils.VerifyBCrypt(_sampleString, _salt, hashedValue);
         Assert.IsTrue(hashComparission);
     }
 

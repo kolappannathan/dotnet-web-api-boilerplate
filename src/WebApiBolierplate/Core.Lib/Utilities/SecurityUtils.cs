@@ -60,20 +60,22 @@ public sealed class SecurityUtils : ISecurityUtils
         }
     }
 
-    public string HashBCrypt(string plainText)
+    public string HashBCrypt(string plainText, string salt)
     {
         ArgumentException.ThrowIfNullOrEmpty(plainText);
+        ArgumentException.ThrowIfNullOrEmpty(salt);
 
-        var hash = BCrypt.Net.BCrypt.HashPassword(plainText, workFactor: 10);
+        var hash = BCrypt.Net.BCrypt.HashPassword(plainText + salt, workFactor: 10);
         return hash;
     }
 
-    public bool VerifyBCrypt(string plainText, string hash)
+    public bool VerifyBCrypt(string plainText, string salt, string hash)
     {
         ArgumentException.ThrowIfNullOrEmpty(plainText);
+        ArgumentException.ThrowIfNullOrEmpty(salt);
         ArgumentException.ThrowIfNullOrEmpty(hash);
 
-        var isMatch = BCrypt.Net.BCrypt.Verify(plainText, hash);
+        var isMatch = BCrypt.Net.BCrypt.Verify(plainText + salt, hash);
         return isMatch;
     }
 }
