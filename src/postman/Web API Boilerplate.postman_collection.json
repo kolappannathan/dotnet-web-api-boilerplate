@@ -108,6 +108,11 @@
 								"exec": [
 									"pm.test(\"Status code is 401\", function () {\r",
 									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"The credentials are invalid.\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -235,6 +240,11 @@
 								"exec": [
 									"pm.test(\"Status code is 500\", function () {\r",
 									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Error msg\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Oops! An Internal Error Occured.\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -274,6 +284,11 @@
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"No name. No game.\");\r",
 									"});"
 								],
 								"type": "text/javascript"
