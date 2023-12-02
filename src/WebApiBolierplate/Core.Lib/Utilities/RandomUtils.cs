@@ -9,9 +9,9 @@ public sealed class RandomUtils : IRandomUtils
 {
     #region [Declarations]
 
-    private string _uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private string _lowercase = "abcdefghijklmnopqrstuvwxyz";
-    private string _numbers = "0123456789";
+    private readonly string _uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private readonly string _lowercase = "abcdefghijklmnopqrstuvwxyz";
+    private readonly string _numbers = "0123456789";
 
     #endregion Declarations
 
@@ -60,40 +60,12 @@ public sealed class RandomUtils : IRandomUtils
     {
         if (length <= 0)
         {
-            throw new ArgumentException("length", "Length of the random character must be greater than zero");
+            throw new ArgumentException("Length of the random character must be greater than zero", nameof(length));
         }
 
-        char[] chars = GetChars(charSet);
-        var stringChars = new char[length];
-
-        for (int i = 0; i < length; i++)
-        {
-            stringChars[i] = chars[GenRandomNumber(0, chars.Length)];
-        }
-
-        var finalString = new String(stringChars);
-        return finalString;
-    }
-
-    public int GenRandomNumber(int min, int max)
-    {
-        if (min >= max)
-        {
-            throw new ArgumentException("The value of min should be less than max");
-        }
-
-        using (var generator = RandomNumberGenerator.Create())
-        {
-            // Generate four random bytes
-            var four_bytes = new byte[4];
-            generator.GetBytes(four_bytes);
-
-            // Convert the bytes to a UInt32
-            var scale = BitConverter.ToUInt32(four_bytes, 0);
-
-            // And use that to pick a random number >= min and < max
-            return (int)(min + (max - min) * (scale / (uint.MaxValue + 1.0)));
-        }
+        var chars = GetChars(charSet);
+        var stringChars = RandomNumberGenerator.GetString(chars, length);
+        return new string(stringChars);
     }
 
     #endregion [Public Functions]

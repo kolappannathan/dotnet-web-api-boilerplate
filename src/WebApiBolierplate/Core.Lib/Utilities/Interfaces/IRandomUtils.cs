@@ -12,15 +12,4 @@ public interface IRandomUtils
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
     public string GenRandomChar(int length, CharSet charSet);
-
-
-    /// <summary>
-    /// Generates a random number using cryptography within the specified range
-    /// Ref: https://stackoverflow.com/a/38669162/5407188
-    /// </summary>
-    /// <param name="min">minimum value for the random number</param>
-    /// <param name="max">maximum value for the random number</param>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
-    public int GenRandomNumber(int min, int max);
 }

@@ -21,13 +21,4 @@ public sealed class RandomUtilsTest
         var randomChars = _randomUtils.GenRandomChar(length, Constants.Enums.CharSet.Alphabets);
         Assert.AreEqual(randomChars.Length, length);
     }
-
-    [TestMethod]
-    public void TestRandomNo()
-    {
-        const int min = 0, max = 108;
-        var randomChars = _randomUtils.GenRandomNumber(min, max);
-        Assert.IsTrue(randomChars <= max);
-        Assert.IsTrue(randomChars >= min);
-    }
 }
