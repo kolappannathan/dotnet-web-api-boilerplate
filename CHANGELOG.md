@@ -4,6 +4,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [8.0.0] - 2023-12-02
+### Added
+ - Salt added as separate param for Bcrypt in Security lib. Previously it was indented to be already added and sent with the plain text password.
+ - New test cases in postman
+
+### Changed
+ - Updated .NET version to 8
+ - Moved Configurators into a separate folder to simplify Program.cs
+ - Updated Random String Generator to use `System.Security.Cryptography.RandomNumberGenerator`.
+ - Using updated checks for Argument exceptions
+ - Updated dependencies
+
+### Removed
+ - Removed the random number generating function. The built-in function with RandomNumberGenerator to be used instead.
+
 ## [7.1.0] - 2023-03-02
 ### Added
  - Added interfaces for library classes, helper functions.
