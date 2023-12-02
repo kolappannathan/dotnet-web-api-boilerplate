@@ -9,9 +9,9 @@ public sealed class LoginDTO
 
     }
 
-    [Required(ErrorMessage = "No name. No game.")]
+    [Required(ErrorMessage = "No name. No game.", AllowEmptyStrings = false)]
     public string UserName { get; set; }
 
-    [Required(ErrorMessage = "No password?! Are you kidding?")]
+    [Required(ErrorMessage = "No password?! Are you kidding?", AllowEmptyStrings = false)]
     public string Password { get; set; }
 }
