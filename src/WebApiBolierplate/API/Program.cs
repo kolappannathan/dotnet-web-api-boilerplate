@@ -32,6 +32,11 @@ builder.WebHost.ConfigureKestrel(serverOptions => {
     serverOptions.AddServerHeader = false;
 });
 
+builder.Services.AddHsts(options => {
+    options.Preload = true;
+    options.MaxAge = TimeSpan.FromDays(30);
+});
+
 #region Configuring Services
 
 builder.Services.AddControllers();
