@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.2.0
+      uses: actions/checkout@v4.2.2
       with:
         show-progress: false
     - uses: actions/cache@v4
@@ -21,7 +21,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v4.0.1
+      uses: actions/setup-dotnet@v4.1.0
       with:
         dotnet-version: 6.0.x
     - name: Install dependencies
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.2.0
+      uses: actions/checkout@v4.2.2
       with:
         show-progress: false
     - uses: actions/cache@v4
