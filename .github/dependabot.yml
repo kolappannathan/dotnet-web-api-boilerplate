@@ -19,15 +19,31 @@ updates:
     directory: "/src/WebApiBolierplate/API/" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      nuget-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget" # See documentation for possible values
     directory: "/src/WebApiBolierplate/Core.Constants/" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      nuget-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget" # See documentation for possible values
     directory: "/src/WebApiBolierplate/Core.Lib/" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      nuget-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget" # See documentation for possible values
     directory: "/src/WebApiBolierplate/Core.Test/" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      nuget-dependencies:
+        patterns:
+          - "*"
