@@ -40,6 +40,8 @@ builder.Services.AddHsts(options => {
 #region Configuring Services
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi();
 
 builder.Services
     .AddProjectServices()
@@ -58,18 +60,17 @@ else
     app.UseHsts();
 }
 
+app.UseHttpsRedirection();
+
+app.UseSerilogRequestLogging();
+
+app.UseRouting();
 app.UseCors(options =>
     options
     .AllowAnyHeader()
     .AllowAnyMethod()
     .WithOrigins(new[] { "https://localhost:7030/" })
 );
-
-app.UseHttpsRedirection();
-
-app.UseSerilogRequestLogging();
-
-app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
