@@ -386,3 +386,4 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 *.deb
+*.DS_Store

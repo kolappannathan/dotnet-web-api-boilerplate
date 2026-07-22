@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using System.Text;
 using Serilog;
 using Serilog.Events;
@@ -46,42 +46,12 @@ builder.Services
     .AddProjectValidations()
     .AddProjectAuthServices(builder.Configuration);
 
-#region Swagger
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen( c => {
-    c.SwaggerDoc("v1", new OpenApiInfo {  Title="API", Version="1.0.0" });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`"
-    });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-        {
-            new OpenApiSecurityScheme {
-                Reference = new OpenApiReference {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-});
-
-#endregion Swagger
-
 #endregion Configuring Services
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 else
 {

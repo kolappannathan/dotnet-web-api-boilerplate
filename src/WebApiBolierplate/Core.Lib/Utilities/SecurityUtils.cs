@@ -17,13 +17,19 @@ public sealed class SecurityUtils : ISecurityUtils
     private Aes BuildAesEncryptor(string encryptionKey)
     {
         var aesEncryptor = Aes.Create();
-        var pdb = new Rfc2898DeriveBytes(
+        var salt = "335f0298-9eae-4285-890e-ef7243c974f0"u8.ToArray();
+        aesEncryptor.Key = Rfc2898DeriveBytes.Pbkdf2(
             password: encryptionKey,
-            salt: "335f0298-9eae-4285-890e-ef7243c974f0"u8.ToArray(),
+            salt: salt,
             iterations: 5033,
-            hashAlgorithm: HashAlgorithmName.SHA512);
-        aesEncryptor.Key = pdb.GetBytes(32);
-        aesEncryptor.IV = pdb.GetBytes(16);
+            hashAlgorithm: HashAlgorithmName.SHA512,
+            outputLength: 32);
+        aesEncryptor.IV = Rfc2898DeriveBytes.Pbkdf2(
+            password: encryptionKey,
+            salt: salt,
+            iterations: 5033,
+            hashAlgorithm: HashAlgorithmName.SHA512,
+            outputLength: 16);
         return aesEncryptor;
     }
 

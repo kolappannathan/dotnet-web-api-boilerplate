@@ -20,9 +20,9 @@ public sealed class RandomUtilsTest
     {
         const int length = 10;
         var randomChars = _randomUtils.GenRandomChar(length, Constants.Enums.CharSet.Alphabets);
-        Assert.AreEqual(randomChars.Length, length);
+        Assert.AreEqual(length,randomChars.Length);
 
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => {
             _randomUtils.GenRandomChar(0, Constants.Enums.CharSet.Alphabets);
         });
     }
